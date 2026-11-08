@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Uniform (Ю) - Unicorn</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff75d6"/><stop offset="1" stop-color="#ed58c1"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(240.0,244.0) scale(0.8534) translate(-241.0,-250.0)">
+<g transform="translate(512,0) scale(-1,1)"><path d="M250,132 L190,140 L200,170 L140,190 L160,230 L100,260 L130,300 L80,340 L120,370 L70,420 L118,440 L104,482 L140,482 L150,360 L176,252 L218,168 Z" fill="#ffb7e9" />
+<path d="M128,482 L136,362 L164,252 L212,170 L272,130 L322,140 L372,190 L432,270 L472,330 L462,372 L422,384 L362,352 L302,334 L284,384 L302,482 Z" fill="url(#m)" />
+<path d="M252,142 L240,70 L290,132 Z" fill="url(#m)" />
+<path d="M256,128 L250,94 L276,126 Z" fill="#99397c" />
+<path d="M294,140 L384,18 L318,152 Z" fill="#ffe08a" />
+<path d="M318,118 L338,124 M336,92 L352,98 M352,66 L366,70 M368,42 L378,46" fill="none" stroke="#c9a040" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M226,160 L272,148 L250,190 L214,202 Z" fill="#ffb7e9" />
+<path d="M422,292 L472,332 L462,372 L422,384 L392,362 Z" fill="#fdf1e8" />
+<ellipse cx="450" cy="352" rx="8" ry="6" fill="#99397c"/>
+<path d="M342,252 C332,302 362,332 404,342" fill="none" stroke="#99397c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M318,206 L340,196 L358,212 L336,220 Z" fill="#1b1b1d" />
+</g>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#ff5fd0" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M764 891Q792 1142 978 1331Q1164 1520 1523 1520Q1883 1520 2087.0 1314.0Q2291 1108 2291 745Q2291 383 2087.0 177.0Q1883 -29 1523 -29Q1164 -29 978 160Q792 349 764 600H573V0H188V1493H573V891ZM1523 1241Q1347 1241 1250.0 1111.0Q1153 981 1153 745Q1153 510 1250.0 380.0Q1347 250 1523 250Q1700 250 1797.0 380.0Q1894 510 1894 745Q1894 981 1797.0 1111.0Q1700 1241 1523 1241Z" transform="translate(340.70,438.87) scale(0.0495,-0.0495)" fill="#65ff92" stroke="#1b1b1d" stroke-width="182.0" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

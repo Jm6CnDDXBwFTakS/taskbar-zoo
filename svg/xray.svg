@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Xray (Ξ) - X-ray fish</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c7ebff"/><stop offset="1" stop-color="#b1d7ed"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(240.0,244.0) scale(0.9274) translate(-270.5,-254.0)">
+<g transform="translate(512,0) scale(-1,1)"><path d="M100,256 L28,176 L54,256 L28,336 Z" fill="url(#m)" />
+<path d="M226,162 L278,94 L304,168 Z" fill="#728b99" />
+<path d="M220,350 L272,414 L304,344 Z" fill="#728b99" />
+<path d="M452,256 L392,184 L270,152 L156,182 L98,240 L98,272 L156,330 L270,360 L392,328 Z" fill="url(#m)" />
+<path d="M110,256 L392,248" fill="none" stroke="#728b99" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M150,251 L168,209 M150,251 L168,303" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M178,250 L196,206 M178,250 L196,306" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M206,249 L224,202 M206,249 L224,310" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M234,248 L252,199 M234,248 L252,313" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M262,247 L280,196 M262,247 L280,316" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M290,247 L308,200 M290,247 L308,312" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M318,246 L336,203 M318,246 L336,309" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M346,245 L364,206 M346,245 L364,306" fill="none" stroke="#728b99" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M372,196 L356,256 L372,316" fill="none" stroke="#728b99" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M452,256 L436,262" fill="none" stroke="#1b1b1d" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="402" cy="236" r="16" fill="#1b1b1d"/><circle cx="407" cy="231" r="5" fill="#fdf1e8"/>
+</g>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#bfe8ff" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M306 924H1017V633H306ZM201 1493H1122V1202H201ZM201 291H1122V0H201Z" transform="translate(367.00,441.50) scale(0.0529,-0.0529)" fill="#ff9c65" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

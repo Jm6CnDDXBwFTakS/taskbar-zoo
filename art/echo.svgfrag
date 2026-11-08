@@ -1,0 +1,8 @@
+<path d="M184,150 L84,108 L36,196 L50,318 L120,364 L184,300 Z" fill="MAIN" /><path d="M328,150 L428,108 L476,196 L462,318 L392,364 L328,300 Z" fill="MAIN" />
+<path d="M170,170 L94,140 L64,206 L76,298 L122,330 L170,288 Z" fill="SHADE" /><path d="M342,170 L418,140 L448,206 L436,298 L390,330 L342,288 Z" fill="SHADE" />
+<path d="M256,108 L336,130 L364,210 L340,292 L296,332 L294,436 L324,460 L306,486 L266,468 L240,440 L216,332 L172,292 L148,210 L176,130 Z" fill="MAIN" />
+<path d="M206,150 L256,200 L306,150 L306,164 L256,214 L206,164 Z" fill="SHADE" />
+<path d="M226,362 L292,362 M230,392 L292,392 M236,422 L292,420" fill="none" stroke="SHADE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M212,318 L196,330 L170,416 L196,400 Z" fill="CREAM" />
+<path d="M300,318 L316,330 L342,416 L316,400 Z" fill="CREAM" />
+<circle cx="204" cy="236" r="12" fill="DARK"/><circle cx="308" cy="236" r="12" fill="DARK"/><circle cx="208" cy="232" r="4" fill="CREAM"/><circle cx="312" cy="232" r="4" fill="CREAM"/>

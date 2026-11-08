@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Bravo (β) - Bear</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d09162"/><stop offset="1" stop-color="#ba7743"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(1.0532) translate(-256.0,-264.0)">
+<circle cx="140" cy="140" r="64" fill="url(#m)"/>
+    <circle cx="372" cy="140" r="64" fill="url(#m)"/>
+    <circle cx="140" cy="140" r="34" fill="#784c2b"/>
+    <circle cx="372" cy="140" r="34" fill="#784c2b"/>
+    <path d="M256,100 L372,128 L432,228 L424,334 L352,420 L256,452 L160,420 L88,334 L80,228 L140,128 Z" fill="url(#m)"/>
+    <path d="M256,282 L332,318 L344,378 L302,428 L256,444 L210,428 L168,378 L180,318 Z" fill="#fdf1e8"/>
+    <path d="M222,330 L290,330 L256,370 Z" fill="#1b1b1d" stroke="#1b1b1d" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M256,370 L256,396 M256,396 L232,410 M256,396 L280,410" fill="none" stroke="#1b1b1d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M168,262 C180,246 204,244 216,258 C204,272 180,274 168,262 Z" fill="#1b1b1d"/>
+    <path d="M344,262 C332,246 308,244 296,258 C308,272 332,274 344,262 Z" fill="#1b1b1d"/>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#c98049" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M824 972Q887 1059 887 1121Q887 1206 847.5 1263.5Q808 1321 717 1321Q608 1321 569.0 1236.5Q530 1152 530 993V559Q530 400 591.5 315.5Q653 231 768 231Q896 231 945.0 299.0Q994 367 994 408Q994 551 876 636Q812 679 636 683V911Q799 936 824 972ZM172 -426V974Q172 1255 310 1398Q424 1517 535.0 1550.5Q646 1584 723 1584Q800 1583 812 1581Q1017 1549 1132 1420Q1212 1332 1212 1152Q1212 1060 1157 977Q1090 875 990 867Q1138 827 1230 743Q1374 614 1374 412Q1374 234 1249.0 102.5Q1124 -29 899 -29Q674 -29 530 162V-426Z" transform="translate(371.62,424.76) scale(0.0393,-0.0393)" fill="#79baeb" stroke="#1b1b1d" stroke-width="229.0" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Romeo (ρ) - Rhino</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#da8463"/><stop offset="1" stop-color="#c56944"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(1.0366) translate(-256.0,-271.0)">
+<path d="M140,176 L100,80 L152,92 L190,154 Z" fill="url(#m)" /><path d="M372,176 L412,80 L360,92 L322,154 Z" fill="url(#m)" />
+<path d="M144,152 L120,100 L148,108 L170,148 Z" fill="#7f432c" /><path d="M368,152 L392,100 L364,108 L342,148 Z" fill="#7f432c" />
+<path d="M256,120 L330,140 L380,210 L392,300 L370,380 L330,440 L256,462 L182,440 L142,380 L120,300 L132,210 L182,140 Z" fill="url(#m)" />
+<path d="M150,320 L196,350 L176,372 Z M140,250 L176,266 L150,282 Z" fill="#7f432c" /><path d="M362,320 L316,350 L336,372 Z M372,250 L336,266 L362,282 Z" fill="#7f432c" />
+<path d="M230,210 L256,114 L282,210 Z" fill="#ebbfad" />
+<path d="M212,340 L256,150 L300,340 Z" fill="#fdf1e8" />
+<path d="M232,300 L280,300 M240,260 L272,260" fill="none" stroke="#7f432c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+<path d="M196,384 L226,380 L214,398 Z" fill="#1b1b1d" /><path d="M316,384 L286,380 L298,398 Z" fill="#1b1b1d" />
+<path d="M200,424 L256,436 L312,424" fill="none" stroke="#7f432c" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="162" cy="270" r="10" fill="#1b1b1d"/><circle cx="350" cy="270" r="10" fill="#1b1b1d"/><circle cx="166" cy="266" r="3" fill="#fdf1e8"/><circle cx="354" cy="266" r="3" fill="#fdf1e8"/>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#d4714a" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M321 964Q456 1092 579 1120Q705 1150 826 1150Q864 1150 901 1147Q1096 1132 1241 982Q1374 842 1374 559Q1374 300 1241.0 135.5Q1108 -29 901 -29Q784 -29 694.0 17.5Q604 64 530 162V-426H172V540Q172 821 321 964ZM768 887Q653 887 591.5 802.5Q530 718 530 559Q530 400 591.5 315.5Q653 231 768 231Q883 231 943.5 315.0Q1004 399 1004 559Q1004 719 943.5 803.0Q883 887 768 887Z" transform="translate(363.25,420.15) scale(0.0501,-0.0501)" fill="#79cbeb" stroke="#1b1b1d" stroke-width="179.5" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

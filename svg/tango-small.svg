@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Tango (τ), small</title>
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="#1a1a1d"/>
+  <path d="M43 864V1120H1253V864H827V362Q827 234 851.5 202.0Q876 170 932 170Q989 170 1021 174V-14Q959 -39 747 -39Q680 -39 615 -20Q511 11 482 102Q469 147 469 233V864Z" transform="translate(71.50,409.90) scale(0.2847,-0.2847)" fill="#ff7b29"/>
+</svg>

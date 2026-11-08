@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Juliett (Ж) - Jellyfish</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d57fff"/><stop offset="1" stop-color="#c063ed"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.9231) translate(-256.0,-276.5)">
+<path d="M120,262 L108,340 L126,410 L112,476" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M392,262 L404,340 L386,410 L400,476" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M168,268 L178,350 L160,430 L170,486" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M344,268 L334,350 L352,430 L342,486" fill="none" stroke="url(#m)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M222,270 L242,320 L218,372 L240,424 L222,476" fill="none" stroke="#e9bcff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M290,270 L270,320 L294,372 L272,424 L290,476" fill="none" stroke="#e9bcff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M80,262 L96,170 L150,98 L220,62 L292,62 L362,98 L416,170 L432,262 L404,282 L376,262 L346,286 L316,262 L286,286 L256,262 L226,286 L196,262 L166,286 L136,262 L108,282 Z" fill="url(#m)" />
+<path d="M150,236 L168,170 L214,122 L298,122 L344,170 L362,236 Z" fill="#7c4099" opacity="0.55"/>
+<path d="M132,150 L190,98 L204,114 L150,170 Z" fill="#e9bcff" />
+<circle cx="212" cy="200" r="12" fill="#1b1b1d"/><circle cx="300" cy="200" r="12" fill="#1b1b1d"/><circle cx="216" cy="196" r="4" fill="#fdf1e8"/><circle cx="304" cy="196" r="4" fill="#fdf1e8"/>
+<path d="M236,228 L256,240 L276,228" fill="none" stroke="#1b1b1d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#cf6bff" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M30 0 641 895 95 1493H499L1061 877V1493H1446V877L2008 1493H2412L1866 895L2477 0H2053L1624 629L1446 434V0H1061V434L883 629L454 0Z" transform="translate(348.72,433.73) scale(0.0425,-0.0425)" fill="#97ff65" stroke="#1b1b1d" stroke-width="211.8" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

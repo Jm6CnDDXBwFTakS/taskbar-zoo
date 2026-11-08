@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Echo (ε) - Elephant</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b5c0cf"/><stop offset="1" stop-color="#9ea9ba"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.9000) translate(-256.0,-297.0)">
+<path d="M184,150 L84,108 L36,196 L50,318 L120,364 L184,300 Z" fill="url(#m)" /><path d="M328,150 L428,108 L476,196 L462,318 L392,364 L328,300 Z" fill="url(#m)" />
+<path d="M170,170 L94,140 L64,206 L76,298 L122,330 L170,288 Z" fill="#666d78" /><path d="M342,170 L418,140 L448,206 L436,298 L390,330 L342,288 Z" fill="#666d78" />
+<path d="M256,108 L336,130 L364,210 L340,292 L296,332 L294,436 L324,460 L306,486 L266,468 L240,440 L216,332 L172,292 L148,210 L176,130 Z" fill="url(#m)" />
+<path d="M206,150 L256,200 L306,150 L306,164 L256,214 L206,164 Z" fill="#666d78" />
+<path d="M226,362 L292,362 M230,392 L292,392 M236,422 L292,420" fill="none" stroke="#666d78" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M212,318 L196,330 L170,416 L196,400 Z" fill="#fdf1e8" />
+<path d="M300,318 L316,330 L342,416 L316,400 Z" fill="#fdf1e8" />
+<circle cx="204" cy="236" r="12" fill="#1b1b1d"/><circle cx="308" cy="236" r="12" fill="#1b1b1d"/><circle cx="208" cy="232" r="4" fill="#fdf1e8"/><circle cx="312" cy="232" r="4" fill="#fdf1e8"/>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#aab6c8" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M357 604Q249 629 194 692Q138 756 138 853Q138 1004 254 1075Q370 1147 602 1147Q689 1147 778 1135Q868 1123 959 1099V860Q899 887 814.0 903.0Q729 919 670 919Q575 919 520 884Q464 848 464 806Q464 762 521 728Q571 698 688 698H812V474H694Q565 474 503 437Q436 398 436 338Q436 280 502 240Q567 201 683 201Q760 201 845 221Q939 243 1010 279V27Q920 -1 828 -15Q735 -29 643 -29Q382 -29 246.0 58.0Q110 145 110 318Q110 430 173.0 502.0Q236 574 357 604Z" transform="translate(364.38,439.55) scale(0.0672,-0.0672)" fill="#ebbd79" stroke="#1b1b1d" stroke-width="134.0" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

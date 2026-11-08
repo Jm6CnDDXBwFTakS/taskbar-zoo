@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Golf (Γ) - Gecko</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#aa9ec8"/><stop offset="1" stop-color="#9284b2"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.9635) translate(-256.0,-263.5)">
+<path d="M256,370 C256,446 336,474 364,432 C386,398 352,370 326,392" fill="none" stroke="url(#m)" stroke-width="34" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M226,204 L170,182 L138,140" fill="none" stroke="url(#m)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M286,204 L342,182 L374,140" fill="none" stroke="url(#m)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M222,326 L166,350 L138,400" fill="none" stroke="url(#m)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M290,326 L346,350 L374,400" fill="none" stroke="url(#m)" stroke-width="26" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M138,140 L108,128 M138,140 L118,108 M138,140 L140,102 M138,140 L160,112" fill="none" stroke="url(#m)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M374,140 L404,128 M374,140 L394,108 M374,140 L372,102 M374,140 L352,112" fill="none" stroke="url(#m)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M138,400 L106,410 M138,400 L114,430 M138,400 L136,440 M138,400 L160,432" fill="none" stroke="url(#m)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M374,400 L406,410 M374,400 L398,430 M374,400 L376,440 M374,400 L352,432" fill="none" stroke="url(#m)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="108" cy="128" r="9" fill="#d2cce2"/><circle cx="404" cy="128" r="9" fill="#d2cce2"/><circle cx="118" cy="108" r="9" fill="#d2cce2"/><circle cx="394" cy="108" r="9" fill="#d2cce2"/><circle cx="140" cy="102" r="9" fill="#d2cce2"/><circle cx="372" cy="102" r="9" fill="#d2cce2"/><circle cx="160" cy="112" r="9" fill="#d2cce2"/><circle cx="352" cy="112" r="9" fill="#d2cce2"/><circle cx="106" cy="410" r="9" fill="#d2cce2"/><circle cx="406" cy="410" r="9" fill="#d2cce2"/><circle cx="114" cy="430" r="9" fill="#d2cce2"/><circle cx="398" cy="430" r="9" fill="#d2cce2"/><circle cx="136" cy="440" r="9" fill="#d2cce2"/><circle cx="376" cy="440" r="9" fill="#d2cce2"/><circle cx="160" cy="432" r="9" fill="#d2cce2"/><circle cx="352" cy="432" r="9" fill="#d2cce2"/>
+<path d="M256,160 L294,180 L306,260 L298,340 L274,382 L238,382 L214,340 L206,260 L218,180 Z" fill="url(#m)" />
+<circle cx="240" cy="214" r="10" fill="#d2cce2"/><circle cx="274" cy="236" r="9" fill="#d2cce2"/><circle cx="244" cy="270" r="11" fill="#d2cce2"/><circle cx="276" cy="300" r="9" fill="#d2cce2"/><circle cx="248" cy="330" r="10" fill="#d2cce2"/><circle cx="262" cy="358" r="7" fill="#d2cce2"/>
+<path d="M256,58 L302,74 L320,120 L302,162 L256,176 L210,162 L192,120 L210,74 Z" fill="url(#m)" />
+<path d="M188,104 C188,82 224,82 224,104 C224,126 188,126 188,104 Z" fill="#ffd23a" /><path d="M324,104 C324,82 288,82 288,104 C288,126 324,126 324,104 Z" fill="#ffd23a" />
+<path d="M206,88 L210,104 L206,120 L202,104 Z" fill="#1b1b1d" /><path d="M306,88 L302,104 L306,120 L310,104 Z" fill="#1b1b1d" />
+<path d="M232,160 L256,166 L280,160" fill="none" stroke="#5e5573" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#9d8fc0" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M188 0V1493H1249V1202H573V0Z" transform="translate(363.98,441.50) scale(0.0529,-0.0529)" fill="#cbeb79" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

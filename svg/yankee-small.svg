@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Yankee (ψ), small</title>
+  <rect x="0" y="0" width="512" height="512" rx="112" fill="#1a1a1d"/>
+  <path d="M986 256Q1125 356 1125 595V1120H1483V588Q1483 64 986 0V-426H630V0Q133 64 133 588V1120H491V595Q491 356 630 256V1120H986Z" transform="translate(83.53,330.07) scale(0.2135,-0.2135)" fill="#c9568a"/>
+</svg>

@@ -1,0 +1,8 @@
+<path d="M110,380 L36,436 L140,420 Z" fill="SHADE" /><path d="M402,380 L476,436 L372,420 Z" fill="SHADE" />
+<path d="M256,150 L346,170 L410,240 L420,330 L380,410 L300,450 L212,450 L132,410 L92,330 L102,240 L166,170 Z" fill="MAIN" />
+<path d="M100,344 L412,344 L380,410 L300,450 L212,450 L132,410 Z" fill="LIGHT" />
+<path d="M186,196 L206,190 L200,208 Z M146,236 L164,230 L160,248 Z M220,226 L238,222 L232,238 Z" fill="SHADE" /><path d="M326,196 L306,190 L312,208 Z M366,236 L348,230 L352,248 Z M292,226 L274,222 L280,238 Z" fill="SHADE" />
+<path d="M212,192 L240,178 L156,8 Z" fill="CREAM" />
+<path d="M224,170 L210,174 M210,140 L196,146 M196,112 L182,118 M182,82 L170,88 M170,54 L160,58" fill="none" stroke="SHADE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="172" cy="300" r="13" fill="DARK"/><circle cx="340" cy="300" r="13" fill="DARK"/><circle cx="177" cy="295" r="4" fill="CREAM"/><circle cx="345" cy="295" r="4" fill="CREAM"/>
+<path d="M206,372 L256,388 L306,372" fill="none" stroke="DARK" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />

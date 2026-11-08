@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Mike (μ) - Moth</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe463"/><stop offset="1" stop-color="#edd044"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.8839) translate(-256.0,-224.0)">
+<path d="M246,108 L210,62 L196,24" fill="none" stroke="#99862c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M266,108 L302,62 L316,24" fill="none" stroke="#99862c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M222,78 L198,82 M212,62 L190,58 M206,46 L216,32" fill="none" stroke="#99862c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M290,78 L314,82 M300,62 L322,58 M306,46 L296,32" fill="none" stroke="#99862c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M244,168 L118,76 L40,106 L32,200 L88,272 L240,252 Z" fill="url(#m)" /><path d="M268,168 L394,76 L472,106 L480,200 L424,272 L272,252 Z" fill="url(#m)" />
+<path d="M240,262 L104,280 L62,352 L104,428 L182,426 L244,334 Z" fill="url(#m)" /><path d="M272,262 L408,280 L450,352 L408,428 L330,426 L268,334 Z" fill="url(#m)" />
+<path d="M118,76 L40,106 L32,200 L62,180 L70,124 Z" fill="#99862c" /><path d="M394,76 L472,106 L480,200 L450,180 L442,124 Z" fill="#99862c" />
+<path d="M62,352 L104,428 L134,420 L100,360 Z" fill="#99862c" /><path d="M450,352 L408,428 L378,420 L412,360 Z" fill="#99862c" />
+<circle cx="128" cy="172" r="32" fill="#99862c"/><circle cx="384" cy="172" r="32" fill="#99862c"/><circle cx="128" cy="172" r="18" fill="#fdf1e8"/><circle cx="384" cy="172" r="18" fill="#fdf1e8"/><circle cx="128" cy="172" r="8" fill="#1b1b1d"/><circle cx="384" cy="172" r="8" fill="#1b1b1d"/><circle cx="152" cy="352" r="20" fill="#99862c"/><circle cx="360" cy="352" r="20" fill="#99862c"/>
+<path d="M256,136 L278,164 L282,300 L270,404 L256,428 L242,404 L230,300 L234,164 Z" fill="#99862c" />
+<path d="M238,200 L274,200 M236,240 L276,240 M236,280 L276,280 M240,320 L272,320 M244,360 L268,360" fill="none" stroke="#fff1ad" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="256" cy="124" r="24" fill="#99862c"/>
+<circle cx="244" cy="122" r="6" fill="#1b1b1d"/><circle cx="268" cy="122" r="6" fill="#1b1b1d"/>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#ffe04a" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M174 -428V1120H535V469Q535 353 585.0 296.5Q635 240 737 240Q840 240 890.0 296.5Q940 353 940 469V1120H1300V371Q1300 300 1316.5 272.0Q1333 244 1372 244Q1390 244 1406.5 249.0Q1423 254 1442 266V16Q1389 -7 1342.5 -18.0Q1296 -29 1251 -29Q1162 -29 1105.5 8.5Q1049 46 1014 129Q967 50 899.5 10.5Q832 -29 743 -29Q669 -29 617.0 -5.5Q565 18 535 66V-428Z" transform="translate(360.76,419.66) scale(0.0510,-0.0510)" fill="#6580ff" stroke="#1b1b1d" stroke-width="176.4" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

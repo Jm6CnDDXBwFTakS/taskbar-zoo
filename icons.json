@@ -1,0 +1,148 @@
+{
+  "alfa": {
+    "letter": "α",
+    "animal": "Axolotl",
+    "color": "#4a9af0"
+  },
+  "bravo": {
+    "letter": "β",
+    "animal": "Bear",
+    "color": "#c98049"
+  },
+  "charlie": {
+    "letter": "Ч",
+    "animal": "Crab",
+    "color": "#ff4f4f"
+  },
+  "delta": {
+    "letter": "δ",
+    "animal": "Deer",
+    "color": "#22bcc6"
+  },
+  "echo": {
+    "letter": "ε",
+    "animal": "Elephant",
+    "color": "#aab6c8"
+  },
+  "foxtrot": {
+    "letter": "Ф",
+    "animal": "Flamingo",
+    "color": "#8a7cff",
+    "center": [
+      240,
+      244
+    ]
+  },
+  "golf": {
+    "letter": "Γ",
+    "animal": "Gecko",
+    "color": "#9d8fc0"
+  },
+  "hotel": {
+    "letter": "Η",
+    "animal": "Hippo",
+    "color": "#ff80aa"
+  },
+  "india": {
+    "letter": "I",
+    "animal": "Iguana",
+    "color": "#a6d63a"
+  },
+  "juliett": {
+    "letter": "Ж",
+    "animal": "Jellyfish",
+    "color": "#cf6bff"
+  },
+  "kilo": {
+    "letter": "Ϟ",
+    "animal": "Koala",
+    "color": "#9fc7e8"
+  },
+  "lima": {
+    "letter": "Λ",
+    "animal": "Lion",
+    "color": "#f2b124"
+  },
+  "mike": {
+    "letter": "μ",
+    "animal": "Moth",
+    "color": "#ffe04a"
+  },
+  "november": {
+    "letter": "N",
+    "animal": "Narwhal",
+    "color": "#7ff0d6"
+  },
+  "oscar": {
+    "letter": "Θ",
+    "animal": "Owl",
+    "color": "#c9a26a"
+  },
+  "papa": {
+    "letter": "π",
+    "animal": "Panda",
+    "color": "#59e0a0"
+  },
+  "quebec": {
+    "letter": "Щ",
+    "animal": "Quetzal",
+    "color": "#19c37d",
+    "center": [
+      240,
+      244
+    ]
+  },
+  "romeo": {
+    "letter": "ρ",
+    "animal": "Rhino",
+    "color": "#d4714a"
+  },
+  "sierra": {
+    "letter": "Σ",
+    "animal": "Shark",
+    "color": "#4fc0ff"
+  },
+  "tango": {
+    "letter": "τ",
+    "animal": "Turtle",
+    "color": "#ff7b29"
+  },
+  "uniform": {
+    "letter": "Ю",
+    "animal": "Unicorn",
+    "color": "#ff5fd0",
+    "center": [
+      240,
+      244
+    ]
+  },
+  "victor": {
+    "letter": "√",
+    "animal": "Vampire bat",
+    "color": "#5cc055"
+  },
+  "whiskey": {
+    "letter": "ω",
+    "animal": "Walrus",
+    "color": "#e8a882"
+  },
+  "xray": {
+    "letter": "Ξ",
+    "animal": "X-ray fish",
+    "color": "#bfe8ff",
+    "center": [
+      240,
+      244
+    ]
+  },
+  "yankee": {
+    "letter": "ψ",
+    "animal": "Yak",
+    "color": "#c9568a"
+  },
+  "zulu": {
+    "letter": "Z",
+    "animal": "Zebra",
+    "color": "#f4f4f4"
+  }
+}

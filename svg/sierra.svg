@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Sierra (Σ) - Shark</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#67c8ff"/><stop offset="1" stop-color="#49b2ed"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.8761) translate(-256.0,-222.0)">
+<path d="M222,126 L272,20 L304,132 Z" fill="#2f7399" />
+<path d="M124,330 L30,424 L156,382 Z" fill="#2f7399" /><path d="M388,330 L482,424 L356,382 Z" fill="#2f7399" />
+<path d="M256,100 L340,130 L420,220 L432,300 L382,372 L300,404 L212,404 L130,372 L80,300 L92,220 L172,130 Z" fill="url(#m)" />
+<path d="M88,290 L424,290 L382,372 L300,404 L212,404 L130,372 Z" fill="#fdf1e8" />
+<path d="M150,318 L362,318 L322,374 L190,374 Z" fill="#1b1b1d" />
+<path d="M162,318 L176,340 L190,318 L204,340 L218,318 L232,340 L246,318 L260,340 L274,318 L288,340 L302,318 L316,340 L330,318 L344,340 L352,318 Z" fill="#fdf1e8" />
+<path d="M196,374 L208,354 L220,374 L232,354 L244,374 L256,354 L268,374 L280,354 L292,374 L304,354 L316,374 Z" fill="#fdf1e8" />
+<path d="M150,250 L180,256 M160,268 L186,272" fill="none" stroke="#2f7399" stroke-width="5" /><path d="M362,250 L332,256 M352,268 L326,272" fill="none" stroke="#2f7399" stroke-width="5" />
+<circle cx="132" cy="234" r="14" fill="#1b1b1d"/><circle cx="380" cy="234" r="14" fill="#1b1b1d"/><circle cx="137" cy="229" r="4" fill="#fdf1e8"/><circle cx="385" cy="229" r="4" fill="#fdf1e8"/>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#4fc0ff" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M539 291H1249V0H188V321L664 794L188 1185V1493H1227V1202H556L1049 798Z" transform="translate(363.98,441.50) scale(0.0529,-0.0529)" fill="#ff9c65" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

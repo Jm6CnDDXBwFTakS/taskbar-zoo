@@ -1,0 +1,10 @@
+<path d="M240,214 L180,160 L100,118 L18,162 L0,256 L40,244 L70,296 L110,262 L150,316 L190,274 L232,330 Z" fill="MAIN" /><path d="M272,214 L332,160 L412,118 L494,162 L512,256 L472,244 L442,296 L402,262 L362,316 L322,274 L280,330 Z" fill="MAIN" />
+<path d="M232,226 L100,122 L20,164 M100,122 L42,244 M100,122 L110,262 M100,122 L150,314" fill="none" stroke="SHADE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M280,226 L412,122 L492,164 M412,122 L470,244 M412,122 L402,262 M412,122 L362,314" fill="none" stroke="SHADE" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M256,192 L300,212 L312,302 L292,382 L256,404 L220,382 L200,302 L212,212 Z" fill="SHADE" />
+<path d="M214,170 L178,52 L246,150 Z" fill="MAIN" /><path d="M298,170 L334,52 L266,150 Z" fill="MAIN" />
+<path d="M216,150 L194,90 L234,146 Z" fill="LIGHT" /><path d="M296,150 L318,90 L278,146 Z" fill="LIGHT" />
+<path d="M256,148 L302,160 L322,200 L312,252 L282,282 L256,290 L230,282 L200,252 L190,200 L210,160 Z" fill="MAIN" />
+<circle cx="230" cy="208" r="10" fill="#ff4f4f"/><circle cx="282" cy="208" r="10" fill="#ff4f4f"/>
+<path d="M244,232 L268,232 L256,252 Z" fill="DARK" />
+<path d="M238,262 L250,262 L244,290 Z" fill="CREAM" /><path d="M274,262 L262,262 L268,290 Z" fill="CREAM" />

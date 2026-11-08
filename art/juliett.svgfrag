@@ -1,0 +1,11 @@
+<path d="M120,262 L108,340 L126,410 L112,476" fill="none" stroke="MAIN" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M392,262 L404,340 L386,410 L400,476" fill="none" stroke="MAIN" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M168,268 L178,350 L160,430 L170,486" fill="none" stroke="MAIN" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M344,268 L334,350 L352,430 L342,486" fill="none" stroke="MAIN" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M222,270 L242,320 L218,372 L240,424 L222,476" fill="none" stroke="LIGHT" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M290,270 L270,320 L294,372 L272,424 L290,476" fill="none" stroke="LIGHT" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M80,262 L96,170 L150,98 L220,62 L292,62 L362,98 L416,170 L432,262 L404,282 L376,262 L346,286 L316,262 L286,286 L256,262 L226,286 L196,262 L166,286 L136,262 L108,282 Z" fill="MAIN" />
+<path d="M150,236 L168,170 L214,122 L298,122 L344,170 L362,236 Z" fill="SHADE" opacity="0.55"/>
+<path d="M132,150 L190,98 L204,114 L150,170 Z" fill="LIGHT" />
+<circle cx="212" cy="200" r="12" fill="DARK"/><circle cx="300" cy="200" r="12" fill="DARK"/><circle cx="216" cy="196" r="4" fill="CREAM"/><circle cx="304" cy="196" r="4" fill="CREAM"/>
+<path d="M236,228 L256,240 L276,228" fill="none" stroke="DARK" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />

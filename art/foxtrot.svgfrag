@@ -1,0 +1,9 @@
+<g transform="translate(512,0) scale(-1,1)"><path d="M40,410 L90,340 L190,320 L280,350 L300,410 L250,462 L130,470 L60,452 Z" fill="MAIN" />
+<path d="M110,360 L210,346 L270,392 L220,440 L120,430 Z" fill="SHADE" />
+<path d="M150,450 L120,482 L90,470 M120,482 L140,500" fill="none" stroke="SHADE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M270,370 C340,330 330,250 270,210 C210,170 220,96 300,92" fill="none" stroke="MAIN" stroke-width="44" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="306" cy="96" r="38" fill="MAIN"/>
+<path d="M332,74 L404,90 L428,128 L418,166 L402,138 L382,124 L336,120 Z" fill="CREAM" />
+<path d="M404,90 L428,128 L418,166 L402,138 Z" fill="DARK" />
+<circle cx="312" cy="88" r="9" fill="DARK"/><circle cx="315" cy="85" r="3" fill="CREAM"/>
+</g>

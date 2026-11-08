@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Tango (τ) - Turtle</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff8d46"/><stop offset="1" stop-color="#ed7226"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.8684) translate(-256.0,-295.5)">
+<path d="M36,336 L66,210 L150,138 L256,112 L362,138 L446,210 L476,336 Z" fill="#994918" />
+<path d="M150,224 L196,172 L256,156 L316,172 L362,224 M108,300 L150,224 M404,300 L362,224 M196,172 L180,132 M316,172 L332,132" fill="none" stroke="#ffc39e" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+<path d="M28,330 L484,330 L470,364 L42,364 Z" fill="#ffc39e" />
+<path d="M128,350 L62,436 L106,472 L180,392 Z" fill="url(#m)" /><path d="M384,350 L450,436 L406,472 L332,392 Z" fill="url(#m)" />
+<path d="M70,446 L58,462 M86,458 L78,476" fill="none" stroke="#fdf1e8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M442,446 L454,462 M426,458 L434,476" fill="none" stroke="#fdf1e8" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M206,360 L306,360 L320,420 L192,420 Z" fill="url(#m)" />
+<path d="M256,200 L330,220 L366,290 L356,370 L310,430 L256,446 L202,430 L156,370 L146,290 L182,220 Z" fill="url(#m)" />
+<path d="M200,226 L232,220 L222,246 Z M178,262 L204,258 L194,284 Z" fill="#994918" /><path d="M312,226 L280,220 L290,246 Z M334,262 L308,258 L318,284 Z" fill="#994918" />
+<path d="M240,212 L272,212 L266,236 L246,236 Z" fill="#994918" />
+<circle cx="206" cy="302" r="15" fill="#1b1b1d"/><circle cx="306" cy="302" r="15" fill="#1b1b1d"/><circle cx="211" cy="297" r="4" fill="#fdf1e8"/><circle cx="311" cy="297" r="4" fill="#fdf1e8"/>
+<path d="M204,388 L256,408 L308,388" fill="none" stroke="#1b1b1d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#ff7b29" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M43 864V1120H1253V864H827V362Q827 234 851.5 202.0Q876 170 932 170Q989 170 1021 174V-14Q959 -39 747 -39Q680 -39 615 -20Q511 11 482 102Q469 147 469 233V864Z" transform="translate(357.83,438.84) scale(0.0682,-0.0682)" fill="#65c4ff" stroke="#1b1b1d" stroke-width="132.0" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

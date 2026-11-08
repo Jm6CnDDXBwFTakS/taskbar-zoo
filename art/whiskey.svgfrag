@@ -1,0 +1,7 @@
+<path d="M256,100 L350,120 L410,190 L420,280 L380,336 L132,336 L92,280 L102,190 L162,120 Z" fill="MAIN" />
+<path d="M200,360 L226,370 L218,494 L196,474 Z" fill="CREAM" /><path d="M312,360 L286,370 L294,494 L316,474 Z" fill="CREAM" />
+<circle cx="212" cy="320" r="66" fill="LIGHT"/><circle cx="300" cy="320" r="66" fill="LIGHT"/>
+<circle cx="180" cy="300" r="5" fill="SHADE"/><circle cx="332" cy="300" r="5" fill="SHADE"/><circle cx="204" cy="296" r="5" fill="SHADE"/><circle cx="308" cy="296" r="5" fill="SHADE"/><circle cx="228" cy="300" r="5" fill="SHADE"/><circle cx="284" cy="300" r="5" fill="SHADE"/><circle cx="172" cy="326" r="5" fill="SHADE"/><circle cx="340" cy="326" r="5" fill="SHADE"/><circle cx="196" cy="322" r="5" fill="SHADE"/><circle cx="316" cy="322" r="5" fill="SHADE"/><circle cx="220" cy="326" r="5" fill="SHADE"/><circle cx="292" cy="326" r="5" fill="SHADE"/><circle cx="184" cy="350" r="5" fill="SHADE"/><circle cx="328" cy="350" r="5" fill="SHADE"/><circle cx="208" cy="348" r="5" fill="SHADE"/><circle cx="304" cy="348" r="5" fill="SHADE"/><circle cx="232" cy="350" r="5" fill="SHADE"/><circle cx="280" cy="350" r="5" fill="SHADE"/>
+<path d="M232,256 L280,256 L256,282 Z" fill="DARK" />
+<path d="M206,150 L256,160 L306,150 M216,174 L256,182 L296,174" fill="none" stroke="SHADE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="176" cy="210" r="10" fill="DARK"/><circle cx="336" cy="210" r="10" fill="DARK"/><circle cx="180" cy="206" r="3" fill="CREAM"/><circle cx="340" cy="206" r="3" fill="CREAM"/>

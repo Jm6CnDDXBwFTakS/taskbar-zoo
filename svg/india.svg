@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>India (I) - Iguana</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b2db55"/><stop offset="1" stop-color="#9ac735"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.7968) translate(-256.0,-260.5)">
+<path d="M178,346 L334,346 L376,502 L136,502 Z" fill="url(#m)" />
+<path d="M152,444 L206,432 L202,458 L146,470 Z M164,394 L210,386 L208,408 L160,416 Z" fill="#638022" /><path d="M360,444 L306,432 L310,458 L366,470 Z M348,394 L302,386 L304,408 L352,416 Z" fill="#638022" />
+<path d="M256,96 L340,120 L402,200 L410,280 L370,350 L300,390 L256,398 L212,390 L142,350 L102,280 L110,200 L172,120 Z" fill="url(#m)" />
+
+<path d=""  fill="none" stroke="#638022" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M210,140 L236,150 L222,172 Z M180,170 L206,178 L190,200 Z M232,182 L256,170 L256,198 Z" fill="#638022" /><path d="M302,140 L276,150 L290,172 Z M332,170 L306,178 L322,200 Z M280,182 L256,170 L256,198 Z" fill="#638022" />
+<circle cx="132" cy="300" r="30" fill="#fdf1e8"/><circle cx="380" cy="300" r="30" fill="#fdf1e8"/>
+<path d="M120,214 C132,190 176,190 186,214 C176,238 132,238 120,214 Z" fill="#ffd23a" /><path d="M392,214 C380,190 336,190 326,214 C336,238 380,238 392,214 Z" fill="#ffd23a" />
+<path d="M150,198 L158,214 L150,232 L142,214 Z" fill="#1b1b1d" /><path d="M362,198 L354,214 L362,232 L370,214 Z" fill="#1b1b1d" />
+<path d="M160,334 L256,362 L352,334" fill="none" stroke="#1b1b1d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M236,250 L246,262 L236,266 Z" fill="#1b1b1d" /><path d="M276,250 L266,262 L276,266 Z" fill="#1b1b1d" />
+<path d="M180,130 L170,40 L206,86 L232,22 L256,74 L280,22 L306,86 L342,40 L332,130 Z" fill="#ffc21a" stroke="#1b1b1d" stroke-width="5" stroke-linejoin="round"/>
+<path d="M178,104 L334,104 L334,132 L178,132 Z" fill="#e09a00" stroke="#1b1b1d" stroke-width="5" stroke-linejoin="round"/>
+<circle cx="204" cy="118" r="8" fill="#ff3d8a"/><circle cx="256" cy="118" r="8" fill="#ff3d8a"/><circle cx="308" cy="118" r="8" fill="#ff3d8a"/><circle cx="170" cy="40" r="8" fill="#ffe680" stroke="#1b1b1d" stroke-width="3"/><circle cx="232" cy="22" r="8" fill="#ffe680" stroke="#1b1b1d" stroke-width="3"/><circle cx="280" cy="22" r="8" fill="#ffe680" stroke="#1b1b1d" stroke-width="3"/><circle cx="342" cy="40" r="8" fill="#ffe680" stroke="#1b1b1d" stroke-width="3"/>
+<path d="M220,378 L292,378 L310,428 L300,474 L272,500 L256,506 L240,500 L222,468 L212,424 Z" fill="#d6eca6" stroke="#638022" stroke-width="5" stroke-linejoin="round"/>
+<path d="M230,404 C246,414 266,414 282,404 M232,436 C248,446 268,446 290,436 M240,468 C252,476 266,476 280,466" fill="none" stroke="#638022" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M306,440 L322,446 L304,454 Z M298,470 L314,480 L292,484 Z M280,494 L290,508 L270,504 Z" fill="#d6eca6" />
+<path d="M206,440 L190,446 L208,454 Z M214,470 L198,480 L220,484 Z M232,494 L222,508 L242,504 Z" fill="#d6eca6" />
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#a6d63a" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M188 1493H573V0H188Z" transform="translate(381.87,441.50) scale(0.0529,-0.0529)" fill="#9c79eb" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

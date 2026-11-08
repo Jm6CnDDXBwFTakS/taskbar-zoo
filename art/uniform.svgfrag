@@ -1,0 +1,12 @@
+<g transform="translate(512,0) scale(-1,1)"><path d="M250,132 L190,140 L200,170 L140,190 L160,230 L100,260 L130,300 L80,340 L120,370 L70,420 L118,440 L104,482 L140,482 L150,360 L176,252 L218,168 Z" fill="LIGHT" />
+<path d="M128,482 L136,362 L164,252 L212,170 L272,130 L322,140 L372,190 L432,270 L472,330 L462,372 L422,384 L362,352 L302,334 L284,384 L302,482 Z" fill="MAIN" />
+<path d="M252,142 L240,70 L290,132 Z" fill="MAIN" />
+<path d="M256,128 L250,94 L276,126 Z" fill="SHADE" />
+<path d="M294,140 L384,18 L318,152 Z" fill="#ffe08a" />
+<path d="M318,118 L338,124 M336,92 L352,98 M352,66 L366,70 M368,42 L378,46" fill="none" stroke="#c9a040" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M226,160 L272,148 L250,190 L214,202 Z" fill="LIGHT" />
+<path d="M422,292 L472,332 L462,372 L422,384 L392,362 Z" fill="CREAM" />
+<ellipse cx="450" cy="352" rx="8" ry="6" fill="SHADE"/>
+<path d="M342,252 C332,302 362,332 404,342" fill="none" stroke="SHADE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M318,206 L340,196 L358,212 L336,220 Z" fill="DARK" />
+</g>

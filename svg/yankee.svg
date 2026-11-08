@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Yankee (ψ) - Yak</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d06d9a"/><stop offset="1" stop-color="#ba4f80"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.9167) translate(-256.0,-242.0)">
+<path d="M184,168 L102,170 L40,108 L52,54 L84,118 L164,140 Z" fill="#fdf1e8" /><path d="M328,168 L410,170 L472,108 L460,54 L428,118 L348,140 Z" fill="#fdf1e8" />
+<path d="M168,204 L96,222 L168,238 Z" fill="url(#m)" /><path d="M344,204 L416,222 L344,238 Z" fill="url(#m)" />
+<path d="M256,130 L320,150 L350,220 L346,320 L320,400 L256,430 L192,400 L166,320 L162,220 L192,150 Z" fill="url(#m)" />
+<path d="M162,232 L118,300 L150,302 L120,364 L172,340 Z" fill="#783352" /><path d="M350,232 L394,300 L362,302 L392,364 L340,340 Z" fill="#783352" />
+<path d="M164,156 L348,156 L348,232 L330,212 L314,252 L296,214 L276,258 L256,218 L236,258 L216,214 L198,252 L182,212 L164,232 Z" fill="#783352" />
+<circle cx="212" cy="270" r="11" fill="#1b1b1d"/><circle cx="300" cy="270" r="11" fill="#1b1b1d"/><circle cx="216" cy="266" r="3" fill="#fdf1e8"/><circle cx="304" cy="266" r="3" fill="#fdf1e8"/>
+<path d="M210,332 L302,332 L322,382 L300,422 L212,422 L190,382 Z" fill="#e6b2ca" />
+<path d="M218,368 C230,360 242,370 236,382 C226,388 214,380 218,368 Z" fill="#1b1b1d" /><path d="M294,368 C282,360 270,370 276,382 C286,388 298,380 294,368 Z" fill="#1b1b1d" />
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#c9568a" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M986 256Q1125 356 1125 595V1120H1483V588Q1483 64 986 0V-426H630V0Q133 64 133 588V1120H491V595Q491 356 630 256V1120H986Z" transform="translate(360.71,419.73) scale(0.0511,-0.0511)" fill="#79ebb7" stroke="#1b1b1d" stroke-width="176.1" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>

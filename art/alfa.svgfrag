@@ -1,0 +1,8 @@
+<path d="M124,222 L62,120 L44,80 L80,108 L148,206 Z M100,262 L26,198 L4,166 L46,182 L116,244 Z M96,314 L22,304 L0,284 L42,276 L106,294 Z" fill="SHADE" /><path d="M388,222 L450,120 L468,80 L432,108 L364,206 Z M412,262 L486,198 L508,166 L466,182 L396,244 Z M416,314 L490,304 L512,284 L470,276 L406,294 Z" fill="SHADE" />
+<path d="M96,170 L82,180 M76,138 L62,146 M64,224 L56,238 M40,206 L32,220 M60,300 L58,314 M34,292 L32,306" fill="none" stroke="LIGHT" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M416,170 L430,180 M436,138 L450,146 M448,224 L456,238 M472,206 L480,220 M452,300 L454,314 M478,292 L480,306" fill="none" stroke="LIGHT" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M256,168 L350,180 L420,230 L440,300 L410,370 L340,410 L256,422 L172,410 L102,370 L72,300 L92,230 L162,180 Z" fill="MAIN" />
+<path d="M110,356 L402,356 L340,410 L256,422 L172,410 Z" fill="LIGHT" />
+<circle cx="206" cy="206" r="6" fill="SHADE"/><circle cx="306" cy="206" r="6" fill="SHADE"/><circle cx="232" cy="196" r="6" fill="SHADE"/><circle cx="280" cy="196" r="6" fill="SHADE"/><circle cx="190" cy="228" r="6" fill="SHADE"/><circle cx="322" cy="228" r="6" fill="SHADE"/>
+<circle cx="182" cy="268" r="13" fill="DARK"/><circle cx="330" cy="268" r="13" fill="DARK"/><circle cx="187" cy="263" r="4" fill="CREAM"/><circle cx="335" cy="263" r="4" fill="CREAM"/>
+<path d="M178,322 L256,346 L334,322" fill="none" stroke="DARK" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />

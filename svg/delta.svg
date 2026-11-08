@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Delta (δ) - Deer</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
+    </linearGradient>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#40c5cd"/><stop offset="1" stop-color="#1faeb8"/>
+    </linearGradient>
+    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+  </defs>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
+  <g clip-path="url(#tile)">
+  <g transform="translate(256.0,256.0) scale(0.8703) translate(-256.0,-238.5)">
+<path d="M226,170 L170,120 L124,40 M170,120 L96,104 M150,86 L176,22 M138,66 L80,48" fill="none" stroke="#9be0e5" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M286,170 L342,120 L388,40 M342,120 L416,104 M362,86 L336,22 M374,66 L432,48" fill="none" stroke="#9be0e5" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M200,206 L72,176 L96,232 L190,240 Z" fill="url(#m)"/><path d="M312,206 L440,176 L416,232 L322,240 Z" fill="url(#m)"/>
+    <path d="M186,214 L102,196 L114,226 L180,232 Z" fill="#147076"/><path d="M326,214 L410,196 L398,226 L332,232 Z" fill="#147076"/>
+    <path d="M256,150 L334,176 L364,256 L340,356 L300,440 L256,466 L212,440 L172,356 L148,256 L178,176 Z" fill="url(#m)"/>
+    <path d="M256,150 L290,168 L272,260 L256,276 L240,260 L222,168 Z" fill="#147076"/>
+    <path d="M256,346 L306,370 L304,430 L256,464 L208,430 L206,370 Z" fill="#fdf1e8"/>
+    <path d="M226,382 L286,382 L256,418 Z" fill="#1b1b1d" stroke="#1b1b1d" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M190,262 C200,246 222,246 230,262 C220,276 200,276 190,262 Z" fill="#1b1b1d"/>
+    <path d="M322,262 C312,246 290,246 282,262 C292,276 312,276 322,262 Z" fill="#1b1b1d"/>
+
+  </g>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#22bcc6" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M1156 1264Q1034 1334 715 1334Q545 1334 545 1236Q545 1143 778 1108Q1010 1073 1150 961Q1320 826 1320 555Q1320 284 1156.0 127.5Q992 -29 706 -29Q419 -29 254.0 127.5Q89 284 89 559Q89 767 253 928Q304 978 368 1010Q220 1089 220 1248Q220 1572 748 1572Q1013 1572 1156 1502ZM620 880Q567 858 525 802Q459 715 459 558Q459 401 524.5 313.0Q590 225 704 225Q817 225 883.0 314.5Q949 404 949 554Q949 703 878.0 778.5Q807 854 708 865Q662 870 620 880Z" transform="translate(367.24,440.07) scale(0.0493,-0.0493)" fill="#eb8079" stroke="#1b1b1d" stroke-width="182.4" stroke-linejoin="round" paint-order="stroke"/>
+  </g>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
+</svg>
