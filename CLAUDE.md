@@ -40,7 +40,7 @@ colour) against the whole set at 16 and 24 px, then check it against its colour 
 ## Workflow
 - Source of truth: `art/<name>.svgfrag` + `icons.json`. `svg/` is generated **and committed**.
   `dist/` is generated and git-ignored.
-- `./build.sh --full` regenerates svg/, dist/ (with `dist/taskbar-zoo.zip`) and previews/. Steps
+- `./build.sh --full` regenerates svg/, dist/ (with `dist/taskbar-zoo-<VERSION>.zip`) and previews/. Steps
   can be limited: `python3 tools/build.py svg|export|zip|previews|all [names…]`. Names limit svg and
   export only: the zip always holds the full set, with LICENSE and a generated README.txt, and
   previews always draw it (they overwrite the committed `full-set-*.png`). Both refuse an icon whose
@@ -58,6 +58,10 @@ colour) against the whole set at 16 and 24 px, then check it against its colour 
   is up to date and that README's icon table matches icons.json.
 - After any visual change: rebuild, then **look at** `previews/full-set-dark.png` (and a crop at
   16–32 px) before committing. Regenerating unchanged art should produce no git diff.
+- Versions: `VERSION` holds the set's version; the zip's file name and README.txt carry it, the
+  folder inside stays `taskbar-zoo/`. The first `CHANGELOG.md` entry must match (the tests
+  check). `export`, `zip` and a refused or skipped zip remove old zips, so dist/ never holds an
+  outdated one. Releasing is in README, Releasing; tag, push and publish only when the owner says so.
 
 ## Privacy
 The repo may be made public, so its whole history must stay free of personal data.

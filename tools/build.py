@@ -3,7 +3,7 @@
 
     python3 tools/build.py svg              # art/ + icons.json  ->  svg/
     python3 tools/build.py export           # svg/  ->  dist/ PNG, ICO, ICNS
-    python3 tools/build.py zip              # dist/ ->  dist/taskbar-zoo.zip       (always the full set)
+    python3 tools/build.py zip              # dist/ ->  dist/taskbar-zoo-<VERSION>.zip (always the full set)
     python3 tools/build.py previews         # dist/ ->  previews/ contact sheets (always the full set)
     python3 tools/build.py all              # all of the above
     python3 tools/build.py svg alfa bravo   # limit svg, export or all to some icons
@@ -20,7 +20,7 @@ Art fragments in art/*.svgfrag are SVG snippets drawn on a 512x512 canvas using 
 Exact size and position don't matter: each animal is measured and auto-fitted to the tile. It only
 has to stay within 200 units of the canvas edge (PROBE_PAD, the area the build measures).
 """
-import colorsys, importlib.util, json, math, os, shutil, struct, subprocess, sys, tempfile, zipfile
+import colorsys, importlib.util, json, math, os, re, shutil, struct, subprocess, sys, tempfile, zipfile
 from xml.sax.saxutils import escape
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -252,6 +252,7 @@ def write_icns(path, name, imgs):
 def step_export(icons):
     require("export", programs=("rsvg-convert",), modules=("PIL",))
     from PIL import Image
+    remove_zips()       # the files below change, so any zip built from the old ones is outdated
     for ic in icons:
         n = ic["name"]
         full, small = (os.path.join(SVG, f"{n}{s}.svg") for s in ("", "-small"))
@@ -334,11 +335,59 @@ def step_previews(icons, cols=6):
         print("preview", p)
 
 # ---- zip ---------------------------------------------------------------------------------
-ZIP_NAME = "taskbar-zoo"                # the zip in dist/, and the one folder inside it
+ZIP_NAME = "taskbar-zoo"                # start of the zip's file name, and the one folder inside it
 ZIP_DATE = (1980, 1, 1, 0, 0, 0)        # the earliest date a zip can hold; fixed, so rebuilds match
+# MAJOR.MINOR.PATCH (semantic versioning), optionally with a pre-release tag: "0.9.0", "1.0.0-rc.1".
+# [0-9], not \d: in Python \d also matches other scripts' digits, such as Arabic-Indic ones. As in
+# semver, numbers have no leading zeros ("01.2.3" is refused). (?:...) groups without capturing, so
+# the pattern can sit inside a bigger one (the changelog test) without shifting its group numbers.
+_NUMBER = r"(?:0|[1-9][0-9]*)"
+VERSION_PATTERN = rf"{_NUMBER}\.{_NUMBER}\.{_NUMBER}(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?"
 
-ZIP_README = """Taskbar Zoo
-===========
+class VersionError(Exception):
+    """VERSION is missing, unreadable or holds no version. Raised rather than exiting, so main() can
+    stop only the zip step, which needs the version, and still run the previews in `all`."""
+
+def read_version():
+    """The set's version, from the VERSION file at the top of the repository (one line, e.g. "0.9.0").
+    It is read when needed rather than at import, so a bad file stops only the steps that use it.
+    "utf-8-sig" also accepts the byte-order mark some Windows editors put at the start of the file."""
+    path = os.path.join(ROOT, "VERSION")
+    try:
+        with open(path, "rb") as f:
+            version = f.read().decode("utf-8-sig").strip()
+    except FileNotFoundError:
+        raise VersionError("VERSION file not found; it holds the set's version, e.g. 0.9.0") from None
+    except UnicodeDecodeError:
+        # e.g. `echo 0.9.0 > VERSION` in Windows PowerShell 5.1, which writes UTF-16
+        raise VersionError("VERSION is not UTF-8 text; save it as plain UTF-8 holding e.g. 0.9.0") from None
+    except OSError as e:
+        raise VersionError(f"VERSION can't be read: {e}") from None
+    if not re.fullmatch(VERSION_PATTERN, version):
+        raise VersionError(f"VERSION holds {version!r}, not a version like 0.9.0 (MAJOR.MINOR.PATCH)")
+    return version
+
+def zip_path(version):
+    """dist/taskbar-zoo-<version>.zip. Only the file name carries the version: the folder inside stays
+    taskbar-zoo/, so unpacking a newer zip over an older one keeps every icon at the same path, and
+    shortcuts that point at an icon there keep working."""
+    return os.path.join(DIST, f"{ZIP_NAME}-{version}.zip")
+
+# Every name step_zip writes or has written: taskbar-zoo.zip (before versions), taskbar-zoo-<version>.zip,
+# and either one + ".part" (left behind if a run was killed). Other files in dist/ are not touched.
+_ZIP_FILE = re.compile(rf"{re.escape(ZIP_NAME)}(?:-{VERSION_PATTERN})?\.zip(?:\.part)?")
+
+def remove_zips():
+    """Delete every zip step_zip has made, of any version. Called whenever dist/ changes or the zip
+    can't be rebuilt, so dist/ never holds an outdated zip that could be handed out by mistake."""
+    if not os.path.isdir(DIST):
+        return
+    for f in os.listdir(DIST):
+        if _ZIP_FILE.fullmatch(f):
+            os.remove(os.path.join(DIST, f))
+
+ZIP_README = """{heading}
+{underline}
 
 {count} app icons, one per ICAO name (Alfa, Bravo, Charlie ...), for telling apart several
 copies of the same app on a taskbar or dock. Each folder holds one icon:
@@ -367,24 +416,28 @@ def size_list(sizes):
     sizes = [str(s) for s in sizes]
     return ", ".join(sizes[:-1]) + " and " + sizes[-1] if len(sizes) > 1 else "".join(sizes)
 
-def zip_readme(icons):
-    """README.txt for the zip: what each file is for, and the list of icons. Counts and sizes come
-    from the constants above, so the text can't fall behind the build."""
+def zip_readme(icons, version):
+    """README.txt for the zip: the version, what each file is for, and the list of icons. Counts and
+    sizes come from the constants above, so the text can't fall behind the build."""
     icns = [s for _, s in ICNS_ENTRIES]
     table = "\n".join(f"  {ic['name'] + '/':<10} {title(ic):<9} {ic['letter']}  {ic['animal']}"
                       for ic in icons)
-    return ZIP_README.format(count=len(icons), table=table, png=size_list(PNG_SIZES),
+    heading = f"Taskbar Zoo {version}"
+    return ZIP_README.format(heading=heading, underline="=" * len(heading),
+                             count=len(icons), table=table, png=size_list(PNG_SIZES),
                              ico=f"{min(ICO_SIZES)} to {max(ICO_SIZES)}", icns=f"{min(icns)} to {max(icns)}",
                              small=size_list(s for s in PNG_SIZES if s <= SMALL_MAX))
 
 def step_zip(icons):
-    """dist/taskbar-zoo.zip: every icon's exported files, plus LICENSE and a short README.txt, in one
-    taskbar-zoo/ folder. The caller passes the full set, all of it exported.
+    """dist/taskbar-zoo-<VERSION>.zip: every icon's exported files, plus LICENSE and a short
+    README.txt, in one taskbar-zoo/ folder. The caller passes the full set, all of it exported.
 
     The same files always give a byte-identical zip, on any OS: entries go in a fixed order with a
     fixed date, permissions and "made on" system, and are stored uncompressed. Compression output
     can differ between zlib builds, and the PNGs inside are compressed already (storing costs ~3%)."""
-    path, part = os.path.join(DIST, f"{ZIP_NAME}.zip"), os.path.join(DIST, f"{ZIP_NAME}.zip.part")
+    version = read_version()
+    path = zip_path(version)
+    part = path + ".part"
     def add(z, name, data):
         info = zipfile.ZipInfo(f"{ZIP_NAME}/{name}", date_time=ZIP_DATE)
         info.create_system = 3                    # "made on Unix" (the default is 0 on Windows)
@@ -394,14 +447,13 @@ def step_zip(icons):
     def read(p):
         with open(p, "rb") as f:
             return f.read()
-    # The old zip goes first, so a failed run leaves no zip at all rather than an outdated one, and
-    # the new one is written under a temporary name that is removed if anything goes wrong.
-    if os.path.exists(path):
-        os.remove(path)
+    # Old zips go first, this version's and any other's, so a failed run leaves none at all. The new
+    # one is written under a temporary name that is removed if anything goes wrong.
+    remove_zips()
     try:
         with zipfile.ZipFile(part, "w") as z:
             add(z, "LICENSE", read(os.path.join(ROOT, "LICENSE")))
-            add(z, "README.txt", zip_readme(icons).encode("utf-8"))
+            add(z, "README.txt", zip_readme(icons, version).encode("utf-8"))
             for ic in icons:
                 for f in export_files(ic["name"]):
                     add(z, f, read(os.path.join(DIST, f)))
@@ -428,20 +480,31 @@ def main(argv):
         return
     # The zip and the previews always cover the full set, so they need every icon exported, and
     # exported after its SVGs last changed. The zip goes first: it needs nothing beyond Python, so a
-    # missing preview font can't stop it.
+    # missing preview font can't stop it. A bad VERSION doesn't stop the previews either: `all` runs
+    # them, then fails with the VERSION message, so the run still ends in an error. Stale exports
+    # are different: in `all <names>` they are expected, so that step is skipped with a message.
     everything = icons if names is None else load_icons()
+    version_error = None
     for later, run, all_files in (("zip", step_zip, True), ("previews", step_previews, False)):
         if step not in (later, "all"):
             continue
         stale = stale_exports(everything, all_files=all_files)
-        if stale:
-            msg = (f"{later} needs every icon exported to dist/ since svg/ last changed; "
-                   f"missing or out of date: {', '.join(stale)}\nRun: python3 tools/build.py export")
-            if step == later:
-                sys.exit(msg)
-            print(f"{later} skipped:", msg)
-        else:
-            run(everything)
+        if not stale:
+            try:
+                run(everything)
+            except VersionError as e:       # only step_zip reads VERSION
+                remove_zips()               # a zip left from before can't be told current
+                version_error = str(e)
+            continue
+        if later == "zip":
+            remove_zips()                   # a zip left from before would now be outdated
+        msg = (f"{later} needs every icon exported to dist/ since svg/ last changed; "
+               f"missing or out of date: {', '.join(stale)}\nRun: python3 tools/build.py export")
+        if step == later:
+            sys.exit(msg)
+        print(f"{later} skipped:", msg)
+    if version_error:
+        sys.exit(version_error)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

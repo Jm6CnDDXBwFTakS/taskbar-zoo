@@ -183,6 +183,45 @@ class ReadmeTests(unittest.TestCase):
         self.assertEqual(rows, want, "README's icon table is out of date with icons.json")
 
 
+class VersionTests(unittest.TestCase):
+    def read_from(self, data):
+        """read_version() with a VERSION file holding `data` (str as UTF-8, or raw bytes; None: no
+        VERSION file at all)."""
+        with tempfile.TemporaryDirectory() as root, mock.patch.object(build, "ROOT", root):
+            if data is not None:
+                with open(os.path.join(root, "VERSION"), "wb") as f:
+                    f.write(data.encode("utf-8") if isinstance(data, str) else data)
+            return build.read_version()
+
+    def test_reads_one_version_line(self):
+        self.assertEqual(self.read_from("0.9.0\n"), "0.9.0")
+        self.assertEqual(self.read_from("1.0.0-rc.1"), "1.0.0-rc.1")
+        self.assertEqual(self.read_from("﻿0.9.0\r\n"), "0.9.0")    # BOM and CRLF from Windows
+
+    def test_a_bad_unreadable_or_missing_version_stops_with_a_message(self):
+        for data, message in (("v0.9", "not a version like 0.9.0"),
+                              ("01.2.3", "not a version"),               # semver: no leading zeros
+                              ("٠.٩.٠", "not a version"),  # Arabic-Indic digits
+                              ("1.0.0-.", "not a version"),              # empty pre-release part
+                              ("0.9.0\n".encode("utf-16"), "not UTF-8 text"),  # PowerShell 5.1 `>`
+                              (None, "VERSION file not found")):
+            with self.subTest(data=data), self.assertRaises(build.VersionError) as cm:
+                self.read_from(data)
+            self.assertIn(message, str(cm.exception))
+
+    def test_changelog_describes_this_version(self):
+        """CHANGELOG.md's first entry is for the version in VERSION, so a release can't go out with
+        notes for an older one. The first "## " heading counts, whatever it says, so a misspelled
+        new heading fails here instead of being passed over for an older, well-formed one."""
+        with open(os.path.join(ROOT, "CHANGELOG.md"), encoding="utf-8") as f:
+            first = re.search(r"^## .*$", f.read(), re.M)
+        self.assertIsNotNone(first, "CHANGELOG.md has no '## <version> (<YYYY-MM-DD>)' entry")
+        self.assertRegex(first.group(), rf"^## {build.VERSION_PATTERN} \(\d{{4}}-\d\d-\d\d\)$",
+                         "CHANGELOG.md's first heading is not '## <version> (<YYYY-MM-DD>)'")
+        self.assertEqual(first.group().split()[1], build.read_version(),
+                         "CHANGELOG.md's newest entry is not VERSION's version")
+
+
 class FitTests(unittest.TestCase):
     icon = dict(name="test", color="#123456", art="")
 
@@ -325,7 +364,7 @@ class MainTests(TempOutput):
              mock.patch.object(ImageFont, "truetype", lambda *a, **k: font):
             out = self.run_main("all")
         self.assertEqual([line.split()[0] for line in out.splitlines()], ["zip", "preview", "preview"])
-        self.assertTrue(os.path.exists(os.path.join(build.DIST, "taskbar-zoo.zip")))
+        self.assertTrue(os.path.exists(build.zip_path(build.read_version())))
         self.assertEqual(sorted(os.listdir(build.PREV)), ["full-set-dark.png", "full-set-light.png"])
 
     def test_missing_preview_font_does_not_stop_the_zip(self):
@@ -336,7 +375,7 @@ class MainTests(TempOutput):
              mock.patch.object(ImageFont, "truetype", mock.Mock(side_effect=OSError)):
             with self.assertRaises(SystemExit):
                 self.run_main("all")
-        self.assertTrue(os.path.exists(os.path.join(build.DIST, "taskbar-zoo.zip")))
+        self.assertTrue(os.path.exists(build.zip_path(build.read_version())))
 
     def test_all_with_names_builds_those_and_skips_previews_and_zip(self):
         calls = []
@@ -417,7 +456,8 @@ class ZipTests(TempOutput):
         super().setUp()
         shutil.copytree(self.exported, build.DIST, dirs_exist_ok=True)
         self.icons = build.load_icons()
-        self.zip = os.path.join(build.DIST, "taskbar-zoo.zip")
+        self.version = build.read_version()
+        self.zip = build.zip_path(self.version)
 
     def read_zip(self):
         with open(self.zip, "rb") as f:
@@ -443,6 +483,69 @@ class ZipTests(TempOutput):
         self.assertIn(f"{len(self.icons)} app icons", readme)
         self.assertIn(build.size_list(build.PNG_SIZES) + " px", readme)
         self.assertIn(f"{min(build.ICO_SIZES)} to {max(build.ICO_SIZES)} px", readme)
+
+    def test_version_is_in_the_file_name_and_the_readme_heading(self):
+        self.run_main("zip")
+        self.assertEqual(os.path.basename(self.zip), f"taskbar-zoo-{self.version}.zip")
+        with zipfile.ZipFile(self.zip) as z:
+            heading, underline = z.read("taskbar-zoo/README.txt").decode("utf-8").splitlines()[:2]
+        self.assertEqual(heading, f"Taskbar Zoo {self.version}")
+        self.assertEqual(underline, "=" * len(heading))
+
+    def put(self, *names):
+        """Files with these names in dist/; returns their paths."""
+        paths = [os.path.join(build.DIST, n) for n in names]
+        for p in paths:
+            with open(p, "wb") as f:
+                f.write(b"old")
+        return paths
+
+    def test_zips_of_other_versions_are_removed_and_other_files_kept(self):
+        # an older zip left in dist/ could be uploaded by mistake, so each run clears them all
+        old = self.put("taskbar-zoo.zip", "taskbar-zoo-0.0.1.zip", "taskbar-zoo-0.0.1.zip.part")
+        kept = self.put("taskbar-zoo-extras.zip", "taskbar-zoo-0.9.0 (1).zip")
+        self.run_main("zip")
+        self.assertEqual([p for p in old if os.path.exists(p)], [])
+        self.assertEqual([p for p in kept if os.path.exists(p)], kept)
+        self.assertTrue(os.path.exists(self.zip))
+
+    def test_a_refused_or_skipped_zip_leaves_no_outdated_zip(self):
+        # svg/ changed after the last export: the zip from before no longer matches the set
+        svg = os.path.join(build.SVG, "kilo.svg")
+        with open(svg, "w") as f:
+            f.write("<svg/>")
+        later = os.path.getmtime(build.png_path("kilo", 16)) + 60
+        os.utime(svg, (later, later))
+        for argv in (("zip",), ("all",)):
+            with self.subTest(argv=argv):
+                self.put(os.path.basename(self.zip))
+                with mock.patch.object(build, "step_svg", lambda icons: None), \
+                     mock.patch.object(build, "step_export", lambda icons: None), \
+                     contextlib.suppress(SystemExit):
+                    self.run_main(*argv)
+                self.assertFalse(os.path.exists(self.zip))
+
+    def test_export_removes_the_zip(self):
+        self.put(os.path.basename(self.zip))
+        with mock.patch.object(build, "render", fake_render), \
+             mock.patch.object(build, "require", lambda *a, **k: None), self.quiet:
+            build.step_export([])
+        self.assertFalse(os.path.exists(self.zip))
+
+    def test_a_bad_version_stops_the_zip_but_not_the_previews(self):
+        font = ImageFont.load_default()        # loaded before patching: it calls truetype() itself
+        bad = mock.Mock(side_effect=build.VersionError("VERSION holds 'v0.9'"))
+        with mock.patch.object(build, "read_version", bad), \
+             mock.patch.object(build, "step_svg", lambda icons: None), \
+             mock.patch.object(build, "step_export", lambda icons: None), \
+             mock.patch.object(ImageFont, "truetype", lambda *a, **k: font):
+            for argv in (("zip",), ("all",)):
+                with self.subTest(argv=argv), self.assertRaises(SystemExit) as cm:
+                    self.run_main(*argv)
+                self.assertEqual(str(cm.exception), "VERSION holds 'v0.9'")
+        # `all` drew the previews before failing, and left no zip
+        self.assertEqual(sorted(os.listdir(build.PREV)), ["full-set-dark.png", "full-set-light.png"])
+        self.assertFalse(os.path.exists(self.zip))
 
     def test_entries_have_fixed_metadata_and_are_stored(self):
         self.run_main("zip")
