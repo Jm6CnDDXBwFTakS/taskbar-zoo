@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>Hotel (Η), small</title>
+  <title>Hotel (Һ), small</title>
   <rect x="0" y="0" width="512" height="512" rx="112" fill="#1a1a1d"/>
-  <path d="M188 1493H573V924H1141V1493H1526V0H1141V633H573V0H188Z" transform="translate(66.58,421.00) scale(0.2210,-0.2210)" fill="#ff80aa"/>
+  <path d="M550 1493V924H1072Q1262 924 1366 805Q1467 690 1467 459V0H1082V111V276Q1082 414 1075 478Q1069 533 1053 559Q1032 594 996 614Q960 633 914 633H550V0H165V1493Z" transform="translate(75.64,421.00) scale(0.2210,-0.2210)" fill="#ff80aa"/>
 </svg>

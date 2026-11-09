@@ -20,7 +20,7 @@
     "color": "#22bcc6"
   },
   "echo": {
-    "letter": "ε",
+    "letter": "Э",
     "animal": "Elephant",
     "color": "#aab6c8"
   },
@@ -39,7 +39,7 @@
     "color": "#9d8fc0"
   },
   "hotel": {
-    "letter": "Η",
+    "letter": "Һ",
     "animal": "Hippo",
     "color": "#ff80aa"
   },
@@ -93,12 +93,12 @@
     ]
   },
   "romeo": {
-    "letter": "ρ",
+    "letter": "R",
     "animal": "Rhino",
     "color": "#d4714a"
   },
   "sierra": {
-    "letter": "Σ",
+    "letter": "ς",
     "animal": "Shark",
     "color": "#4fc0ff"
   },

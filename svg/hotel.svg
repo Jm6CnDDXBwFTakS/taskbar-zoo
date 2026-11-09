@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>Hotel (Η) - Hippo</title>
+  <title>Hotel (Һ) - Hippo</title>
   <defs>
     <linearGradient id="hotel-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
@@ -24,7 +24,7 @@
 
   </g>
 <path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#ff80aa" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
-  <path d="M188 1493H573V924H1141V1493H1526V0H1141V633H573V0H188Z" transform="translate(356.65,441.50) scale(0.0529,-0.0529)" fill="#65ffcc" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
+  <path d="M550 1493V924H1072Q1262 924 1366 805Q1467 690 1467 459V0H1082V111V276Q1082 414 1075 478Q1069 533 1053 559Q1032 594 996 614Q960 633 914 633H550V0H165V1493Z" transform="translate(358.82,441.50) scale(0.0529,-0.0529)" fill="#65ffcc" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
   </g>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
 </svg>

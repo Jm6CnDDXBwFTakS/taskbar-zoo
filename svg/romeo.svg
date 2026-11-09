@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>Romeo (ρ) - Rhino</title>
+  <title>Romeo (R) - Rhino</title>
   <defs>
     <linearGradient id="romeo-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
@@ -25,7 +25,7 @@
 
   </g>
 <path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#d4714a" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
-  <path d="M321 964Q456 1092 579 1120Q705 1150 826 1150Q864 1150 901 1147Q1096 1132 1241 982Q1374 842 1374 559Q1374 300 1241.0 135.5Q1108 -29 901 -29Q784 -29 694.0 17.5Q604 64 530 162V-426H172V540Q172 821 321 964ZM768 887Q653 887 591.5 802.5Q530 718 530 559Q530 400 591.5 315.5Q653 231 768 231Q883 231 943.5 315.0Q1004 399 1004 559Q1004 719 943.5 803.0Q883 887 768 887Z" transform="translate(363.25,420.15) scale(0.0501,-0.0501)" fill="#79cbeb" stroke="#1b1b1d" stroke-width="179.5" stroke-linejoin="round" paint-order="stroke"/>
+  <path d="M735 831Q856 831 908.5 876.0Q961 921 961 1024Q961 1126 908.5 1170.0Q856 1214 735 1214H573V831ZM573 565V0H188V1493H776Q1071 1493 1208.5 1394.0Q1346 1295 1346 1081Q1346 933 1274.5 838.0Q1203 743 1059 698Q1138 680 1200.5 616.5Q1263 553 1327 424L1536 0H1126L944 371Q889 483 832.5 524.0Q776 565 682 565Z" transform="translate(356.39,441.50) scale(0.0529,-0.0529)" fill="#79cbeb" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
   </g>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
 </svg>

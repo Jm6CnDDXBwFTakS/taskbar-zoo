@@ -28,9 +28,10 @@ The lion's gold, bear's caramel and turtle's orange sit close together, so keep 
 from them. Render a comparison sheet next to the nearest-coloured icons before committing a change.
 
 ## Letters
-Chosen for distinctness first. See README "About the letters". Notably Kilo = Ϟ, Oscar = Θ,
-Quebec = Щ (no Q exists in Greek/Cyrillic), Victor = √. Don't "fix" these to look more correct
-without asking.
+Chosen for distinctness first. See README "About the letters". Notably Hotel = Һ, Kilo = Ϟ,
+Oscar = Θ, Quebec = Щ (no Q exists in Greek/Cyrillic), Sierra = ς, Victor = √. Don't "fix" these
+to look more correct without asking. Before changing a letter, compare its shape (all letters in one
+colour) against the whole set at 16 and 24 px, then check it against its colour neighbours.
 
 ## Workflow
 - Source of truth: `art/<name>.svgfrag` + `icons.json`. `svg/` is generated **and committed**.
