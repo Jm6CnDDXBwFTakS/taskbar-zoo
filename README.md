@@ -153,4 +153,8 @@ round-trip the `.icns` output through Apple's `iconutil`.
 
 ## Licence
 
-Not yet chosen. Add a `LICENSE` file before publishing.
+MIT, for the code and the artwork alike: see [LICENSE](LICENSE). Using an icon on your own taskbar
+or dock needs no credit; copies of the set should keep the licence file.
+
+The letters in `svg/` are outlines from the DejaVu Sans Bold font, used under its licence (the
+Bitstream Vera licence; DejaVu's changes are public domain).

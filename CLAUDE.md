@@ -72,4 +72,6 @@ The repo may be made public, so its whole history must stay free of personal dat
 - Show options as side-by-side preview images before changing the set, including nearby icons
   that might clash.
 - Ask before deleting files or running destructive commands; explain where they run.
-- Licence is still undecided (leaning split: artwork CC-BY-4.0, code MIT). Don't add one unasked.
+- Licence: MIT for everything, code and artwork alike (LICENSE; the holder is the GitHub handle,
+  never a real name). The letter outlines come from DejaVu Sans Bold; if the font changes, update
+  the font credit in README's Licence section to match.
