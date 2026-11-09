@@ -9,9 +9,10 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 
 ## Download
 
-Get `taskbar-zoo-<version>.zip` from the [Releases](../../releases) page: every icon as `.ico`
-(Windows), `.icns` (macOS), SVG and PNG, ready to use (see [Using the icons](#using-the-icons)).
-No build needed. What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
+Get `taskbar-zoo-<version>.zip` from the [latest release](../../releases/latest) (older versions
+are on the [Releases](../../releases) page): every icon as `.ico` (Windows), `.icns` (macOS), SVG
+and PNG, ready to use (see [Using the icons](#using-the-icons)). No build needed. What changed in
+each version is in [CHANGELOG.md](CHANGELOG.md).
 
 ## Feedback
 
@@ -140,32 +141,44 @@ Requirements:
 
 ### Setup
 
-`rsvg-convert` and the fonts come from the system:
+`rsvg-convert` and the fonts come from the system. On Debian or Ubuntu (`python3-venv` provides
+`python3 -m venv`):
 
 ```sh
-# Debian/Ubuntu (python3-venv provides `python3 -m venv`)
 sudo apt install librsvg2-bin fonts-dejavu-core python3-venv
-# macOS
-brew install librsvg      # plus DejaVu Sans from dejavu-fonts.github.io
+```
+
+On macOS (DejaVu Sans isn't in Homebrew's librsvg; get it from dejavu-fonts.github.io):
+
+```sh
+brew install librsvg
 ```
 
 The Python packages (Pillow, fontTools) go in a virtual environment in `.venv/`, a folder with its
-own Python and packages, so nothing is installed globally. `.venv/` is git-ignored. Create it once:
+own Python and packages, so nothing is installed globally. `.venv/` is git-ignored. Create it once
+(on Windows: `py -m venv .venv`, then `.venv\Scripts\pip install -r requirements.txt`):
 
 ```sh
-python3 -m venv .venv                         # Windows: py -m venv .venv
-.venv/bin/pip install -r requirements.txt     # Windows: .venv\Scripts\pip install -r requirements.txt
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
 ```
+
+The code blocks in this README hold only commands, no `#` comments, so they can be pasted into any
+shell. zsh, the default on macOS, treats a pasted `#` as an ordinary word unless the
+`interactive_comments` option is set, so a comment would turn into extra arguments.
 
 ### Build
 
-Activate the virtual environment in each new shell, so `python3` means the one in `.venv/`:
+Activate the virtual environment in each new shell, so `python3` means the one in `.venv/` (on
+Windows: `.venv\Scripts\activate`; `deactivate` leaves it again). Then build: `./build.sh` turns
+the SVGs into `dist/` (PNG 16–1024, ICO, ICNS), the zip and the previews.
 
 ```sh
-. .venv/bin/activate  # Windows: .venv\Scripts\activate; leave it again with `deactivate`
-./build.sh            # SVGs -> dist/ (PNG 16–1024, ICO, ICNS) + the zip + previews
-./build.sh --full     # also regenerate svg/ from art/ + icons.json first
+. .venv/bin/activate
+./build.sh
 ```
+
+After editing `art/` or `icons.json`, run `./build.sh --full` instead: it regenerates `svg/` first.
 
 Or step by step: `python3 tools/build.py svg|export|zip|previews|all [names…]`. Names limit `svg`
 and `export`; `zip` and `previews` always cover the full set from `dist/`, so they need every icon
@@ -195,32 +208,51 @@ round-trip the `.icns` output through Apple's `iconutil`.
 
 ### Releasing
 
-A release is a git tag plus a GitHub release with the zip attached. For version 0.10.0:
+A release is a git tag plus a GitHub release with the zip attached:
 
-1. Put the version in `VERSION` and add a `## 0.10.0 (YYYY-MM-DD)` entry (UTC date) at the top of
-   `CHANGELOG.md`; its introduction says which number to raise. The tests check the two match.
+1. Put the version in `VERSION` and add an entry for it at the top of `CHANGELOG.md`, headed like
+   `## 0.10.0 (2026-11-09)` (UTC date); its introduction says which number to raise. The tests
+   check the two match.
 2. Run `./build.sh`, then the tests. A release builds from the committed SVGs, so it needs only
    rsvg-convert and Pillow (fontTools is for regenerating `svg/`).
-3. Commit, tag and publish. The release notes are the changelog entry, saved in `dist/` (which git
-   ignores, so it can't be committed by accident). With the GitHub CLI (`gh`):
+3. Commit, then tag and publish with the GitHub CLI (`gh`), from the repository's top folder. The
+   commands read the version from `VERSION`, so they need no editing. The release notes are the
+   changelog entry, saved in `dist/` (which git ignores, so it can't be committed by accident):
 
 ```sh
-# the lines of the 0.10.0 entry, without its heading: from that heading up to the next "## "
-awk '/^## /{if(f)exit; if($2=="0.10.0"){f=1;next}} f' CHANGELOG.md | sed '1{/^$/d}' > dist/notes.md
-git tag -a v0.10.0 -m "Taskbar Zoo 0.10.0"   # -a: an annotated tag, with its own date and message
-git push origin main v0.10.0
-gh release create v0.10.0 dist/taskbar-zoo-0.10.0.zip --verify-tag --title "Taskbar Zoo 0.10.0" \
-    --notes-file dist/notes.md                # add --prerelease only for -rc versions
+v=$(cat VERSION)
+awk -v v="$v" '/^## /{if(f)exit; if($2==v){f=1;next}} f' CHANGELOG.md | sed '1{/^$/d}' > dist/notes.md
+test -s dist/notes.md || echo "CHANGELOG.md has no entry for $v: nothing will be tagged or published"
+test -s "dist/taskbar-zoo-$v.zip" || echo "dist/taskbar-zoo-$v.zip is missing: run ./build.sh first"
+test -s dist/notes.md && test -s "dist/taskbar-zoo-$v.zip" &&
+  git tag -a "v$v" -m "Taskbar Zoo $v" &&
+  git push origin main "v$v" &&
+  gh release create "v$v" "dist/taskbar-zoo-$v.zip" --verify-tag --title "Taskbar Zoo $v" \
+      --notes-file dist/notes.md
 ```
 
-`--verify-tag` stops if the tag isn't on GitHub yet, rather than creating one there. Releases are
-full releases, so the newest is "Latest": the repository's sidebar shows it, and
+Line by line:
+
+- `v=$(cat VERSION)` reads the version, e.g. 0.10.0. The other commands all use `$v`.
+- `awk` copies this version's changelog entry without its heading: the lines from that heading up
+  to the next `## `. `sed` drops the blank line after the heading.
+- `test -s` means "the file exists and isn't empty". The two `test … || echo` lines only report a
+  missing changelog entry or zip. The chain after them does the work: `&&` runs each step only if
+  the one before it succeeded, so without notes and a zip nothing is tagged, and a failed tag or
+  push stops it there. Checking first matters because a pushed `v*` tag is permanent (see below).
+  If only the last step fails (say, the network drops), run the `gh release create` line again:
+  the tag is already on GitHub, which is what `--verify-tag` wants.
+- `git tag -a` makes an annotated tag, with its own date and message.
+- `--verify-tag` stops if the tag isn't on GitHub yet, rather than creating one there. Add
+  `--prerelease` only for release candidates (see below).
+
+Releases are full releases, so the newest is "Latest": the repository's sidebar shows it, and
 `…/releases/latest` leads to it. The 0.x number already says the set may still change. Mark only
 release candidates (`1.0.0-rc.1`) as pre-releases.
 
-Both kinds of change are one-way on this repository. Releases are immutable (Settings, General,
-Releases): once published, the zip can't be replaced, so a fix goes out as a new version. And a
-ruleset ("Release tags are permanent") stops `v*` tags from being moved or deleted.
+Two things are one-way on this repository. Releases are immutable (Settings, General, Releases):
+once published, the zip can't be replaced, so a fix goes out as a new version. And a ruleset
+("Release tags are permanent") stops `v*` tags from being moved or deleted.
 
 ## Editing
 
@@ -231,10 +263,10 @@ ruleset ("Release tags are permanent") stops `v*` tags from being moved or delet
   ```sh
   python3 tools/closeness.py color papa '#66ff75' '#33ffa7' --sheet /tmp/papa.png
   python3 tools/closeness.py letter victor √ V --sheet /tmp/victor.png
-  python3 tools/closeness.py report       # the closest pairs in the set as it is
   ```
 
-  Each candidate is listed with its nearest icons by colour difference (CIEDE2000, also as seen
+  `python3 tools/closeness.py report` lists the closest pairs in the set as it is. Each candidate is
+  listed with its nearest icons by colour difference (CIEDE2000, also as seen
   with red-green colour blindness) and by letter-shape overlap at 16 and 24 px, safest first. The
   sheet draws them side by side at real pixel sizes, a second time as seen with colour blindness;
   look at it before deciding, since the numbers only rank. `color` and `letter` need what `svg`

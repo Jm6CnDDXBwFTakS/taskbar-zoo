@@ -75,6 +75,9 @@ colour) against the whole set at 16 and 24 px, then check it against its colour 
   outdated one. Releasing is in README, Releasing; tag, push and publish only when the owner says so.
   Releases are full releases (pre-release only for -rc), immutable once published, and a ruleset
   keeps `v*` tags from being moved or deleted: a mistake in a release is fixed by a new version.
+- Shell code blocks in README hold commands only, with no `#` comments: they get pasted into
+  terminals, and zsh (the macOS default) passes a pasted `#` and the words after it as arguments
+  unless `interactive_comments` is set. Explain commands in the text around the block instead.
 
 ## Privacy
 The repo is public, so everything pushed, history included, must stay free of personal data.
