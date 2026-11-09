@@ -64,7 +64,10 @@ The repo may be made public, so its whole history must stay free of personal dat
 - **No links to private pages**, such as Claude session links (`Claude-Session:` lines) in commit
   messages. `Co-Authored-By` lines are fine.
 - **Commits use the identity in the repo's git config** (the GitHub no-reply address). Don't
-  override it per commit.
+  override it per commit. A clone doesn't copy that config, so on a fresh clone check
+  `git config user.email` before the first commit; if it isn't the no-reply address, set it:
+  `git config user.name "Jm6CnDDXBwFTakS"` and
+  `git config user.email "58570069+Jm6CnDDXBwFTakS@users.noreply.github.com"`.
 - **Images and SVGs carry no metadata**: no author, software, date or path fields. If a tool starts
   adding them, strip them before committing.
 - Rewriting history to remove something is a destructive step: ask first (see below).
