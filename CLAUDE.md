@@ -45,7 +45,7 @@ without asking.
   slots). The tests round-trip them through `iconutil` on a Mac.
 - Tests: `python3 -m unittest discover -s tests` (needs only Pillow; stand-ins replace rsvg-convert
   and the font). Run them after changing build.py, art/ or icons.json: they also check that svg/
-  is up to date.
+  is up to date and that README's icon table matches icons.json.
 - After any visual change: rebuild, then **look at** `previews/full-set-dark.png` (and a crop at
   16–32 px) before committing. Regenerating unchanged art should produce no git diff.
 

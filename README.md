@@ -103,14 +103,16 @@ brew install librsvg && pip3 install -r requirements.txt   # plus DejaVu Sans fr
 
 Tests: `python3 -m unittest discover -s tests`. They need only Pillow: small stand-ins replace
 rsvg-convert and the font. They also check that `svg/` is up to date with `art/` and `icons.json`,
-and on a Mac they round-trip the `.icns` output through Apple's `iconutil`.
+that the table under "The set" matches `icons.json`, and on a Mac they round-trip the `.icns` output through
+Apple's `iconutil`.
 
 ## Editing
 
 - **Change a colour or letter:** edit `icons.json`, then `./build.sh --full`.
 - **Redraw an animal:** edit `art/<name>.svgfrag`. Draw on a 512×512 canvas with these colour tokens:
   `MAIN` (icon colour, rendered as a gradient), `SHADE` (darker), `LIGHT` (lighter), `CREAM`, `DARK`.
-  Size and position don't matter; each drawing is measured and auto-fitted to the tile.
+  Exact size and position don't matter; each drawing is measured and auto-fitted to the tile. It
+  only has to stay within 200 units of the canvas edge (the area the build measures).
   Side-profile animals face left, away from the badge.
 
 ## Using the icons

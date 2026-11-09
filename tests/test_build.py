@@ -153,6 +153,16 @@ class CommittedSvgTests(unittest.TestCase):
                                      "svg/ is out of date: run ./build.sh --full")
 
 
+class ReadmeTests(unittest.TestCase):
+    def test_icon_table_matches_icons_json(self):
+        """README's "The set" table lists every icon's name, letter, animal and colour, in order."""
+        with open(os.path.join(ROOT, "README.md"), encoding="utf-8") as f:
+            rows = re.findall(r"^\| ([^|]+?) \| ([^|]+?) \| ([^|]+?) \| `(#[0-9a-f]{6})` \|$", f.read(), re.M)
+        want = [(build.title(ic), ic["letter"], ic["animal"], ic["color"]) for ic in build.load_icons()]
+        self.maxDiff = None                 # show which row differs, not a shortened diff
+        self.assertEqual(rows, want, "README's icon table is out of date with icons.json")
+
+
 class FitTests(unittest.TestCase):
     icon = dict(name="test", color="#123456", art="")
 
@@ -183,21 +193,34 @@ class FitTests(unittest.TestCase):
 
 
 class ExportTests(TempOutput):
-    def test_ico_and_icns(self):
+    def setUp(self):
+        """Export one icon, "test", with the stand-in renderer: red letter-only, blue full."""
+        super().setUp()
         for suffix in ("", "-small"):
             with open(os.path.join(build.SVG, f"test{suffix}.svg"), "w") as f:
                 f.write("<svg/>")
         with mock.patch.object(build, "render", fake_render), self.quiet:
             build.step_export([{"name": "test"}])
-        out = os.path.join(build.DIST, "test")
-        src = {}
+        self.out = os.path.join(build.DIST, "test")
+        self.src = {}
         for s in build.PNG_SIZES:
             with Image.open(build.png_path("test", s)) as im:
-                src[s] = im.convert("RGBA")
+                self.src[s] = im.convert("RGBA")
 
-        with Image.open(os.path.join(out, "test.ico")) as ico:
+    def test_ico_holds_each_size_unchanged(self):
+        with Image.open(os.path.join(self.out, "test.ico")) as ico:
             self.assertEqual(sorted(ico.info["sizes"]), [(s, s) for s in build.ICO_SIZES])
+            for s in build.ICO_SIZES:
+                with self.subTest(size=s):
+                    ico.size = (s, s)       # an .ico holds several images; this picks one
+                    ico.load()
+                    self.assertTrue(same_visible_pixels(ico.convert("RGBA"), self.src[s]))
+                    # letter-only (red) up to SMALL_MAX, the full icon (blue) above it
+                    self.assertEqual(ico.convert("RGBA").getpixel((s // 2, s // 4))[:3],
+                                     RED if s <= build.SMALL_MAX else BLUE)
 
+    def test_icns(self):
+        out, src = self.out, self.src
         entries = read_icns(os.path.join(out, "test.icns"))
         self.assertEqual(list(entries), [kind for kind, _ in build.ICNS_ENTRIES])
         for kind, size in build.ICNS_ENTRIES:
@@ -216,13 +239,8 @@ class ExportTests(TempOutput):
 
     @unittest.skipUnless(shutil.which("iconutil"), "needs macOS iconutil")
     def test_icns_round_trips_through_iconutil(self):
-        for suffix in ("", "-small"):
-            with open(os.path.join(build.SVG, f"test{suffix}.svg"), "w") as f:
-                f.write("<svg/>")
-        with mock.patch.object(build, "render", fake_render), self.quiet:
-            build.step_export([{"name": "test"}])
         iconset = os.path.join(self.tmp, "test.iconset")
-        subprocess.run(["iconutil", "-c", "iconset", os.path.join(build.DIST, "test", "test.icns"),
+        subprocess.run(["iconutil", "-c", "iconset", os.path.join(self.out, "test.icns"),
                         "-o", iconset], check=True)
         want = {"16x16": 16, "16x16@2x": 32, "32x32": 32, "32x32@2x": 64, "128x128": 128,
                 "128x128@2x": 256, "256x256": 256, "256x256@2x": 512, "512x512": 512, "512x512@2x": 1024}
