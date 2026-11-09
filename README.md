@@ -7,6 +7,25 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 
 ![Full set](previews/full-set-dark.png)
 
+## Telling them apart
+
+The main design goal is that any two icons can be told apart at a glance, at every size from 16 px
+up:
+
+- **Two layers:** from 32 px up, each icon shows its animal plus a letter badge. At 16 and 24 px,
+  where an animal would be a blur, the icon is the letter alone, in the animal's colour.
+- **Letters chosen by shape:** every letter was compared with every other at 16 and 24 px, all drawn
+  in one colour so only shape counts, and letters in close pairs were replaced (see
+  [About the letters](#about-the-letters)).
+- **Colours chosen as the eye sees them:** colours were compared by perceived difference
+  (CIEDE2000), also as seen with red-green colour blindness. The few colours that are still close
+  belong to icons whose letters look nothing alike.
+- **A heavy sans-serif font** (DejaVu Sans Bold), because thin strokes and serifs fade at taskbar
+  size.
+
+With 26 icons at 16 px, some pairs are inevitably closer than others, but the pairs closest in shape
+all differ clearly in colour.
+
 ## The set
 
 | Name | Letter | Animal | Colour |
