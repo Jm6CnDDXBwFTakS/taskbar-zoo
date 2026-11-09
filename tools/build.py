@@ -15,7 +15,7 @@ Art fragments in art/*.svgfrag are SVG snippets drawn on a 512x512 canvas using 
     DARK   shared near-black (eyes, noses)
 Size and position don't matter: each animal is measured and auto-fitted to the tile.
 """
-import colorsys, json, math, os, shutil, struct, subprocess, sys, tempfile
+import colorsys, importlib.util, json, math, os, shutil, struct, subprocess, sys, tempfile
 from xml.sax.saxutils import escape
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -91,6 +91,17 @@ def load_icons(names=None):
         e["art"] = read_text(os.path.join(ART, f"{n}.svgfrag"))
         out.append(e)
     return out
+
+WHERE_FROM = {"rsvg-convert": "librsvg", "fontTools": "requirements.txt"}
+
+def require(step, programs=(), modules=()):
+    """Stop with one line naming whatever this step needs but can't find, before it writes anything.
+    Programs are looked up on PATH, modules among the installed Python packages."""
+    missing = [p for p in programs if shutil.which(p) is None]
+    missing += [m for m in modules if importlib.util.find_spec(m) is None]
+    if missing:
+        sys.exit(f"{step} needs {' and '.join(f'{t} (from {WHERE_FROM[t]})' for t in missing)}, "
+                 "not installed; see README, Building")
 
 def render(svg_file, png_file, size):
     subprocess.run(["rsvg-convert", "-w", str(size), "-h", str(size), svg_file, "-o", png_file], check=True)
@@ -184,6 +195,7 @@ def small_svg(icon):
 '''
 
 def step_svg(icons):
+    require("svg", programs=("rsvg-convert",), modules=("fontTools",))   # fit() renders, glyph() reads the font
     os.makedirs(SVG, exist_ok=True)
     for ic in icons:
         n = ic["name"]
@@ -217,6 +229,7 @@ def write_icns(path, name, imgs):
         f.write(b"icns" + struct.pack(">I", 8 + len(body)) + body)
 
 def step_export(icons):
+    require("export", programs=("rsvg-convert",))
     from PIL import Image
     for ic in icons:
         n = ic["name"]

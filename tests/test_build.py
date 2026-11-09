@@ -199,7 +199,9 @@ class ExportTests(TempOutput):
         for suffix in ("", "-small"):
             with open(os.path.join(build.SVG, f"test{suffix}.svg"), "w") as f:
                 f.write("<svg/>")
-        with mock.patch.object(build, "render", fake_render), self.quiet:
+        # the stand-in renderer replaces rsvg-convert, so the check for it is skipped too
+        with mock.patch.object(build, "render", fake_render), \
+             mock.patch.object(build, "require", lambda *a, **k: None), self.quiet:
             build.step_export([{"name": "test"}])
         self.out = os.path.join(build.DIST, "test")
         self.src = {}
@@ -304,6 +306,23 @@ class MainTests(TempOutput):
         for sheet in ("full-set-dark.png", "full-set-light.png"):
             with Image.open(os.path.join(build.PREV, sheet)) as im:
                 self.assertEqual(im.size, (6 * 300 + 20, 5 * 260 + 20))
+
+    def test_export_without_rsvg_convert_stops_before_writing(self):
+        with mock.patch.object(shutil, "which", lambda name: None):
+            with self.assertRaises(SystemExit) as cm:
+                self.run_main("export", "alfa")
+        self.assertEqual(str(cm.exception), "export needs rsvg-convert (from librsvg), not installed; "
+                                            "see README, Building")
+        self.assertEqual(os.listdir(build.DIST), [])
+
+    def test_svg_names_every_missing_tool(self):
+        with mock.patch.object(shutil, "which", lambda name: None), \
+             mock.patch.object(importlib.util, "find_spec", lambda name, *a, **k: None):
+            with self.assertRaises(SystemExit) as cm:
+                self.run_main("all", "alfa")
+        self.assertIn("svg needs rsvg-convert (from librsvg) and fontTools (from requirements.txt)",
+                      str(cm.exception))
+        self.assertEqual(os.listdir(build.SVG), [])
 
     def test_missing_label_font_says_how_to_get_it(self):
         self.export_fakes([ic["name"] for ic in build.load_icons()])
