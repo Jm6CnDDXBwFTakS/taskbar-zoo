@@ -1,5 +1,6 @@
 # Text files use LF line endings, in the repository and in every checkout (Windows included),
 # whatever each machine's core.autocrlf says. build.py also writes LF, so a rebuild shows no diff.
+# The one exception is Windows batch files, below.
 * text=auto eol=lf
 
 # Listed explicitly so detection can't get them wrong
@@ -10,6 +11,11 @@
 *.sh       text
 *.md       text
 *.txt      text
+
+# Windows batch files are checked out with CRLF (stored as LF): cmd.exe can misread labels and
+# GOTO in LF-only files. PowerShell scripts (.ps1) work with LF, so they follow the rule above.
+*.cmd      text eol=crlf
+*.bat      text eol=crlf
 
 # Never converted or diffed as text
 *.png      binary
