@@ -41,6 +41,8 @@ without asking.
 - Needs `rsvg-convert`, Pillow, fontTools and DejaVu Sans Bold (`ICON_FONT` env var to override);
   previews also need DejaVu Sans (regular), looked for next to `ICON_FONT` first.
   The fit step renders each animal with rsvg-convert to measure it, so it is required for `svg` too.
+- Python packages live in `.venv/` (README, Setup), the supported setup: run the build and the tests
+  with `.venv/bin/python` or with the venv activated, and never install packages globally.
 - `.icns` files are written by build.py itself, not Pillow (whose writer has no 16/32 px @1x
   slots). The tests round-trip them through `iconutil` on a Mac.
 - Tests: `python3 -m unittest discover -s tests` (needs only Pillow; stand-ins replace rsvg-convert

@@ -78,14 +78,6 @@ without any fonts installed.
 
 ## Building
 
-```sh
-./build.sh            # SVGs -> dist/ (PNG 16–1024, ICO, ICNS) + previews
-./build.sh --full     # also regenerate svg/ from art/ + icons.json first
-```
-
-Or step by step: `python3 tools/build.py svg|export|previews|all [names…]`. Names limit `svg` and
-`export`; `previews` always draws the full set from `dist/`, so it needs every icon exported first.
-
 Requirements:
 
 - **export** (SVG → PNG/ICO/ICNS): `rsvg-convert` (librsvg) and Python 3 with Pillow
@@ -94,17 +86,46 @@ Requirements:
 - **previews**: Pillow and DejaVu Sans (regular), looked for next to `ICON_FONT` and in the usual
   font folders
 
+### Setup
+
+`rsvg-convert` and the fonts come from the system:
+
 ```sh
-# Debian/Ubuntu
-sudo apt install librsvg2-bin fonts-dejavu-core && pip install -r requirements.txt
+# Debian/Ubuntu (python3-venv provides `python3 -m venv`)
+sudo apt install librsvg2-bin fonts-dejavu-core python3-venv
 # macOS
-brew install librsvg && pip3 install -r requirements.txt   # plus DejaVu Sans from dejavu-fonts.github.io
+brew install librsvg      # plus DejaVu Sans from dejavu-fonts.github.io
 ```
 
-Tests: `python3 -m unittest discover -s tests`. They need only Pillow: small stand-ins replace
-rsvg-convert and the font. They also check that `svg/` is up to date with `art/` and `icons.json`,
-that the table under "The set" matches `icons.json`, and on a Mac they round-trip the `.icns` output through
-Apple's `iconutil`.
+The Python packages (Pillow, fontTools) go in a virtual environment in `.venv/`, a folder with its
+own Python and packages, so nothing is installed globally. `.venv/` is git-ignored. Create it once:
+
+```sh
+python3 -m venv .venv                         # Windows: py -m venv .venv
+.venv/bin/pip install -r requirements.txt     # Windows: .venv\Scripts\pip install -r requirements.txt
+```
+
+### Build
+
+Activate the virtual environment in each new shell, so `python3` means the one in `.venv/`:
+
+```sh
+. .venv/bin/activate  # Windows: .venv\Scripts\activate; leave it again with `deactivate`
+./build.sh            # SVGs -> dist/ (PNG 16–1024, ICO, ICNS) + previews
+./build.sh --full     # also regenerate svg/ from art/ + icons.json first
+```
+
+Or step by step: `python3 tools/build.py svg|export|previews|all [names…]`. Names limit `svg` and
+`export`; `previews` always draws the full set from `dist/`, so it needs every icon exported first.
+On Windows, which has no `sh` or `python3`, run `python tools/build.py all` in place of
+`./build.sh --full`.
+
+### Tests
+
+With the virtual environment active: `python3 -m unittest discover -s tests`. They need only
+Pillow: small stand-ins replace rsvg-convert and the font. They also check that `svg/` is up to date
+with `art/` and `icons.json`, that the table under "The set" matches `icons.json`, and on a Mac they
+round-trip the `.icns` output through Apple's `iconutil`.
 
 ## Editing
 
