@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>Lima (Λ) - Lion</title>
+  <title>Lima (Л) - Lion</title>
   <defs>
     <linearGradient id="lima-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
@@ -26,7 +26,7 @@
 
   </g>
 <path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#f2b124" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
-  <path d="M1188 0 793 1143 397 0H10L563 1493H1022L1575 0Z" transform="translate(360.07,441.50) scale(0.0529,-0.0529)" fill="#6e99f6" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
+  <path d="M94 0V291Q348 319 399.0 484.5Q450 650 450 1211V1493H1513V0H1128V1202H835V1111Q835 563 738.0 309.5Q641 56 94 0Z" transform="translate(359.48,441.50) scale(0.0529,-0.0529)" fill="#6e99f6" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
   </g>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
 </svg>

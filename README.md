@@ -14,7 +14,7 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 | Alfa | α | Axolotl | `#4a9af0` |
 | Bravo | β | Bear | `#c98049` |
 | Charlie | Ч | Crab | `#ff4f4f` |
-| Delta | δ | Deer | `#22bcc6` |
+| Delta | Δ | Deer | `#22bcc6` |
 | Echo | Э | Elephant | `#aab6c8` |
 | Foxtrot | Ф | Flamingo | `#8a7cff` |
 | Golf | Γ | Gecko | `#9d8fc0` |
@@ -22,7 +22,7 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 | India | I | Iguana | `#a6d63a` |
 | Juliett | Ж | Jellyfish | `#cf6bff` |
 | Kilo | Ϟ | Koala | `#9fc7e8` |
-| Lima | Λ | Lion | `#f2b124` |
+| Lima | Л | Lion | `#f2b124` |
 | Mike | μ | Moth | `#ffe04a` |
 | November | N | Narwhal | `#7ff0d6` |
 | Oscar | Θ | Owl | `#c9a26a` |
@@ -43,21 +43,24 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 Each name gets a Greek or Cyrillic letter that sounds or looks like its initial. Where that would
 look too much like another icon's letter at 16 px, distinctness won over accuracy:
 
-- **Greek where it fits:** α β δ Γ Λ μ π ς τ ψ — mostly lowercase, with capitals where the
-  lowercase form looked too much like a Latin letter (Γ) or simply read better (Λ).
+- **Greek where it fits:** α β Γ Δ μ π ς τ ψ — mostly lowercase, with capitals where the
+  lowercase form looked too much like a Latin letter (Γ) or another icon's letter (Δ: δ was close
+  to β).
 - **Sierra — ς:** the final sigma, the form σ takes at the end of a word. Chosen over Σ, which
   looked too much like ε, Ξ and Z at small sizes.
-- **Cyrillic for Charlie, Echo, Foxtrot, Hotel, Juliett and Uniform:** Ч (*ch*), Э (*e*), Ф (*f*),
-  Һ (*h*), Ж (*zh*) and Ю (*yu*, as in the start of "Uniform"). Һ ("shha", used in Kazakh, Tatar
-  and Bashkir) looks like a Latin h; it replaced Η, which looked too much like N and Ч. Э replaced
-  ε, which looked too much like Σ, Ξ and δ.
+- **Cyrillic for Charlie, Echo, Foxtrot, Hotel, Juliett, Lima and Uniform:** Ч (*ch*), Э (*e*),
+  Ф (*f*), Һ (*h*), Ж (*zh*), Л (*l*) and Ю (*yu*, as in the start of "Uniform"). Һ ("shha", used
+  in Kazakh, Tatar and Bashkir) looks like a Latin h; it replaced Η, which looked too much like N
+  and Ч. Э replaced ε, which looked too much like Σ, Ξ and δ. Л replaced Λ, which is Δ without its
+  base.
 - **Kilo — Ϟ:** koppa, an archaic Greek *k*-type letter, in its later lightning-bolt form. Chosen over κ,
   which looked too much like Ж at small sizes.
 - **Oscar — Θ:** theta, used for its shape; a plain O was too close to α when tiny.
 - **Quebec — Щ:** neither alphabet has a Q, so this is purely a bold, distinctive shape (it's
   pronounced roughly *shch*). The historically "correct" letter, Ϙ (koppa, the ancestor of Latin Q),
   is the same letter as Kilo's Ϟ and looks too much like Θ.
-- **Victor — √:** a square-root sign, because a V looked like a mirrored Λ. Nod to math class.
+- **Victor — √:** a square-root sign, because a V looked like a mirrored Λ (Lima's letter at the
+  time). Nod to math class.
 - **Whiskey — ω:** omega, for its *w*-like shape rather than its sound.
 - **India, November, Romeo, X-ray, Zulu — I, N, R, X, Z:** plain Latin letters, used where they were
   already distinct. R replaced ρ, which looked too much like β and μ; X replaced Ξ (xi), which

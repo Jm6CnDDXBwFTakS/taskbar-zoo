@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>Lima (Λ), small</title>
+  <title>Lima (Л), small</title>
   <rect x="0" y="0" width="512" height="512" rx="112" fill="#1a1a1d"/>
-  <path d="M1188 0 793 1143 397 0H10L563 1493H1022L1575 0Z" transform="translate(80.83,421.00) scale(0.2210,-0.2210)" fill="#f2b124"/>
+  <path d="M94 0V291Q348 319 399.0 484.5Q450 650 450 1211V1493H1513V0H1128V1202H835V1111Q835 563 738.0 309.5Q641 56 94 0Z" transform="translate(78.40,421.00) scale(0.2210,-0.2210)" fill="#f2b124"/>
 </svg>
