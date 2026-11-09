@@ -9,7 +9,7 @@ the SVG templates, the .icns writer and how the build steps fit together. All ou
 temporary folder, so svg/, dist/ and previews/ are never touched. On a Mac, the .icns test also
 round-trips the file through Apple's iconutil.
 """
-import contextlib, importlib.util, io, os, re, shutil, struct, subprocess, tempfile, unittest
+import contextlib, importlib.util, io, os, re, shutil, struct, subprocess, tempfile, unittest, zipfile
 import xml.dom.minidom
 from unittest import mock
 
@@ -96,6 +96,24 @@ class TempOutput(unittest.TestCase):
             os.makedirs(os.path.dirname(build.png_path(n, 16)), exist_ok=True)
             for s in build.PNG_SIZES:
                 fake_render(f"{n}{'-small' if s <= build.SMALL_MAX else ''}.svg", build.png_path(n, s), s)
+
+    def export_everything(self, names):
+        """Every file step_export writes for these icons: stand-in PNGs, and placeholder bytes for
+        the .ico, .icns and .svg files (the zip only copies them)."""
+        self.export_fakes(names)
+        for n in names:
+            for f in build.export_files(n):
+                path = os.path.join(build.DIST, f)
+                if not os.path.exists(path):
+                    with open(path, "wb") as out:
+                        out.write(f"stand-in {f}".encode())
+
+    def run_main(self, *argv):
+        """build.main() with these arguments; returns what it printed."""
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            build.main(list(argv))
+        return out.getvalue()
 
 
 class TemplateTests(unittest.TestCase):
@@ -256,12 +274,6 @@ class ExportTests(TempOutput):
 
 
 class MainTests(TempOutput):
-    def run_main(self, *argv):
-        out = io.StringIO()
-        with contextlib.redirect_stdout(out):
-            build.main(list(argv))
-        return out.getvalue()
-
     def test_unknown_name_lists_the_known_ones(self):
         with self.assertRaises(SystemExit) as cm:
             self.run_main("svg", "alpha")
@@ -279,14 +291,16 @@ class MainTests(TempOutput):
             self.run_main("previews")
         self.assertIn("not exported yet: bravo,", str(cm.exception))
 
-    def test_all_with_names_builds_those_and_skips_previews(self):
+    def test_all_with_names_builds_those_and_skips_previews_and_zip(self):
         calls = []
         with mock.patch.object(build, "step_svg", lambda icons: calls.append(("svg", [i["name"] for i in icons]))), \
              mock.patch.object(build, "step_export", lambda icons: calls.append(("export", [i["name"] for i in icons]))):
             out = self.run_main("all", "alfa")
         self.assertEqual(calls, [("svg", ["alfa"]), ("export", ["alfa"])])
         self.assertIn("previews skipped", out)
+        self.assertIn("zip skipped", out)
         self.assertEqual(os.listdir(build.PREV), [])
+        self.assertEqual(os.listdir(build.DIST), [])
 
     def test_previews_draw_the_full_set_reading_each_png_once(self):
         icons = build.load_icons()
@@ -339,6 +353,54 @@ class MainTests(TempOutput):
             with self.assertRaises(SystemExit) as cm:
                 self.run_main("previews")
         self.assertIn("install DejaVu Sans", str(cm.exception))
+
+
+class ZipTests(TempOutput):
+    """The zip step, on stand-in exports of the full set."""
+
+    def setUp(self):
+        super().setUp()
+        self.icons = build.load_icons()
+        self.export_everything([ic["name"] for ic in self.icons])
+        self.zip = os.path.join(build.DIST, "taskbar-zoo.zip")
+
+    def test_zip_holds_every_file_licence_and_readme(self):
+        self.run_main("zip")
+        with zipfile.ZipFile(self.zip) as z:
+            names = z.namelist()
+            licence, readme = z.read("taskbar-zoo/LICENSE"), z.read("taskbar-zoo/README.txt").decode("utf-8")
+            kilo_icns = z.read("taskbar-zoo/kilo/kilo.icns")
+        want = ["taskbar-zoo/LICENSE", "taskbar-zoo/README.txt"] + \
+               [f"taskbar-zoo/{f}" for ic in self.icons for f in build.export_files(ic["name"])]
+        self.assertEqual(names, want)
+        self.assertEqual(len(want), 2 + 26 * (4 + len(build.PNG_SIZES)))
+        with open(os.path.join(ROOT, "LICENSE"), "rb") as f:
+            self.assertEqual(licence, f.read())
+        self.assertEqual(kilo_icns, b"stand-in kilo/kilo.icns")      # files are copied unchanged
+        for ic in self.icons:
+            self.assertIn(f"{build.title(ic)}", readme)
+            self.assertIn(f"{ic['letter']}  {ic['animal']}", readme)
+
+    def test_same_icons_give_a_byte_identical_zip(self):
+        self.run_main("zip")
+        with open(self.zip, "rb") as f:
+            first = f.read()
+        os.utime(build.png_path("alfa", 16), (0, 0))        # a different file date must not matter
+        self.run_main("zip")
+        with open(self.zip, "rb") as f:
+            self.assertEqual(f.read(), first)
+
+    def test_zip_needs_every_exported_file(self):
+        os.remove(os.path.join(build.DIST, "kilo", "kilo.icns"))
+        with self.assertRaises(SystemExit) as cm:
+            self.run_main("zip")
+        self.assertIn("not exported yet: kilo", str(cm.exception))
+        self.assertFalse(os.path.exists(self.zip))
+
+    def test_zip_refuses_names(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.run_main("zip", "alfa")
+        self.assertIn("full set", str(cm.exception))
 
 
 if __name__ == "__main__":

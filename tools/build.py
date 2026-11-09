@@ -4,11 +4,12 @@
     python3 tools/build.py svg              # art/ + icons.json  ->  svg/
     python3 tools/build.py export           # svg/  ->  dist/ PNG, ICO, ICNS
     python3 tools/build.py previews         # dist/ ->  previews/ contact sheets (always the full set)
+    python3 tools/build.py zip              # dist/ ->  dist/taskbar-zoo.zip       (always the full set)
     python3 tools/build.py all              # all of the above
     python3 tools/build.py svg alfa bravo   # limit svg, export or all to some icons
 
 Needs (README, Building): svg: rsvg-convert, Pillow, fontTools, DejaVu Sans Bold ($ICON_FONT);
-export: rsvg-convert, Pillow; previews: Pillow, DejaVu Sans.
+export: rsvg-convert, Pillow; previews: Pillow, DejaVu Sans; zip: nothing beyond Python.
 
 Art fragments in art/*.svgfrag are SVG snippets drawn on a 512x512 canvas using colour tokens:
     MAIN   icon colour (rendered as a soft top-to-bottom gradient)
@@ -19,7 +20,7 @@ Art fragments in art/*.svgfrag are SVG snippets drawn on a 512x512 canvas using 
 Exact size and position don't matter: each animal is measured and auto-fitted to the tile. It only
 has to stay within 200 units of the canvas edge (PROBE_PAD, the area the build measures).
 """
-import colorsys, importlib.util, json, math, os, shutil, struct, subprocess, sys, tempfile
+import colorsys, importlib.util, json, math, os, shutil, struct, subprocess, sys, tempfile, zipfile
 from xml.sax.saxutils import escape
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -257,8 +258,19 @@ def step_export(icons):
 PREVIEW_SIDE = (48, 32, 24, 16)         # drawn in a column beside the big 256 px icon
 PREVIEW_SIZES = (256,) + PREVIEW_SIDE
 
-def missing_exports(icons):
-    return [ic["name"] for ic in icons if not all(os.path.exists(png_path(ic["name"], s)) for s in PREVIEW_SIZES)]
+def export_files(name):
+    """Every file step_export writes for one icon, as paths inside dist/ ("/" works on Windows too)."""
+    return ([f"{name}/{name}.ico", f"{name}/{name}.icns", f"{name}/{name}.svg", f"{name}/{name}-small.svg"]
+            + [f"{name}/png/{name}-{s}.png" for s in PNG_SIZES])
+
+def missing_exports(icons, everything=False):
+    """Names of icons not exported yet: lacking a PNG the previews use or, with everything=True,
+    any file step_export writes."""
+    def needed(n):
+        if everything:
+            return [os.path.join(DIST, f) for f in export_files(n)]
+        return [png_path(n, s) for s in PREVIEW_SIZES]
+    return [ic["name"] for ic in icons if not all(os.path.exists(p) for p in needed(ic["name"]))]
 
 def step_previews(icons, cols=6):
     """Contact sheets of the given icons, light and dark. The caller passes the full set."""
@@ -292,26 +304,88 @@ def step_previews(icons, cols=6):
         p = os.path.join(PREV, f"full-set-{'dark' if dark else 'light'}.png")
         sheet.convert("RGB").save(p, optimize=True); print("preview", p)
 
+# ---- zip ---------------------------------------------------------------------------------
+ZIP_NAME = "taskbar-zoo"                # the zip in dist/, and the one folder inside it
+ZIP_DATE = (1980, 1, 1, 0, 0, 0)        # the earliest date a zip can hold; fixed, so rebuilds match
+
+ZIP_README = """Taskbar Zoo
+===========
+
+26 app icons, one per ICAO name (Alfa, Bravo, Charlie ...), for telling apart several
+copies of the same app on a taskbar or dock. Each folder holds one icon:
+
+  <name>.ico              Windows: 16 to 256 px
+  <name>.icns             macOS: 16 to 1024 px
+  <name>.svg              Linux, and anything that scales
+  <name>-small.svg        letter-only version, for 16 and 24 px
+  png/<name>-<size>.png   16, 24, 32, 48, 64, 128, 256, 512 and 1024 px
+
+Using them:
+- Windows: shortcut > Properties > Change Icon, then choose the .ico. If a pinned
+  taskbar icon keeps the app's own logo, unpin it, change the shortcut's icon, then
+  pin the shortcut again.
+- macOS: Get Info on the app, then drag the .icns onto the small icon at top left.
+- Linux: in the app's .desktop file, set Icon= to the .svg or the 256 or 512 px PNG.
+
+The icons:
+{table}
+
+MIT licence: see LICENSE.
+"""
+
+def zip_readme(icons):
+    """README.txt for the zip: what each file is for, and the list of icons."""
+    table = "\n".join(f"  {ic['name'] + '/':<10} {title(ic):<9} {ic['letter']}  {ic['animal']}" for ic in icons)
+    return ZIP_README.format(table=table)
+
+def step_zip(icons):
+    """dist/taskbar-zoo.zip: every icon's exported files, plus LICENSE and a short README.txt, in one
+    taskbar-zoo/ folder. Entries go in a fixed order with a fixed date, so the same icons always give
+    a byte-identical zip. The caller passes the full set, all of it exported."""
+    path = os.path.join(DIST, f"{ZIP_NAME}.zip")
+    def add(z, name, data):
+        info = zipfile.ZipInfo(f"{ZIP_NAME}/{name}", date_time=ZIP_DATE)
+        info.external_attr = 0o644 << 16          # plain file, readable by everyone (Unix permissions)
+        info.compress_type = zipfile.ZIP_DEFLATED
+        z.writestr(info, data, compresslevel=9)
+    def read(p):
+        with open(p, "rb") as f:
+            return f.read()
+    # write to a temporary name first, so a failed run never leaves a half-written zip behind
+    with zipfile.ZipFile(path + ".part", "w") as z:
+        add(z, "LICENSE", read(os.path.join(ROOT, "LICENSE")))
+        add(z, "README.txt", zip_readme(icons).encode("utf-8"))
+        for ic in icons:
+            for f in export_files(ic["name"]):
+                add(z, f, read(os.path.join(DIST, f)))
+    os.replace(path + ".part", path)
+    print("zip", path)
+
 def main(argv):
     """Run the build steps named in argv (the command-line arguments, without the script name)."""
-    if not argv or argv[0] not in ("svg", "export", "previews", "all"):
+    if not argv or argv[0] not in ("svg", "export", "previews", "zip", "all"):
         sys.exit(__doc__)
     step, names = argv[0], argv[1:] or None
-    if step == "previews" and names:
-        sys.exit("previews always show the full set; run it without icon names")
+    if step in ("previews", "zip") and names:
+        sys.exit(f"{step} always covers the full set; run it without icon names")
     icons = load_icons(names)
     if step in ("svg", "all"): step_svg(icons)
     if step in ("export", "all"): step_export(icons)
-    if step in ("previews", "all"):
-        everything = icons if names is None else load_icons()
-        missing = missing_exports(everything)
+    if step not in ("previews", "zip", "all"):
+        return
+    # previews and the zip always cover the full set, so they need every icon exported first
+    everything = icons if names is None else load_icons()
+    for later, run, needs_all_files in (("previews", step_previews, False), ("zip", step_zip, True)):
+        if step not in (later, "all"):
+            continue
+        missing = missing_exports(everything, everything=needs_all_files)
         if missing:
-            msg = (f"previews need every icon in dist/; not exported yet: {', '.join(missing)}\n"
+            msg = (f"{later} needs every icon exported to dist/; not exported yet: {', '.join(missing)}\n"
                    "Run: python3 tools/build.py export")
-            if step == "previews": sys.exit(msg)
-            print("previews skipped:", msg)
+            if step == later: sys.exit(msg)
+            print(f"{later} skipped:", msg)
         else:
-            step_previews(everything)
+            run(everything)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

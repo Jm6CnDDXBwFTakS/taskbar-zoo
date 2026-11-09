@@ -97,7 +97,7 @@ tools/build.py    regenerates everything
 tests/            tests for build.py (need only Pillow)
 build.sh          convenience wrapper
 previews/         contact sheets of the whole set
-dist/             (git-ignored) PNG / ICO / ICNS output
+dist/             (git-ignored) PNG / ICO / ICNS output, and taskbar-zoo.zip with all of it
 ```
 
 The SVGs in `svg/` are self-contained: letters are stored as outlines, so they render identically
@@ -138,12 +138,17 @@ Activate the virtual environment in each new shell, so `python3` means the one i
 
 ```sh
 . .venv/bin/activate  # Windows: .venv\Scripts\activate; leave it again with `deactivate`
-./build.sh            # SVGs -> dist/ (PNG 16–1024, ICO, ICNS) + previews
+./build.sh            # SVGs -> dist/ (PNG 16–1024, ICO, ICNS) + previews + dist/taskbar-zoo.zip
 ./build.sh --full     # also regenerate svg/ from art/ + icons.json first
 ```
 
-Or step by step: `python3 tools/build.py svg|export|previews|all [names…]`. Names limit `svg` and
-`export`; `previews` always draws the full set from `dist/`, so it needs every icon exported first.
+Or step by step: `python3 tools/build.py svg|export|previews|zip|all [names…]`. Names limit `svg`
+and `export`; `previews` and `zip` always cover the full set from `dist/`, so they need every icon
+exported first.
+
+`dist/taskbar-zoo.zip` is the whole set in one file, ready to hand out: a `taskbar-zoo/` folder with
+each icon's `.ico`, `.icns`, SVGs and PNGs, plus `LICENSE` and a `README.txt` saying which file to
+use where. The same icons always give a byte-identical zip.
 On Windows, which has no `sh` or `python3`, run `python tools/build.py all` in place of
 `./build.sh --full`.
 
@@ -164,6 +169,9 @@ round-trip the `.icns` output through Apple's `iconutil`.
   Side-profile animals face left, away from the badge.
 
 ## Using the icons
+
+After a build, each icon's files are in `dist/<name>/`, and all of them together in
+`dist/taskbar-zoo.zip`.
 
 - **Linux:** in the app's `.desktop` file, set `Icon=` to the SVG or the 256/512 PNG.
 - **Windows:** shortcut → Properties → Change Icon → choose the `.ico`. If a pinned taskbar icon keeps
