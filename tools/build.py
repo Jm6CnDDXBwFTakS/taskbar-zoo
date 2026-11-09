@@ -92,8 +92,8 @@ def load_icons(names=None):
         out.append(e)
     return out
 
-def render(svg_path, png_path, size):
-    subprocess.run(["rsvg-convert", "-w", str(size), "-h", str(size), svg_path, "-o", png_path], check=True)
+def render(svg_file, png_file, size):
+    subprocess.run(["rsvg-convert", "-w", str(size), "-h", str(size), svg_file, "-o", png_file], check=True)
 
 def png_path(name, size):
     return os.path.join(DIST, name, "png", f"{name}-{size}.png")
@@ -248,7 +248,13 @@ def step_previews(icons, cols=6):
     try:   # labels hold Greek and Cyrillic letters, which Pillow's built-in font lacks
         font = ImageFont.truetype(find_font(LABEL_FONT) or LABEL_FONT, 18)
     except OSError:
-        sys.exit(f"DejaVu Sans not found for the preview labels; put {LABEL_FONT} next to $ICON_FONT")
+        sys.exit(f"DejaVu Sans ({LABEL_FONT}) not found for the preview labels; install DejaVu Sans, "
+                 "or put the file next to $ICON_FONT")
+    pngs = {}                           # (name, size) -> image, read once for both sheets
+    for ic in icons:
+        for s in PREVIEW_SIZES:
+            with Image.open(png_path(ic["name"], s)) as im:
+                pngs[ic["name"], s] = im.convert("RGBA")
     for dark in (True, False):
         cw, ch = 300, 260
         rows = (len(icons) + cols - 1) // cols
@@ -256,10 +262,7 @@ def step_previews(icons, cols=6):
         draw = ImageDraw.Draw(sheet)
         for i, ic in enumerate(icons):
             n = ic["name"]; x, y = 20 + (i % cols) * cw, 20 + (i // cols) * ch
-            imgs = {}
-            for s in PREVIEW_SIZES:
-                with Image.open(png_path(n, s)) as im:
-                    imgs[s] = im.convert("RGBA")
+            imgs = {s: pngs[n, s] for s in PREVIEW_SIZES}
             sheet.alpha_composite(imgs[256].resize((200, 200), Image.LANCZOS), (x, y))
             yy = y
             for s in PREVIEW_SIDE:
@@ -269,10 +272,11 @@ def step_previews(icons, cols=6):
         p = os.path.join(PREV, f"full-set-{'dark' if dark else 'light'}.png")
         sheet.convert("RGB").save(p, optimize=True); print("preview", p)
 
-if __name__ == "__main__":
-    if len(sys.argv) < 2 or sys.argv[1] not in ("svg", "export", "previews", "all"):
+def main(argv):
+    """Run the build steps named in argv (the command-line arguments, without the script name)."""
+    if not argv or argv[0] not in ("svg", "export", "previews", "all"):
         sys.exit(__doc__)
-    step, names = sys.argv[1], sys.argv[2:] or None
+    step, names = argv[0], argv[1:] or None
     if step == "previews" and names:
         sys.exit("previews always show the full set; run it without icon names")
     icons = load_icons(names)
@@ -288,3 +292,6 @@ if __name__ == "__main__":
             print("previews skipped:", msg)
         else:
             step_previews(everything)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

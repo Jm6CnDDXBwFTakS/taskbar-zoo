@@ -67,6 +67,7 @@ svg/              generated master SVGs — the files to use or convert
   <name>.svg                 full icon (animal + badge), used for 32 px and up
   <name>-small.svg           letter-only version, used for 16 and 24 px
 tools/build.py    regenerates everything
+tests/            tests for build.py (need only Pillow)
 build.sh          convenience wrapper
 previews/         contact sheets of the whole set
 dist/             (git-ignored) PNG / ICO / ICNS output
@@ -99,6 +100,10 @@ sudo apt install librsvg2-bin fonts-dejavu-core && pip install -r requirements.t
 # macOS
 brew install librsvg && pip3 install -r requirements.txt   # plus DejaVu Sans from dejavu-fonts.github.io
 ```
+
+Tests: `python3 -m unittest discover -s tests`. They need only Pillow: small stand-ins replace
+rsvg-convert and the font. They also check that `svg/` is up to date with `art/` and `icons.json`,
+and on a Mac they round-trip the `.icns` output through Apple's `iconutil`.
 
 ## Editing
 

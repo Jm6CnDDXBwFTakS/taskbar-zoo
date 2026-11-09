@@ -40,9 +40,12 @@ without asking.
   previews always draw the full set (they overwrite the committed `full-set-*.png`).
 - Needs `rsvg-convert`, Pillow, fontTools and DejaVu Sans Bold (`ICON_FONT` env var to override);
   previews also need DejaVu Sans (regular), looked for next to `ICON_FONT` first.
-- `.icns` files are written by build.py itself, not Pillow (whose writer has no 16/32 px @1x
-  slots); check changes there with `iconutil -c iconset` on a Mac.
   The fit step renders each animal with rsvg-convert to measure it, so it is required for `svg` too.
+- `.icns` files are written by build.py itself, not Pillow (whose writer has no 16/32 px @1x
+  slots). The tests round-trip them through `iconutil` on a Mac.
+- Tests: `python3 -m unittest discover -s tests` (needs only Pillow; stand-ins replace rsvg-convert
+  and the font). Run them after changing build.py, art/ or icons.json: they also check that svg/
+  is up to date.
 - After any visual change: rebuild, then **look at** `previews/full-set-dark.png` (and a crop at
   16–32 px) before committing. Regenerating unchanged art should produce no git diff.
 
