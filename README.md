@@ -21,14 +21,14 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 | Hotel | Һ | Hippo | `#ff80aa` |
 | India | I | Iguana | `#a6d63a` |
 | Juliett | Ж | Jellyfish | `#cf6bff` |
-| Kilo | Ϟ | Koala | `#9fc7e8` |
+| Kilo | Ϟ | Koala | `#8da7a3` |
 | Lima | Л | Lion | `#f2b124` |
 | Mike | μ | Moth | `#ffe04a` |
 | November | N | Narwhal | `#7ff0d6` |
 | Oscar | Θ | Owl | `#c9a26a` |
 | Papa | π | Panda | `#59e0a0` |
 | Quebec | Щ | Quetzal | `#19c37d` |
-| Romeo | R | Rhino | `#d4714a` |
+| Romeo | R | Rhino | `#958b7f` |
 | Sierra | ς | Shark | `#4fc0ff` |
 | Tango | τ | Turtle | `#ff7b29` |
 | Uniform | Ю | Unicorn | `#ff5fd0` |

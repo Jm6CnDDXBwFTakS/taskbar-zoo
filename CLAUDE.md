@@ -22,10 +22,13 @@ on a taskbar or dock. The set is deliberately app-neutral: don't brand it for an
 
 ## Colours
 Each icon has its own colour in `icons.json`. Before changing one, check its neighbours at small sizes.
-Known near-pairs that were deliberately resolved: hippo is the only bright pink; the rhino is
-terracotta (rose-clay clashed with the hippo); the flamingo is violet, not pink, for the same reason.
-The lion's gold, bear's caramel and turtle's orange sit close together, so keep new warm colours away
-from them. Render a comparison sheet next to the nearest-coloured icons before committing a change.
+Known near-pairs that were deliberately resolved: hippo is the only bright pink; the flamingo is
+violet, not pink, for the same reason. The rhino is warm grey: rose-clay clashed with the hippo, and
+terracotta with the bear's caramel (almost identical with red-green colour blindness). The koala is
+sage-grey: light blue sat too close to X-ray, Echo and Sierra. The lion's gold, bear's caramel and
+turtle's orange sit close together, so keep new warm colours away from them. Measure colour
+closeness as the eye sees it (CIEDE2000), also as seen with deuteranopia, and render a comparison
+sheet next to the nearest-coloured icons before committing a change.
 
 ## Letters
 Chosen for distinctness first. See README "About the letters". Notably Hotel = Һ, Kilo = Ϟ,
