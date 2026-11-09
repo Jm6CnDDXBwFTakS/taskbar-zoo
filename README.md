@@ -73,10 +73,12 @@ all differ clearly in colour.
 
 ## About the letters
 
-Each name gets a Greek or Cyrillic letter that sounds or looks like its initial. Where that letter
-would look too much like another icon's letter at 16 px, distinctness won over accuracy. Each note
-below names the letter that would have been the obvious choice and the letter **in the current set**
-it would be confused with, so every reason can be checked against the icons as they are now.
+Each name gets a letter that sounds or looks like its initial: Greek or Cyrillic where one fits,
+a plain Latin letter where that is already distinct, and for Victor a symbol. Where the obvious
+letter would look too much like another icon's letter at 16 px, distinctness won over accuracy.
+Where a note turns down an alternative, it names what **in the current set** the alternative would
+be confused with (another icon's letter, or for γ another icon's initial), so the reason can be
+checked against the icons as they are now.
 
 - **Greek where it fits:** α β Γ Δ μ π τ — mostly lowercase, with capitals where the lowercase
   form gets in the way: γ reads as a Latin *y*, which suggests Yankee, and δ is a round loop much
@@ -90,8 +92,8 @@ it would be confused with, so every reason can be checked against the icons as t
   - Һ ("shha", used in Kazakh, Tatar and Bashkir) looks like a Latin h. Greek Η (eta) would look
     like N and Ч.
   - Л rather than Greek Λ, which is Δ without its base.
-  - Э rather than Greek ε: the two are equally distinct from today's letters, and Э is the more
-    solid shape at 16 px.
+  - Э rather than Greek ε: against today's letters the two are equally distinct (ε comes closest
+    to Z, Э to Θ), so Э stays as the letter already in use.
 - **Kilo — Ϟ:** koppa, an archaic Greek *k*-type letter, in its later lightning-bolt form. Greek κ
   shares R's upright stroke with a leg, and X's diagonals.
 - **Oscar — Θ:** theta, used for its shape: the bar inside keeps it from being a plain ring. Every
