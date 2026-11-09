@@ -34,7 +34,7 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 | Uniform | Ю | Unicorn | `#ff5fd0` |
 | Victor | √ | Vampire bat | `#5cc055` |
 | Whiskey | ω | Walrus | `#e8a882` |
-| X-ray | Ξ | X-ray fish | `#bfe8ff` |
+| X-ray | X | X-ray fish | `#bfe8ff` |
 | Yankee | ψ | Yak | `#c9568a` |
 | Zulu | Z | Zebra | `#f4f4f4` |
 
@@ -59,9 +59,9 @@ look too much like another icon's letter at 16 px, distinctness won over accurac
   is the same letter as Kilo's Ϟ and looks too much like Θ.
 - **Victor — √:** a square-root sign, because a V looked like a mirrored Λ. Nod to math class.
 - **Whiskey — ω:** omega, for its *w*-like shape rather than its sound.
-- **X-ray — Ξ:** xi, pronounced *ks*, the same sound as X.
-- **India, November, Romeo, Zulu — I, N, R, Z:** plain Latin letters, used where they were already
-  distinct. R replaced ρ, which looked too much like β and μ.
+- **India, November, Romeo, X-ray, Zulu — I, N, R, X, Z:** plain Latin letters, used where they were
+  already distinct. R replaced ρ, which looked too much like β and μ; X replaced Ξ (xi), which
+  looked too much like Z and Э.
 
 ## Repository layout
 

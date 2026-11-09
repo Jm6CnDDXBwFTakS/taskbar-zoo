@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>X-ray (Ξ), small</title>
+  <title>X-ray (X), small</title>
   <rect x="0" y="0" width="512" height="512" rx="112" fill="#1a1a1d"/>
-  <path d="M306 924H1017V633H306ZM201 1493H1122V1202H201ZM201 291H1122V0H201Z" transform="translate(109.79,421.00) scale(0.2210,-0.2210)" fill="#bfe8ff"/>
+  <path d="M1020 762 1538 0H1137L788 510L442 0H39L557 762L59 1493H461L788 1012L1114 1493H1518Z" transform="translate(81.72,421.00) scale(0.2210,-0.2210)" fill="#bfe8ff"/>
 </svg>
