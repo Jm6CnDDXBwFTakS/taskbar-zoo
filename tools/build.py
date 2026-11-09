@@ -50,7 +50,8 @@ FONT_DIRS = ["/usr/share/fonts/truetype/dejavu", "/usr/share/fonts/TTF", "/Libra
 
 
 def hex_rgb(h):
-    h = h.lstrip("#"); return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
+    h = h.lstrip("#")
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 def darken(h, f):
     return "#%02x%02x%02x" % tuple(int(c * f) for c in hex_rgb(h))
@@ -128,15 +129,22 @@ def glyph(ch, cx, cy, height, width_max):
         path = find_font(BOLD_FONT)
         if not path:
             sys.exit("DejaVu Sans Bold not found; set ICON_FONT=/path/to/DejaVuSans-Bold.ttf")
-        f = TTFont(path); _font = (f.getGlyphSet(), f.getBestCmap(), path)
+        f = TTFont(path)
+        _font = (f.getGlyphSet(), f.getBestCmap(), path)
     gs, cmap, path = _font
     if len(ch) != 1 or ord(ch) not in cmap:
         sys.exit(f"letter {ch!r} in icons.json is not a single character that {path} has")
     g = gs[cmap[ord(ch)]]
-    bp = BoundsPen(gs); g.draw(bp); x0, y0, x1, y1 = bp.bounds
+    bp = BoundsPen(gs)
+    g.draw(bp)
+    x0, y0, x1, y1 = bp.bounds
     s = min(height / (y1 - y0), width_max / (x1 - x0))
-    pp = SVGPathPen(gs); g.draw(pp)
-    return pp.getCommands(), f"translate({cx - (x0 + x1) / 2 * s:.2f},{cy + (y0 + y1) / 2 * s:.2f}) scale({s:.4f},{-s:.4f})", s
+    pp = SVGPathPen(gs)
+    g.draw(pp)
+    # font units have y pointing up, SVG has it pointing down: hence the -s
+    transform = (f"translate({cx - (x0 + x1) / 2 * s:.2f},{cy + (y0 + y1) / 2 * s:.2f}) "
+                 f"scale({s:.4f},{-s:.4f})")
+    return pp.getCommands(), transform, s
 
 def tokens(icon, probe=False):
     c = icon["color"]
@@ -152,7 +160,8 @@ def fit(icon):
     from PIL import Image
     with tempfile.TemporaryDirectory() as t:
         sp, pp = os.path.join(t, "p.svg"), os.path.join(t, "p.png")
-        write_text(sp, probe); render(sp, pp, PROBE)
+        write_text(sp, probe)
+        render(sp, pp, PROBE)
         with Image.open(pp) as im:
             box = im.getchannel("A").getbbox()
     art = f"art/{icon['name']}.svgfrag"
@@ -168,8 +177,10 @@ def fit(icon):
 def full_svg(icon):
     # ids carry the icon name, so several icons can be inlined in one page without clashing
     c, letter, n = icon["color"], icon["letter"], icon["name"]
-    hexd = "M" + " L".join(f"{BADGE_X + BADGE_R * math.cos(math.radians(a)):.1f},"
-                           f"{BADGE_Y + BADGE_R * math.sin(math.radians(a)):.1f}" for a in range(0, 360, 60)) + " Z"
+    # six corners, every 60 degrees from 0: a hexagon with a flat top and bottom
+    corners = (f"{BADGE_X + BADGE_R * math.cos(math.radians(a)):.1f},"
+               f"{BADGE_Y + BADGE_R * math.sin(math.radians(a)):.1f}" for a in range(0, 360, 60))
+    hexd = "M" + " L".join(corners) + " Z"
     d, tf, s = glyph(letter, BADGE_X, BADGE_Y, 79, 104)
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>{escape(f"{title(icon)} ({letter}) - {icon['animal']}")}</title>
@@ -221,7 +232,8 @@ def icns_argb(im):
     for ch in "ARGB":
         raw = im.getchannel(ch).tobytes()
         for i in range(0, len(raw), 128):
-            chunk = raw[i:i + 128]; data += bytes([len(chunk) - 1]) + chunk
+            chunk = raw[i:i + 128]
+            data += bytes([len(chunk) - 1]) + chunk
     return data
 
 def write_icns(path, name, imgs):
@@ -243,7 +255,8 @@ def step_export(icons):
     for ic in icons:
         n = ic["name"]
         full, small = (os.path.join(SVG, f"{n}{s}.svg") for s in ("", "-small"))
-        out = os.path.join(DIST, n); os.makedirs(os.path.join(out, "png"), exist_ok=True)
+        out = os.path.join(DIST, n)
+        os.makedirs(os.path.join(out, "png"), exist_ok=True)
         imgs = {}
         for sz in PNG_SIZES:
             render(small if sz <= SMALL_MAX else full, png_path(n, sz), sz)
@@ -278,8 +291,8 @@ def stale_exports(icons, all_files=False):
     stale = []
     for ic in icons:
         n = ic["name"]
-        sources = [t for t in (mtime(os.path.join(SVG, f"{n}{s}.svg")) for s in ("", "-small")) if t is not None]
-        newest = max(sources, default=0)
+        svg_times = (mtime(os.path.join(SVG, f"{n}{s}.svg")) for s in ("", "-small"))
+        newest = max((t for t in svg_times if t is not None), default=0)
         if any(t is None or t < newest for t in map(mtime, needed(n))):
             stale.append(n)
     return stale
@@ -302,19 +315,23 @@ def step_previews(icons, cols=6):
     for dark in (True, False):
         cw, ch = 300, 260
         rows = (len(icons) + cols - 1) // cols
-        sheet = Image.new("RGBA", (cols * cw + 20, rows * ch + 20), (32, 33, 36, 255) if dark else (245, 245, 245, 255))
+        background = (32, 33, 36, 255) if dark else (245, 245, 245, 255)
+        sheet = Image.new("RGBA", (cols * cw + 20, rows * ch + 20), background)
         draw = ImageDraw.Draw(sheet)
         for i, ic in enumerate(icons):
-            n = ic["name"]; x, y = 20 + (i % cols) * cw, 20 + (i // cols) * ch
+            n = ic["name"]
+            x, y = 20 + (i % cols) * cw, 20 + (i // cols) * ch
             imgs = {s: pngs[n, s] for s in PREVIEW_SIZES}
             sheet.alpha_composite(imgs[256].resize((200, 200), Image.LANCZOS), (x, y))
             yy = y
             for s in PREVIEW_SIDE:
-                sheet.alpha_composite(imgs[s], (x + 210, yy)); yy += s + 6
+                sheet.alpha_composite(imgs[s], (x + 210, yy))
+                yy += s + 6
             draw.text((x, y + 210), f"{title(ic)} {ic['letter']} – {ic['animal']}",
                       fill=(230, 230, 230) if dark else (30, 30, 30), font=font)
         p = os.path.join(PREV, f"full-set-{'dark' if dark else 'light'}.png")
-        sheet.convert("RGB").save(p, optimize=True); print("preview", p)
+        sheet.convert("RGB").save(p, optimize=True)
+        print("preview", p)
 
 # ---- zip ---------------------------------------------------------------------------------
 ZIP_NAME = "taskbar-zoo"                # the zip in dist/, and the one folder inside it
@@ -354,7 +371,8 @@ def zip_readme(icons):
     """README.txt for the zip: what each file is for, and the list of icons. Counts and sizes come
     from the constants above, so the text can't fall behind the build."""
     icns = [s for _, s in ICNS_ENTRIES]
-    table = "\n".join(f"  {ic['name'] + '/':<10} {title(ic):<9} {ic['letter']}  {ic['animal']}" for ic in icons)
+    table = "\n".join(f"  {ic['name'] + '/':<10} {title(ic):<9} {ic['letter']}  {ic['animal']}"
+                      for ic in icons)
     return ZIP_README.format(count=len(icons), table=table, png=size_list(PNG_SIZES),
                              ico=f"{min(ICO_SIZES)} to {max(ICO_SIZES)}", icns=f"{min(icns)} to {max(icns)}",
                              small=size_list(s for s in PNG_SIZES if s <= SMALL_MAX))
@@ -402,8 +420,10 @@ def main(argv):
     if step in ("previews", "zip") and names:
         sys.exit(f"{step} always covers the full set; run it without icon names")
     icons = load_icons(names)
-    if step in ("svg", "all"): step_svg(icons)
-    if step in ("export", "all"): step_export(icons)
+    if step in ("svg", "all"):
+        step_svg(icons)
+    if step in ("export", "all"):
+        step_export(icons)
     if step not in ("previews", "zip", "all"):
         return
     # The zip and the previews always cover the full set, so they need every icon exported, and
@@ -417,7 +437,8 @@ def main(argv):
         if stale:
             msg = (f"{later} needs every icon exported to dist/ since svg/ last changed; "
                    f"missing or out of date: {', '.join(stale)}\nRun: python3 tools/build.py export")
-            if step == later: sys.exit(msg)
+            if step == later:
+                sys.exit(msg)
             print(f"{later} skipped:", msg)
         else:
             run(everything)
