@@ -31,13 +31,18 @@ mint green (#59e0a0) sat between November and Quebec, the closest colours in the
 close in shape to both Щ (a bar on legs, upside down) and N (two uprights). The lion's gold, bear's
 caramel and turtle's orange sit close together, so keep new warm colours away from them. Measure colour
 closeness as the eye sees it (CIEDE2000), also as seen with deuteranopia, and render a comparison
-sheet next to the nearest-coloured icons before committing a change.
+sheet next to the nearest-coloured icons before committing a change:
+`python3 tools/closeness.py color <name> '#hex' ... --sheet <png>` does both (README, Editing).
+Its "risk" (shape overlap x 20 / ΔE, the worse of normal and deuteranopia) only ranks; read the
+ΔE and shape columns and look at the sheet. It weighs full deuteranopia, a worst case, as much
+as normal vision.
 
 ## Letters
 Chosen for distinctness first. See README "About the letters". Notably Hotel = Һ, Kilo = Ϟ,
 Oscar = Θ, Quebec = Щ (no Q exists in Greek/Cyrillic), Sierra = ς, Victor = √. Don't "fix" these
 to look more correct without asking. Before changing a letter, compare its shape (all letters in one
-colour) against the whole set at 16 and 24 px, then check it against its colour neighbours.
+colour) against the whole set at 16 and 24 px, then check it against its colour neighbours:
+`python3 tools/closeness.py letter <name> <char> ... --sheet <png>` does both.
 
 ## Workflow
 - Source of truth: `art/<name>.svgfrag` + `icons.json`. `svg/` is generated **and committed**.

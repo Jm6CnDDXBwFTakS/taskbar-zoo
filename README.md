@@ -117,7 +117,8 @@ svg/              generated master SVGs — the files to use or convert
   <name>.svg                 full icon (animal + badge), used for 32 px and up
   <name>-small.svg           letter-only version, used for 16 and 24 px
 tools/build.py    regenerates everything
-tests/            tests for build.py (need only Pillow)
+tools/closeness.py  measures how close icons are in colour and letter shape (see Editing)
+tests/            tests for build.py and closeness.py (need only Pillow)
 build.sh          convenience wrapper
 previews/         contact sheets of the whole set
 dist/             (git-ignored) PNG / ICO / ICNS output, and taskbar-zoo-<version>.zip with all of it
@@ -214,7 +215,21 @@ with the repository, files included; only drafts stay hidden.
 
 ## Editing
 
-- **Change a colour or letter:** edit `icons.json`, then `./build.sh --full`.
+- **Change a colour or letter:** first measure the candidates against the rest of the set, then
+  edit `icons.json` and run `./build.sh --full`. For example, to try two colours for the panda or
+  two letters for Victor:
+
+  ```sh
+  python3 tools/closeness.py color papa '#66ff75' '#33ffa7' --sheet /tmp/papa.png
+  python3 tools/closeness.py letter victor √ V --sheet /tmp/victor.png
+  python3 tools/closeness.py report       # the closest pairs in the set as it is
+  ```
+
+  Each candidate is listed with its nearest icons by colour difference (CIEDE2000, also as seen
+  with red-green colour blindness) and by letter-shape overlap at 16 and 24 px, safest first. The
+  sheet draws them side by side at real pixel sizes, a second time as seen with colour blindness;
+  look at it before deciding, since the numbers only rank. `color` and `letter` need what `svg`
+  needs (fontTools and DejaVu Sans Bold); `report` needs only rsvg-convert and Pillow.
 - **Redraw an animal:** edit `art/<name>.svgfrag`. Draw on a 512×512 canvas with these colour tokens:
   `MAIN` (icon colour, rendered as a gradient), `SHADE` (darker), `LIGHT` (lighter), `CREAM`, `DARK`.
   Exact size and position don't matter; each drawing is measured and auto-fitted to the tile. It
