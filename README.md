@@ -194,24 +194,32 @@ round-trip the `.icns` output through Apple's `iconutil`.
 
 ### Releasing
 
-A release is a git tag plus a GitHub release with the zip attached. For version 0.9.0:
+A release is a git tag plus a GitHub release with the zip attached. For version 0.10.0:
 
-1. Put the version in `VERSION` and add a `## 0.9.0 (YYYY-MM-DD)` entry (UTC date) at the top of
+1. Put the version in `VERSION` and add a `## 0.10.0 (YYYY-MM-DD)` entry (UTC date) at the top of
    `CHANGELOG.md`; its introduction says which number to raise. The tests check the two match.
 2. Run `./build.sh`, then the tests. A release builds from the committed SVGs, so it needs only
    rsvg-convert and Pillow (fontTools is for regenerating `svg/`).
-3. Commit, tag and publish. With the GitHub CLI (`gh`), the changelog entry saved as
-   `dist/notes.md` (in `dist/`, which git ignores, so it can't be committed by accident):
+3. Commit, tag and publish. The release notes are the changelog entry, saved in `dist/` (which git
+   ignores, so it can't be committed by accident). With the GitHub CLI (`gh`):
 
 ```sh
-git tag -a v0.9.0 -m "Taskbar Zoo 0.9.0"     # -a: an annotated tag, with its own date and message
-git push origin main v0.9.0
-gh release create v0.9.0 dist/taskbar-zoo-0.9.0.zip --title "Taskbar Zoo 0.9.0" \
-    --notes-file dist/notes.md --prerelease  # --prerelease for 0.x and -rc versions
+# the lines of the 0.10.0 entry, without its heading: from that heading up to the next "## "
+awk '/^## /{if(f)exit; if($2=="0.10.0"){f=1;next}} f' CHANGELOG.md | sed '1{/^$/d}' > dist/notes.md
+git tag -a v0.10.0 -m "Taskbar Zoo 0.10.0"   # -a: an annotated tag, with its own date and message
+git push origin main v0.10.0
+gh release create v0.10.0 dist/taskbar-zoo-0.10.0.zip --verify-tag --title "Taskbar Zoo 0.10.0" \
+    --notes-file dist/notes.md                # add --prerelease only for -rc versions
 ```
 
-While the repository is private, its releases are visible only to its owner. They become public
-with the repository, files included; only drafts stay hidden.
+`--verify-tag` stops if the tag isn't on GitHub yet, rather than creating one there. Releases are
+full releases, so the newest is "Latest": the repository's sidebar shows it, and
+`…/releases/latest` leads to it. The 0.x number already says the set may still change. Mark only
+release candidates (`1.0.0-rc.1`) as pre-releases.
+
+Both kinds of change are one-way on this repository. Releases are immutable (Settings, General,
+Releases): once published, the zip can't be replaced, so a fix goes out as a new version. And a
+ruleset ("Release tags are permanent") stops `v*` tags from being moved or deleted.
 
 ## Editing
 
