@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Build the Taskbar Zoo icon set.
 
-    python3 tools/build.py svg              # art/ + icons.json  ->  svg/        (needs fontTools + a font)
-    python3 tools/build.py export           # svg/  ->  dist/ PNG, ICO, ICNS     (needs rsvg-convert + Pillow)
+    python3 tools/build.py svg              # art/ + icons.json  ->  svg/
+    python3 tools/build.py export           # svg/  ->  dist/ PNG, ICO, ICNS
     python3 tools/build.py previews         # dist/ ->  previews/ contact sheets (always the full set)
     python3 tools/build.py all              # all of the above
     python3 tools/build.py svg alfa bravo   # limit svg, export or all to some icons
+
+Needs (README, Building): svg: rsvg-convert, Pillow, fontTools, DejaVu Sans Bold ($ICON_FONT);
+export: rsvg-convert, Pillow; previews: Pillow, DejaVu Sans.
 
 Art fragments in art/*.svgfrag are SVG snippets drawn on a 512x512 canvas using colour tokens:
     MAIN   icon colour (rendered as a soft top-to-bottom gradient)
@@ -13,7 +16,8 @@ Art fragments in art/*.svgfrag are SVG snippets drawn on a 512x512 canvas using 
     LIGHT  lighter tone of the icon colour
     CREAM  shared off-white (muzzles, highlights)
     DARK   shared near-black (eyes, noses)
-Size and position don't matter: each animal is measured and auto-fitted to the tile.
+Exact size and position don't matter: each animal is measured and auto-fitted to the tile. It only
+has to stay within 200 units of the canvas edge (PROBE_PAD, the area the build measures).
 """
 import colorsys, importlib.util, json, math, os, shutil, struct, subprocess, sys, tempfile
 from xml.sax.saxutils import escape
@@ -92,7 +96,9 @@ def load_icons(names=None):
         out.append(e)
     return out
 
-WHERE_FROM = {"rsvg-convert": "librsvg", "fontTools": "requirements.txt"}
+# How require() names each tool, and where it comes from. Pillow's module is called PIL.
+TOOL_NAMES = {"rsvg-convert": "rsvg-convert (from librsvg)", "PIL": "Pillow (from requirements.txt)",
+              "fontTools": "fontTools (from requirements.txt)"}
 
 def require(step, programs=(), modules=()):
     """Stop with one line naming whatever this step needs but can't find, before it writes anything.
@@ -100,8 +106,8 @@ def require(step, programs=(), modules=()):
     missing = [p for p in programs if shutil.which(p) is None]
     missing += [m for m in modules if importlib.util.find_spec(m) is None]
     if missing:
-        sys.exit(f"{step} needs {' and '.join(f'{t} (from {WHERE_FROM[t]})' for t in missing)}, "
-                 "not installed; see README, Building")
+        sys.exit(f"{step} needs {', '.join(TOOL_NAMES[t] for t in missing)}, "
+                 f"which {'is' if len(missing) == 1 else 'are'} not installed; see README, Building")
 
 def render(svg_file, png_file, size):
     subprocess.run(["rsvg-convert", "-w", str(size), "-h", str(size), svg_file, "-o", png_file], check=True)
@@ -195,7 +201,7 @@ def small_svg(icon):
 '''
 
 def step_svg(icons):
-    require("svg", programs=("rsvg-convert",), modules=("fontTools",))   # fit() renders, glyph() reads the font
+    require("svg", programs=("rsvg-convert",), modules=("PIL", "fontTools"))   # fit() renders and measures
     os.makedirs(SVG, exist_ok=True)
     for ic in icons:
         n = ic["name"]
@@ -229,7 +235,7 @@ def write_icns(path, name, imgs):
         f.write(b"icns" + struct.pack(">I", 8 + len(body)) + body)
 
 def step_export(icons):
-    require("export", programs=("rsvg-convert",))
+    require("export", programs=("rsvg-convert",), modules=("PIL",))
     from PIL import Image
     for ic in icons:
         n = ic["name"]
@@ -256,6 +262,7 @@ def missing_exports(icons):
 
 def step_previews(icons, cols=6):
     """Contact sheets of the given icons, light and dark. The caller passes the full set."""
+    require("previews", modules=("PIL",))
     from PIL import Image, ImageDraw, ImageFont
     os.makedirs(PREV, exist_ok=True)
     try:   # labels hold Greek and Cyrillic letters, which Pillow's built-in font lacks

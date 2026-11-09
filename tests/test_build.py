@@ -311,8 +311,8 @@ class MainTests(TempOutput):
         with mock.patch.object(shutil, "which", lambda name: None):
             with self.assertRaises(SystemExit) as cm:
                 self.run_main("export", "alfa")
-        self.assertEqual(str(cm.exception), "export needs rsvg-convert (from librsvg), not installed; "
-                                            "see README, Building")
+        self.assertEqual(str(cm.exception), "export needs rsvg-convert (from librsvg), which is not "
+                                            "installed; see README, Building")
         self.assertEqual(os.listdir(build.DIST), [])
 
     def test_svg_names_every_missing_tool(self):
@@ -320,9 +320,17 @@ class MainTests(TempOutput):
              mock.patch.object(importlib.util, "find_spec", lambda name, *a, **k: None):
             with self.assertRaises(SystemExit) as cm:
                 self.run_main("all", "alfa")
-        self.assertIn("svg needs rsvg-convert (from librsvg) and fontTools (from requirements.txt)",
-                      str(cm.exception))
+        self.assertIn("svg needs rsvg-convert (from librsvg), Pillow (from requirements.txt), "
+                      "fontTools (from requirements.txt), which are not installed", str(cm.exception))
         self.assertEqual(os.listdir(build.SVG), [])
+
+    def test_previews_without_pillow_stop_before_writing(self):
+        self.export_fakes([ic["name"] for ic in build.load_icons()])
+        with mock.patch.object(importlib.util, "find_spec", lambda name, *a, **k: None):
+            with self.assertRaises(SystemExit) as cm:
+                self.run_main("previews")
+        self.assertIn("previews needs Pillow (from requirements.txt)", str(cm.exception))
+        self.assertEqual(os.listdir(build.PREV), [])
 
     def test_missing_label_font_says_how_to_get_it(self):
         self.export_fakes([ic["name"] for ic in build.load_icons()])
