@@ -15,7 +15,7 @@ No build needed. What changed in each version is in [CHANGELOG.md](CHANGELOG.md)
 
 ## Feedback
 
-The 0.9 releases are a test run before the set is fixed at 1.0.0. If two icons are hard to tell
+Releases before 1.0.0 are a test run before the set is fixed. If two icons are hard to tell
 apart on your taskbar or dock, an animal doesn't read, or a format doesn't work on your system,
 please [open an issue](../../issues) and say which icons, at what size, and on which OS. A
 screenshot helps most.
@@ -59,7 +59,7 @@ all differ clearly in colour.
 | Mike | μ | Moth | `#ffe04a` |
 | November | N | Narwhal | `#7ff0d6` |
 | Oscar | Θ | Owl | `#c9a26a` |
-| Papa | π | Panda | `#59e0a0` |
+| Papa | π | Panda | `#66ff75` |
 | Quebec | Щ | Quetzal | `#19c37d` |
 | Romeo | R | Rhino | `#958b7f` |
 | Sierra | ς | Shark | `#4fc0ff` |

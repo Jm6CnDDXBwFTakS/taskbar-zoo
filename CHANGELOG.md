@@ -9,6 +9,13 @@ icons or formats, and the patch number for fixes that keep every icon looking th
 The newest entry's version must match the `VERSION` file (the tests check), and its text becomes
 the GitHub release notes (README, Releasing).
 
+## 0.10.0 (2026-11-09)
+
+- Papa's panda is now lime (`#66ff75`) instead of mint green (`#59e0a0`). The mint sat between
+  November's narwhal and Quebec's quetzal, the closest colours in the set, and their letters π, N
+  and Щ are similar bar-and-legs shapes. Lime moves the panda well clear of both.
+- No other icon, letter or file name changed.
+
 ## 0.9.0 (2026-11-09)
 
 First release, for feedback before the set is fixed at 1.0.0.

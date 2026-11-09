@@ -5,7 +5,7 @@
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
     <linearGradient id="papa-m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#70e4ad"/><stop offset="1" stop-color="#52d094"/>
+      <stop offset="0" stop-color="#7bff88"/><stop offset="1" stop-color="#5eed6c"/>
     </linearGradient>
     <clipPath id="papa-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
@@ -20,8 +20,8 @@
 <path d="M256,362 L256,376 M222,382 C236,404 276,404 290,382" fill="none" stroke="#1b1b1d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
 
   </g>
-<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#59e0a0" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
-  <path d="M86 1120H1499V864H1303V362Q1303 233 1327.5 201.5Q1352 170 1408 170Q1465 170 1497 174V-14Q1435 -39 1223 -39Q1156 -39 1091 -20Q987 11 958 102Q945 145 945 233V864H640V0H282V864H86Z" transform="translate(347.98,438.84) scale(0.0682,-0.0682)" fill="#eb79af" stroke="#1b1b1d" stroke-width="132.0" stroke-linejoin="round" paint-order="stroke"/>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#66ff75" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M86 1120H1499V864H1303V362Q1303 233 1327.5 201.5Q1352 170 1408 170Q1465 170 1497 174V-14Q1435 -39 1223 -39Q1156 -39 1091 -20Q987 11 958 102Q945 145 945 233V864H640V0H282V864H86Z" transform="translate(347.98,438.84) scale(0.0682,-0.0682)" fill="#ff65f0" stroke="#1b1b1d" stroke-width="132.0" stroke-linejoin="round" paint-order="stroke"/>
   </g>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
 </svg>
