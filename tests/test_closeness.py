@@ -132,6 +132,33 @@ class CommandTests(unittest.TestCase):
             self.assertIn(title, out)
         self.assertEqual(out.count("shape 1.00"), 8)              # the stand-in covers everything
 
+    def test_output_is_utf8_even_where_the_default_is_a_legacy_code_page(self):
+        # what Windows gives output sent to a file: a cp1252 stream, which has no Δ or Cyrillic
+        raw = io.BytesIO()
+        stream = io.TextIOWrapper(raw, encoding="cp1252")
+        with mock.patch.object(sys, "stdout", stream):
+            closeness.main(["report", "--top", "1"])
+            stream.flush()
+        self.assertIn("ΔE", raw.getvalue().decode("utf-8"))
+
+    def test_top_must_be_at_least_one(self):
+        for value in ("0", "-1"):
+            with self.subTest(top=value), self.assertRaises(SystemExit), \
+                 contextlib.redirect_stderr(io.StringIO()):          # argparse prints the usage
+                self.run_main("report", "--top", value)
+
+    @unittest.skipUnless(importlib.util.find_spec("fontTools") and build.find_font(build.BOLD_FONT),
+                         "needs fontTools and DejaVu Sans Bold")
+    def test_letters_are_checked_before_any_is_measured(self):
+        measured = []
+        with mock.patch.object(closeness, "try_candidates", lambda *a: measured.append(a)):
+            with self.assertRaises(SystemExit) as cm:
+                self.run_main("letter", "victor", "√", "✌️", "")
+        self.assertEqual(measured, [])
+        self.assertIn("(U+270C U+FE0F) is 2 characters, not one", str(cm.exception))
+        self.assertIn("the font has no  (U+E000)", str(cm.exception))
+        self.assertNotIn("icons.json", str(cm.exception))
+
     def test_a_bad_colour_or_name_stops_with_a_message(self):
         for argv, message in ((("color", "papa", "lime"), "'lime' is not a colour like #66ff75"),
                               (("color", "panda", "#66ff75"), "Unknown icon name: panda")):
@@ -149,14 +176,31 @@ class CommandTests(unittest.TestCase):
                 closeness.draw_sheet(path, [("one", [(red, red), (red, red)])])
             with Image.open(path) as im:
                 im = im.convert("RGB")
-                # the first icon's 16 px image: x from the 8 px margin, y below the 20 px caption
-                # line, centred in the 32 px row (16 px enlarged 3x starts 24 px down)
-                x, y = 8 + 5, 8 + 20 + 24 + 5
-                sheet_height = (im.height - 8) // 2     # two sheets with an 8 px gap between
-                top = im.getpixel((x, y))
-                bottom = im.getpixel((x, sheet_height + 8 + y))
-        self.assertEqual(top, (220, 40, 40))
-        self.assertEqual(bottom, tuple(round(v) for v in closeness.deuteranopia((220, 40, 40))))
+                gap = closeness.SHEET_GAP
+                sheet_height = (im.height - gap) // 2   # two sheets, one gap between them
+                probes = []
+                for icon in (0, 1):
+                    for size in (16, 24, 32):
+                        x, y = closeness.sheet_position(0, icon, size)
+                        x, y = x + 2, y + 2             # just inside the image's corner
+                        probes.append((im.getpixel((x, y)), im.getpixel((x, sheet_height + gap + y))))
+                # nothing is drawn just before the second icon's first image: the gap is empty
+                x, y = closeness.sheet_position(0, 1, 16)
+                background = im.getpixel((x - 2, y + 2))
+        simulated = tuple(round(v) for v in closeness.deuteranopia((220, 40, 40)))
+        self.assertEqual(probes, [((220, 40, 40), simulated)] * 6)
+        self.assertEqual(background, (32, 33, 36))
+
+    def test_sheet_is_wide_enough_for_the_longest_row(self):
+        with tempfile.TemporaryDirectory() as t:
+            path = os.path.join(t, "sheet.png")
+            svg = '<svg xmlns="http://www.w3.org/2000/svg"/>'
+            with contextlib.redirect_stdout(io.StringIO()):
+                closeness.draw_sheet(path, [("a", [(svg, svg)] * 2), ("b", [(svg, svg)] * 5)])
+            with Image.open(path) as im:
+                width = im.width
+        last_image_right = closeness.sheet_position(1, 4, 32)[0] + 32 * closeness.SHEET_ZOOM
+        self.assertGreater(width, last_image_right)
 
 
 if __name__ == "__main__":

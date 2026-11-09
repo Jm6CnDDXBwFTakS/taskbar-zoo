@@ -159,6 +159,11 @@ def risk(shape, delta_e):
     """Ranking aid: high when two icons are close in shape and in colour. ΔE below 1 counts as 1."""
     return shape * RISK_SCALE / max(1.0, delta_e)
 
+def pair_risk(shape, delta_e_normal, delta_e_deuteranopia):
+    """A pair's risk: the worse of normal vision and deuteranopia. The one place that decides how
+    the two are combined, so the printed risk and every ranking by it always agree."""
+    return max(risk(shape, delta_e_normal), risk(shape, delta_e_deuteranopia))
+
 # ---- the set -------------------------------------------------------------------------------
 
 hex_rgb = build.hex_rgb             # "#66ff75" -> (102, 255, 117)
@@ -170,11 +175,13 @@ def committed_masks(icons):
             for ic in icons}
 
 def pair_rows(icons, masks):
-    """One row per pair of icons: (name1, name2, shape overlap, ΔE normal, ΔE deuteranopia)."""
+    """One row per pair of icons:
+    (name1, name2, shape overlap, ΔE normal, ΔE deuteranopia, risk)."""
     rows = []
     for a, b in combinations(icons, 2):
         dn, dd = color_distances(hex_rgb(a["color"]), hex_rgb(b["color"]))
-        rows.append((a["name"], b["name"], shape_overlap(masks[a["name"]], masks[b["name"]]), dn, dd))
+        sh = shape_overlap(masks[a["name"]], masks[b["name"]])
+        rows.append((a["name"], b["name"], sh, dn, dd, pair_risk(sh, dn, dd)))
     return rows
 
 def neighbours(candidate_rgb, candidate_masks, others, masks):
@@ -184,7 +191,7 @@ def neighbours(candidate_rgb, candidate_masks, others, masks):
     for ic in others:
         dn, dd = color_distances(candidate_rgb, hex_rgb(ic["color"]))
         sh = shape_overlap(candidate_masks, masks[ic["name"]])
-        rows.append((ic["name"], sh, dn, dd, max(risk(sh, dn), risk(sh, dd))))
+        rows.append((ic["name"], sh, dn, dd, pair_risk(sh, dn, dd)))
     return sorted(rows, key=lambda r: -r[4])
 
 # ---- output --------------------------------------------------------------------------------
@@ -195,13 +202,13 @@ def label(icon):
 def print_report(icons, rows, top):
     by = {ic["name"]: ic for ic in icons}
     def line(r):
-        a, b, sh, dn, dd = r
+        a, b, sh, dn, dd, rk = r
         return (f"  {label(by[a]):<12} {label(by[b]):<12} shape {sh:.2f}   ΔE {dn:5.1f}   "
-                f"deuteranopia ΔE {dd:5.1f}   risk {max(risk(sh, dn), risk(sh, dd)):.2f}")
+                f"deuteranopia ΔE {dd:5.1f}   risk {rk:.2f}")
     sections = (("Closest colours, normal vision", lambda r: r[3]),
                 ("Closest colours with deuteranopia", lambda r: r[4]),
                 ("Closest letter shapes", lambda r: -r[2]),
-                ("Riskiest pairs (close in shape and colour)", lambda r: -max(risk(r[2], r[3]), risk(r[2], r[4]))))
+                ("Riskiest pairs (close in shape and colour)", lambda r: -r[5]))
     for title, key in sections:
         print(title + ":")
         for r in sorted(rows, key=key)[:top]:
@@ -216,18 +223,36 @@ def print_candidates(target, results, icons, top):
         for name, sh, dn, dd, rk in rows[:top]:
             print(f"      {label(by[name]):<12} shape {sh:.2f}   ΔE {dn:5.1f}   deuteranopia ΔE {dd:5.1f}   risk {rk:.2f}")
 
+SHEET_ZOOM = 3          # each pixel drawn as a 3x3 block, without smoothing
+SHEET_GAP = 8           # px between images, and the sheet's margin
+SHEET_CAPTION = 20      # px from the top of a row to its first image, below the caption
+
+def sheet_position(row, icon, size):
+    """Top-left corner of one image on a sheet (before the deuteranopia copy is added below):
+    `icon` counts from 0 within the row, `size` is 16, 24 or 32. draw_sheet places every image
+    here, and tests use it to find one. Images are centred vertically in a 32 px row."""
+    z, gap = SHEET_ZOOM, SHEET_GAP
+    cell = (16 + 24 + 32) * z + 3 * gap         # one icon: its three sizes, each followed by a gap
+    x = gap + icon * cell + (6 * gap + (icon - 1) * 3 * gap if icon else 0)
+    for s in (16, 24, 32):                      # step past the smaller sizes of the same icon
+        if s == size:
+            break
+        x += s * z + gap
+    y = gap + row * (32 * z + 30) + SHEET_CAPTION + (32 - size) * z // 2
+    return x, y
+
 def draw_sheet(path, sheet_rows):
     """A comparison sheet: each row is a caption and a list of icons, each drawn letter-only at 16
-    and 24 px and full at 32 px, enlarged 3x without smoothing so real pixels show. The same sheet
-    as seen with deuteranopia is drawn below it. sheet_rows: [(caption, [(full_svg, small_svg)])]."""
+    and 24 px and full at 32 px, enlarged without smoothing so real pixels show. The same sheet
+    as seen with deuteranopia is drawn below it, SHEET_GAP px lower.
+    sheet_rows: [(caption, [(full_svg, small_svg)])], at least one row."""
     from PIL import Image, ImageDraw, ImageFont
-    zoom, gap = 3, 8
+    zoom, gap = SHEET_ZOOM, SHEET_GAP
     cell = (16 + 24 + 32) * zoom + 3 * gap      # one icon: its three sizes, each followed by a gap
     row_h = 32 * zoom + 30
     n = max(len(icons) for _, icons in sheet_rows)
-    # left margin, n icons, then a wide gap after the first (the candidate) and a normal one after
-    # each of the others, as the drawing loop below steps x
-    width = gap + n * cell + 6 * gap + (n - 1) * 3 * gap
+    # where an icon after the last one would start (sheet_position), which leaves a right margin
+    width = sheet_position(0, n, 16)[0]
     sheet = Image.new("RGBA", (width, len(sheet_rows) * row_h + gap), (32, 33, 36, 255))
     draw = ImageDraw.Draw(sheet)
     font_path = build.find_font(build.LABEL_FONT)
@@ -236,7 +261,6 @@ def draw_sheet(path, sheet_rows):
         for r, (caption, row_icons) in enumerate(sheet_rows):
             y = gap + r * row_h
             draw.text((gap, y), caption, fill=(225, 225, 225), font=font)
-            x = gap
             for i, (full, small) in enumerate(row_icons):
                 for size, svg_text in ((16, small), (24, small), (32, full)):
                     svg, png = os.path.join(t, "i.svg"), os.path.join(t, "i.png")
@@ -244,9 +268,7 @@ def draw_sheet(path, sheet_rows):
                     build.render(svg, png, size)
                     with Image.open(png) as im:
                         big = im.convert("RGBA").resize((size * zoom, size * zoom), Image.NEAREST)
-                    sheet.alpha_composite(big, (x, y + 20 + (32 - size) * zoom // 2))
-                    x += size * zoom + gap
-                x += 3 * gap if i else 6 * gap          # a wider gap after the candidate
+                    sheet.alpha_composite(big, sheet_position(r, i, size))
     normal = sheet.convert("RGB")
     seen = {}                                           # each distinct colour is converted once
     def simulate(p):
@@ -274,7 +296,7 @@ def cmd_report(args):
     print_report(icons, rows, args.top)
     if args.sheet:
         by = {ic["name"]: ic for ic in icons}
-        worst = sorted(rows, key=lambda r: -max(risk(r[2], r[3]), risk(r[2], r[4])))[:args.top]
+        worst = sorted(rows, key=lambda r: -r[5])[:args.top]
         draw_sheet(args.sheet, [(f"{label(by[a])} / {label(by[b])}", [committed_svgs(a), committed_svgs(b)])
                                 for a, b, *_ in worst])
 
@@ -310,17 +332,45 @@ def cmd_color(args):
                                           dict(target, color=c.lower())) for c in args.colors])
 
 def cmd_letter(args):
+    # Check every letter before measuring any: build.glyph would stop at the first bad one with a
+    # message about icons.json, which the person running this didn't touch. A "letter" that looks
+    # like one character can be two code points, e.g. ✌️ is ✌ plus an emoji-style selector.
+    build.require("letter", modules=("fontTools",))
+    from fontTools.ttLib import TTFont
+    font = build.find_font(build.BOLD_FONT)
+    if not font:
+        sys.exit("DejaVu Sans Bold not found; set ICON_FONT=/path/to/DejaVuSans-Bold.ttf")
+    cmap = TTFont(font).getBestCmap()
+    def code_points(ch):            # U+270C U+FE0F: shows characters that print as nothing
+        return " ".join(f"U+{ord(c):04X}" for c in ch)
+    bad = [f"{ch} ({code_points(ch)}) is {len(ch)} characters, not one" if len(ch) != 1
+           else f"the font has no {ch} ({code_points(ch)})"
+           for ch in args.letters if len(ch) != 1 or ord(ch) not in cmap]
+    if bad:
+        sys.exit("Can't try these letters: " + "; ".join(bad))
     try_candidates(args, lambda target: [(f"{ch} in {target['color']}"
                                           + (" (current)" if ch == target["letter"] else ""),
                                           dict(target, letter=ch)) for ch in args.letters])
 
+def positive_int(text):
+    """argparse type for --top: a whole number of at least 1."""
+    n = int(text)
+    if n < 1:
+        raise argparse.ArgumentTypeError(f"must be 1 or more, not {n}")
+    return n
+
 def main(argv):
+    # The output holds ΔE and Greek and Cyrillic letters. On Windows, output sent to a file or a
+    # pipe uses the old code page (cp1252), which has none of them, and print would fail; UTF-8
+    # works everywhere. (A StringIO, as in the tests, has no reconfigure and needs none.)
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     p = argparse.ArgumentParser(prog="closeness.py", description=__doc__.split("\n\n")[0],
                                 formatter_class=argparse.RawDescriptionHelpFormatter,
                                 epilog="Commands: report, color NAME #HEX..., letter NAME CHAR...")
     sub = p.add_subparsers(dest="command", required=True)
     common = argparse.ArgumentParser(add_help=False)
-    common.add_argument("--top", type=int, default=8, help="rows to list per section (default 8)")
+    common.add_argument("--top", type=positive_int, default=8, help="rows to list per section (default 8)")
     common.add_argument("--sheet", metavar="PNG", help="also draw a comparison sheet to this file")
     sub.add_parser("report", parents=[common], help="the closest pairs in the set as it is")
     c = sub.add_parser("color", parents=[common], help="try colours for one icon")
