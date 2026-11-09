@@ -109,7 +109,8 @@ checked against the icons as they are now.
 ## Repository layout
 
 ```
-VERSION           the set's version (e.g. 0.9.0), used in the zip's name and README.txt
+AGENTS.md         notes for AI coding assistants (CLAUDE.md just points Claude Code to it)
+VERSION           the set's version (e.g. 0.10.0), used in the zip's name and README.txt
 CHANGELOG.md      what changed in each release
 icons.json        name → letter, animal, colour (optional: centre offset, display title like "X-ray")
 art/*.svgfrag     the animal drawings (SVG snippets using colour tokens)

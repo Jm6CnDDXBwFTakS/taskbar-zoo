@@ -7,7 +7,7 @@
     ... --sheet out.png                               # also draw a comparison sheet
     ... --top 12                                      # how many rows to list (default 8)
 
-Run it before changing a colour or a letter (CLAUDE.md, Colours and Letters), and look at the sheet.
+Run it before changing a colour or a letter (AGENTS.md, Colours and Letters), and look at the sheet.
 
 Three measures, each explained where it is computed below:
 
