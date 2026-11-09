@@ -5,7 +5,7 @@
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
     <linearGradient id="victor-m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#72c86c"/><stop offset="1" stop-color="#55b24f"/>
+      <stop offset="0" stop-color="#fde2b5"/><stop offset="1" stop-color="#ebce9d"/>
     </linearGradient>
     <clipPath id="victor-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
@@ -13,19 +13,19 @@
   <g clip-path="url(#victor-tile)">
   <g transform="translate(256.0,256.0) scale(0.7734) translate(-256.0,-228.0)">
 <path d="M240,214 L180,160 L100,118 L18,162 L0,256 L40,244 L70,296 L110,262 L150,316 L190,274 L232,330 Z" fill="url(#victor-m)" /><path d="M272,214 L332,160 L412,118 L494,162 L512,256 L472,244 L442,296 L402,262 L362,316 L322,274 L280,330 Z" fill="url(#victor-m)" />
-<path d="M232,226 L100,122 L20,164 M100,122 L42,244 M100,122 L110,262 M100,122 L150,314" fill="none" stroke="#377333" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M280,226 L412,122 L492,164 M412,122 L470,244 M412,122 L402,262 M412,122 L362,314" fill="none" stroke="#377333" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M256,192 L300,212 L312,302 L292,382 L256,404 L220,382 L200,302 L212,212 Z" fill="#377333" />
+<path d="M232,226 L100,122 L20,164 M100,122 L42,244 M100,122 L110,262 M100,122 L150,314" fill="none" stroke="#978565" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M280,226 L412,122 L492,164 M412,122 L470,244 M412,122 L402,262 M412,122 L362,314" fill="none" stroke="#978565" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M256,192 L300,212 L312,302 L292,382 L256,404 L220,382 L200,302 L212,212 Z" fill="#978565" />
 <path d="M214,170 L178,52 L246,150 Z" fill="url(#victor-m)" /><path d="M298,170 L334,52 L266,150 Z" fill="url(#victor-m)" />
-<path d="M216,150 L194,90 L234,146 Z" fill="#b5e2b2" /><path d="M296,150 L318,90 L278,146 Z" fill="#b5e2b2" />
+<path d="M216,150 L194,90 L234,146 Z" fill="#fef0d8" /><path d="M296,150 L318,90 L278,146 Z" fill="#fef0d8" />
 <path d="M256,148 L302,160 L322,200 L312,252 L282,282 L256,290 L230,282 L200,252 L190,200 L210,160 Z" fill="url(#victor-m)" />
 <circle cx="230" cy="208" r="10" fill="#ff4f4f"/><circle cx="282" cy="208" r="10" fill="#ff4f4f"/>
 <path d="M244,232 L268,232 L256,252 Z" fill="#1b1b1d" />
 <path d="M238,262 L250,262 L244,290 Z" fill="#fdf1e8" /><path d="M274,262 L262,262 L268,290 Z" fill="#fdf1e8" />
 
   </g>
-<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#5cc055" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
-  <path d="M1155 1714H1370V1565H1274L684 -41H565L258 805L113 750L76 879L436 1006L659 371Z" transform="translate(369.45,439.65) scale(0.0450,-0.0450)" fill="#e479eb" stroke="#1b1b1d" stroke-width="199.9" stroke-linejoin="round" paint-order="stroke"/>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#fddea9" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M1155 1714H1370V1565H1274L684 -41H565L258 805L113 750L76 879L436 1006L659 371Z" transform="translate(369.45,439.65) scale(0.0450,-0.0450)" fill="#699ffb" stroke="#1b1b1d" stroke-width="199.9" stroke-linejoin="round" paint-order="stroke"/>
   </g>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
 </svg>

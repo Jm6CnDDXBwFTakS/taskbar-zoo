@@ -25,7 +25,8 @@ Each icon has its own colour in `icons.json`. Before changing one, check its nei
 Known near-pairs that were deliberately resolved: hippo is the only bright pink; the flamingo is
 violet, not pink, for the same reason. The rhino is warm grey: rose-clay clashed with the hippo, and
 terracotta with the bear's caramel (almost identical with red-green colour blindness). The koala is
-sage-grey: light blue sat too close to X-ray, Echo and Sierra. The lion's gold, bear's caramel and
+sage-grey: light blue sat too close to X-ray, Echo and Sierra. The vampire bat is cream: green
+crowded Quebec, Papa and India (whose I is close to √ in shape). The lion's gold, bear's caramel and
 turtle's orange sit close together, so keep new warm colours away from them. Measure colour
 closeness as the eye sees it (CIEDE2000), also as seen with deuteranopia, and render a comparison
 sheet next to the nearest-coloured icons before committing a change.

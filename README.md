@@ -32,7 +32,7 @@ in a hexagon badge, drawn in the animal colour's complement so it stands out on 
 | Sierra | ς | Shark | `#4fc0ff` |
 | Tango | τ | Turtle | `#ff7b29` |
 | Uniform | Ю | Unicorn | `#ff5fd0` |
-| Victor | √ | Vampire bat | `#5cc055` |
+| Victor | √ | Vampire bat | `#fddea9` |
 | Whiskey | ω | Walrus | `#e8a882` |
 | X-ray | X | X-ray fish | `#bfe8ff` |
 | Yankee | ψ | Yak | `#c9568a` |
