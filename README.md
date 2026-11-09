@@ -13,13 +13,21 @@ Get `taskbar-zoo-<version>.zip` from the [Releases](../../releases) page: every 
 (Windows), `.icns` (macOS), SVG and PNG, ready to use (see [Using the icons](#using-the-icons)).
 No build needed. What changed in each version is in [CHANGELOG.md](CHANGELOG.md).
 
+## Feedback
+
+The 0.9 releases are a test run before the set is fixed at 1.0.0. If two icons are hard to tell
+apart on your taskbar or dock, an animal doesn't read, or a format doesn't work on your system,
+please [open an issue](../../issues) and say which icons, at what size, and on which OS. A
+screenshot helps most.
+
 ## Telling them apart
 
 The main design goal is that any two icons can be told apart at a glance, at every size from 16 px
 up:
 
 - **Two layers:** from 32 px up, each icon shows its animal plus a letter badge. At 16 and 24 px,
-  where an animal would be a blur, the icon is the letter alone, in the animal's colour.
+  where an animal would be a blur, the icon is the letter alone, in the animal's colour. The badge
+  letter becomes readable from about 48 px; at 32 px the animal and its colour do the work.
 - **Letters chosen by shape:** every letter was compared with every other at 16 and 24 px, all drawn
   in one colour so only shape counts, and letters in close pairs were replaced (see
   [About the letters](#about-the-letters)).
@@ -65,31 +73,36 @@ all differ clearly in colour.
 
 ## About the letters
 
-Each name gets a Greek or Cyrillic letter that sounds or looks like its initial. Where that would
-look too much like another icon's letter at 16 px, distinctness won over accuracy:
+Each name gets a Greek or Cyrillic letter that sounds or looks like its initial. Where that letter
+would look too much like another icon's letter at 16 px, distinctness won over accuracy. Each note
+below names the letter that would have been the obvious choice and the letter **in the current set**
+it would be confused with, so every reason can be checked against the icons as they are now.
 
-- **Greek where it fits:** α β Γ Δ μ π ς τ ψ — mostly lowercase, with capitals where the
-  lowercase form looked too much like a Latin letter (Γ) or another icon's letter (Δ: δ was close
-  to β).
-- **Sierra — ς:** the final sigma, the form σ takes at the end of a word. Chosen over Σ, which
-  looked too much like ε, Ξ and Z at small sizes.
-- **Cyrillic for Charlie, Echo, Foxtrot, Hotel, Juliett, Lima and Uniform:** Ч (*ch*), Э (*e*),
-  Ф (*f*), Һ (*h*), Ж (*zh*), Л (*l*) and Ю (*yu*, as in the start of "Uniform"). Һ ("shha", used
-  in Kazakh, Tatar and Bashkir) looks like a Latin h; it replaced Η, which looked too much like N
-  and Ч. Э replaced ε, which looked too much like Σ, Ξ and δ. Л replaced Λ, which is Δ without its
-  base.
-- **Kilo — Ϟ:** koppa, an archaic Greek *k*-type letter, in its later lightning-bolt form. Chosen over κ,
-  which looked too much like Ж at small sizes.
-- **Oscar — Θ:** theta, used for its shape; a plain O was too close to α when tiny.
-- **Quebec — Щ:** neither alphabet has a Q, so this is purely a bold, distinctive shape (it's
-  pronounced roughly *shch*). The historically "correct" letter, Ϙ (koppa, the ancestor of Latin Q),
-  is the same letter as Kilo's Ϟ and looks too much like Θ.
-- **Victor — √:** a square-root sign, because a V looked like a mirrored Λ (Lima's letter at the
-  time). Nod to math class.
+- **Greek where it fits:** α β Γ Δ μ π τ — mostly lowercase, with capitals where the lowercase
+  form gets in the way: γ reads as a Latin *y*, which suggests Yankee, and δ is a round loop much
+  like Θ, Э and β.
+- **Sierra — ς:** the final sigma, the form σ takes at the end of a word. The other two forms clash:
+  σ is almost the same blob as α at 16 px, and Σ is a zigzag like Z.
+- **Yankee — ψ:** psi, for its *Y*-like fork rather than its sound. A plain Y would sit close to τ.
 - **Whiskey — ω:** omega, for its *w*-like shape rather than its sound.
-- **India, November, Romeo, X-ray, Zulu — I, N, R, X, Z:** plain Latin letters, used where they were
-  already distinct. R replaced ρ, which looked too much like β and μ; X replaced Ξ (xi), which
-  looked too much like Z and Э.
+- **Cyrillic for Charlie, Echo, Foxtrot, Hotel, Juliett, Lima and Uniform:** Ч (*ch*), Э (*e*),
+  Ф (*f*), Һ (*h*), Ж (*zh*), Л (*l*) and Ю (*yu*, as in the start of "Uniform").
+  - Һ ("shha", used in Kazakh, Tatar and Bashkir) looks like a Latin h. Greek Η (eta) would look
+    like N and Ч.
+  - Л rather than Greek Λ, which is Δ without its base.
+  - Э rather than Greek ε: the two are equally distinct from today's letters, and Э is the more
+    solid shape at 16 px.
+- **Kilo — Ϟ:** koppa, an archaic Greek *k*-type letter, in its later lightning-bolt form. Greek κ
+  shares R's upright stroke with a leg, and X's diagonals.
+- **Oscar — Θ:** theta, used for its shape: the bar inside keeps it from being a plain ring. Every
+  O-like letter (O, Ö, Ω, Θ) comes closest to α at 16 px, and α is far away in colour.
+- **Quebec — Щ:** neither alphabet has a Q, so this is purely a bold, distinctive shape (it's
+  pronounced roughly *shch*). The historically "correct" letter, Ϙ (koppa, the ancestor of Latin
+  Q), is the same letter as Kilo's Ϟ.
+- **Victor — √:** a square-root sign, the most distinct shape in the set. A plain V would work, but
+  it shares ψ's open fork, and √'s long tail keeps it further away. Nod to math class.
+- **India, November, Romeo, X-ray, Zulu — I, N, R, X, Z:** plain Latin letters, used where they are
+  already distinct. Greek ρ would look like μ, and Ξ (xi) like Z and Э.
 
 ## Repository layout
 
