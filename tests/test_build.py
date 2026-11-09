@@ -13,7 +13,7 @@ import contextlib, importlib.util, io, os, re, shutil, struct, subprocess, tempf
 import xml.dom.minidom
 from unittest import mock
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageChops, ImageDraw, ImageFont
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # tools/ is not a package, so load build.py from its path
@@ -64,10 +64,17 @@ def decode_argb(data, size):
     return Image.merge("RGBA", (r, g, b, a))
 
 
-def same_visible_pixels(a, b):
-    """True if two RGBA images match wherever a pixel is visible (transparent ones carry no colour)."""
+def same_visible_pixels(a, b, tolerance=0):
+    """True if two RGBA images differ by at most `tolerance` per channel wherever a pixel is visible
+    in either (fully transparent pixels carry no colour, so their RGB is ignored)."""
     a, b = a.convert("RGBA"), b.convert("RGBA")
-    return a.size == b.size and all(p == q for p, q in zip(a.getdata(), b.getdata()) if p[3] or q[3])
+    if a.size != b.size:
+        return False
+    # blank out pixels transparent in both images, then compare channel by channel
+    visible = ImageChops.lighter(*(im.getchannel("A").point(lambda v: 255 if v else 0) for im in (a, b)))
+    blank = Image.new("RGBA", a.size, (0, 0, 0, 0))
+    diff = ImageChops.difference(Image.composite(a, blank, visible), Image.composite(b, blank, visible))
+    return max(high for _, high in diff.getextrema()) <= tolerance
 
 
 class TempOutput(unittest.TestCase):
@@ -122,7 +129,10 @@ class CommittedSvgTests(unittest.TestCase):
         fit transform and the letter outlines) need rsvg-convert and the font, so they are taken
         from the committed files; everything else (colours, ids, titles, art) must match."""
         def committed(name):
-            with open(os.path.join(ROOT, "svg", name), encoding="utf-8") as f:
+            path = os.path.join(ROOT, "svg", name)
+            if not os.path.exists(path):
+                self.fail(f"svg/{name} is missing: run ./build.sh --full")
+            with open(path, encoding="utf-8") as f:
                 return f.read()
         fits, glyphs = {}, {}
         icons = build.load_icons()
@@ -217,10 +227,12 @@ class ExportTests(TempOutput):
         want = {"16x16": 16, "16x16@2x": 32, "32x32": 32, "32x32@2x": 64, "128x128": 128,
                 "128x128@2x": 256, "256x256": 256, "256x256@2x": 512, "512x512": 512, "512x512@2x": 1024}
         self.assertEqual(sorted(f[5:-4] for f in os.listdir(iconset)), sorted(want))
+        # iconutil decodes through macOS's own image code, which may round a channel by a step or
+        # two; a wrong slot or channel order is off by far more than that
         for name, size in want.items():
-            with self.subTest(file=name):
-                self.assertTrue(same_visible_pixels(Image.open(os.path.join(iconset, f"icon_{name}.png")),
-                                                    Image.open(build.png_path("test", size))))
+            with self.subTest(file=name), Image.open(os.path.join(iconset, f"icon_{name}.png")) as got, \
+                 Image.open(build.png_path("test", size)) as source:
+                self.assertTrue(same_visible_pixels(got, source, tolerance=2))
 
 
 class MainTests(TempOutput):
