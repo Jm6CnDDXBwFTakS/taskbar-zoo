@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Uniform (Ю) - Unicorn</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="uniform-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="uniform-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ff75d6"/><stop offset="1" stop-color="#ed58c1"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="uniform-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#uniform-g)"/>
+  <g clip-path="url(#uniform-tile)">
   <g transform="translate(240.0,244.0) scale(0.8534) translate(-241.0,-250.0)">
 <g transform="translate(512,0) scale(-1,1)"><path d="M250,132 L190,140 L200,170 L140,190 L160,230 L100,260 L130,300 L80,340 L120,370 L70,420 L118,440 L104,482 L140,482 L150,360 L176,252 L218,168 Z" fill="#ffb7e9" />
-<path d="M128,482 L136,362 L164,252 L212,170 L272,130 L322,140 L372,190 L432,270 L472,330 L462,372 L422,384 L362,352 L302,334 L284,384 L302,482 Z" fill="url(#m)" />
-<path d="M252,142 L240,70 L290,132 Z" fill="url(#m)" />
+<path d="M128,482 L136,362 L164,252 L212,170 L272,130 L322,140 L372,190 L432,270 L472,330 L462,372 L422,384 L362,352 L302,334 L284,384 L302,482 Z" fill="url(#uniform-m)" />
+<path d="M252,142 L240,70 L290,132 Z" fill="url(#uniform-m)" />
 <path d="M256,128 L250,94 L276,126 Z" fill="#99397c" />
 <path d="M294,140 L384,18 L318,152 Z" fill="#ffe08a" />
 <path d="M318,118 L338,124 M336,92 L352,98 M352,66 L366,70 M368,42 L378,46" fill="none" stroke="#c9a040" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />

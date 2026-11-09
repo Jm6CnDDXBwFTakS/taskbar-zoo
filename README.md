@@ -61,7 +61,7 @@ look too much like another icon's letter at 16 px, distinctness won over accurac
 ## Repository layout
 
 ```
-icons.json        name → letter, animal, colour (and optional centre offset)
+icons.json        name → letter, animal, colour (optional: centre offset, display title like "X-ray")
 art/*.svgfrag     the animal drawings (SVG snippets using colour tokens)
 svg/              generated master SVGs — the files to use or convert
   <name>.svg                 full icon (animal + badge), used for 32 px and up
@@ -82,13 +82,16 @@ without any fonts installed.
 ./build.sh --full     # also regenerate svg/ from art/ + icons.json first
 ```
 
-Or step by step: `python3 tools/build.py svg|export|previews|all [names…]`
+Or step by step: `python3 tools/build.py svg|export|previews|all [names…]`. Names limit `svg` and
+`export`; `previews` always draws the full set from `dist/`, so it needs every icon exported first.
 
 Requirements:
 
 - **export** (SVG → PNG/ICO/ICNS): `rsvg-convert` (librsvg) and Python 3 with Pillow
 - **svg** (art → SVG, only needed after editing art or icons.json): also `fontTools` and the
   DejaVu Sans Bold font (set `ICON_FONT=/path/to/DejaVuSans-Bold.ttf` if it isn't found)
+- **previews**: Pillow and DejaVu Sans (regular), looked for next to `ICON_FONT` and in the usual
+  font folders
 
 ```sh
 # Debian/Ubuntu

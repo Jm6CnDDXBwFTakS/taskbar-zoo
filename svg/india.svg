@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>India (I) - Iguana</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="india-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="india-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#b2db55"/><stop offset="1" stop-color="#9ac735"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="india-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#india-g)"/>
+  <g clip-path="url(#india-tile)">
   <g transform="translate(256.0,256.0) scale(0.7968) translate(-256.0,-260.5)">
-<path d="M178,346 L334,346 L376,502 L136,502 Z" fill="url(#m)" />
+<path d="M178,346 L334,346 L376,502 L136,502 Z" fill="url(#india-m)" />
 <path d="M152,444 L206,432 L202,458 L146,470 Z M164,394 L210,386 L208,408 L160,416 Z" fill="#638022" /><path d="M360,444 L306,432 L310,458 L366,470 Z M348,394 L302,386 L304,408 L352,416 Z" fill="#638022" />
-<path d="M256,96 L340,120 L402,200 L410,280 L370,350 L300,390 L256,398 L212,390 L142,350 L102,280 L110,200 L172,120 Z" fill="url(#m)" />
+<path d="M256,96 L340,120 L402,200 L410,280 L370,350 L300,390 L256,398 L212,390 L142,350 L102,280 L110,200 L172,120 Z" fill="url(#india-m)" />
 
 <path d=""  fill="none" stroke="#638022" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
 <path d="M210,140 L236,150 L222,172 Z M180,170 L206,178 L190,200 Z M232,182 L256,170 L256,198 Z" fill="#638022" /><path d="M302,140 L276,150 L290,172 Z M332,170 L306,178 L322,200 Z M280,182 L256,170 L256,198 Z" fill="#638022" />

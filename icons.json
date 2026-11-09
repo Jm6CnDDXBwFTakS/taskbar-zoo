@@ -127,6 +127,7 @@
     "color": "#e8a882"
   },
   "xray": {
+    "title": "X-ray",
     "letter": "Ξ",
     "animal": "X-ray fish",
     "color": "#bfe8ff",

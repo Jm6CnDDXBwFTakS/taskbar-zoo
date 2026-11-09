@@ -36,8 +36,12 @@ without asking.
 - Source of truth: `art/<name>.svgfrag` + `icons.json`. `svg/` is generated **and committed**.
   `dist/` is generated and git-ignored.
 - `./build.sh --full` regenerates svg/, dist/ and previews/. Steps can be limited:
-  `python3 tools/build.py svg|export|previews|all [names…]`.
-- Needs `rsvg-convert`, Pillow, fontTools and DejaVu Sans Bold (`ICON_FONT` env var to override).
+  `python3 tools/build.py svg|export|previews|all [names…]`. Names limit svg and export only:
+  previews always draw the full set (they overwrite the committed `full-set-*.png`).
+- Needs `rsvg-convert`, Pillow, fontTools and DejaVu Sans Bold (`ICON_FONT` env var to override);
+  previews also need DejaVu Sans (regular), looked for next to `ICON_FONT` first.
+- `.icns` files are written by build.py itself, not Pillow (whose writer has no 16/32 px @1x
+  slots); check changes there with `iconutil -c iconset` on a Mac.
   The fit step renders each animal with rsvg-convert to measure it, so it is required for `svg` too.
 - After any visual change: rebuild, then **look at** `previews/full-set-dark.png` (and a crop at
   16–32 px) before committing. Regenerating unchanged art should produce no git diff.

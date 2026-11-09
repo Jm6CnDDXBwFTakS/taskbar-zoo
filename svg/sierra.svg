@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Sierra (Σ) - Shark</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="sierra-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="sierra-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#67c8ff"/><stop offset="1" stop-color="#49b2ed"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="sierra-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#sierra-g)"/>
+  <g clip-path="url(#sierra-tile)">
   <g transform="translate(256.0,256.0) scale(0.8761) translate(-256.0,-222.0)">
 <path d="M222,126 L272,20 L304,132 Z" fill="#2f7399" />
 <path d="M124,330 L30,424 L156,382 Z" fill="#2f7399" /><path d="M388,330 L482,424 L356,382 Z" fill="#2f7399" />
-<path d="M256,100 L340,130 L420,220 L432,300 L382,372 L300,404 L212,404 L130,372 L80,300 L92,220 L172,130 Z" fill="url(#m)" />
+<path d="M256,100 L340,130 L420,220 L432,300 L382,372 L300,404 L212,404 L130,372 L80,300 L92,220 L172,130 Z" fill="url(#sierra-m)" />
 <path d="M88,290 L424,290 L382,372 L300,404 L212,404 L130,372 Z" fill="#fdf1e8" />
 <path d="M150,318 L362,318 L322,374 L190,374 Z" fill="#1b1b1d" />
 <path d="M162,318 L176,340 L190,318 L204,340 L218,318 L232,340 L246,318 L260,340 L274,318 L288,340 L302,318 L316,340 L330,318 L344,340 L352,318 Z" fill="#fdf1e8" />

@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Foxtrot (Ф) - Flamingo</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="foxtrot-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="foxtrot-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#9a8eff"/><stop offset="1" stop-color="#8073ed"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="foxtrot-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#foxtrot-g)"/>
+  <g clip-path="url(#foxtrot-tile)">
   <g transform="translate(240.0,244.0) scale(0.8879) translate(-278.0,-281.0)">
-<g transform="translate(512,0) scale(-1,1)"><path d="M40,410 L90,340 L190,320 L280,350 L300,410 L250,462 L130,470 L60,452 Z" fill="url(#m)" />
+<g transform="translate(512,0) scale(-1,1)"><path d="M40,410 L90,340 L190,320 L280,350 L300,410 L250,462 L130,470 L60,452 Z" fill="url(#foxtrot-m)" />
 <path d="M110,360 L210,346 L270,392 L220,440 L120,430 Z" fill="#524a99" />
 <path d="M150,450 L120,482 L90,470 M120,482 L140,500" fill="none" stroke="#524a99" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M270,370 C340,330 330,250 270,210 C210,170 220,96 300,92" fill="none" stroke="url(#m)" stroke-width="44" stroke-linejoin="round" stroke-linecap="butt"/>
-<circle cx="306" cy="96" r="38" fill="url(#m)"/>
+<path d="M270,370 C340,330 330,250 270,210 C210,170 220,96 300,92" fill="none" stroke="url(#foxtrot-m)" stroke-width="44" stroke-linejoin="round" stroke-linecap="butt"/>
+<circle cx="306" cy="96" r="38" fill="url(#foxtrot-m)"/>
 <path d="M332,74 L404,90 L428,128 L418,166 L402,138 L382,124 L336,120 Z" fill="#fdf1e8" />
 <path d="M404,90 L428,128 L418,166 L402,138 Z" fill="#1b1b1d" />
 <circle cx="312" cy="88" r="9" fill="#1b1b1d"/><circle cx="315" cy="85" r="3" fill="#fdf1e8"/>

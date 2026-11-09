@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Oscar (Θ) - Owl</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="oscar-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="oscar-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#d0af7e"/><stop offset="1" stop-color="#ba9662"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="oscar-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#oscar-g)"/>
+  <g clip-path="url(#oscar-tile)">
   <g transform="translate(256.0,256.0) scale(0.9754) translate(-256.0,-259.0)">
-<path d="M256,100 L330,112 L394,56 L402,150 L432,250 L412,352 L350,432 L256,462 L162,432 L100,352 L80,250 L110,150 L118,56 L182,112 Z" fill="url(#m)" />
+<path d="M256,100 L330,112 L394,56 L402,150 L432,250 L412,352 L350,432 L256,462 L162,432 L100,352 L80,250 L110,150 L118,56 L182,112 Z" fill="url(#oscar-m)" />
 <circle cx="194" cy="244" r="76" fill="#78613f"/><circle cx="318" cy="244" r="76" fill="#78613f"/><circle cx="194" cy="244" r="64" fill="#e6d5bb"/><circle cx="318" cy="244" r="64" fill="#e6d5bb"/>
 <circle cx="196" cy="244" r="36" fill="#ffd23a"/><circle cx="316" cy="244" r="36" fill="#ffd23a"/><circle cx="196" cy="244" r="20" fill="#1b1b1d"/><circle cx="316" cy="244" r="20" fill="#1b1b1d"/><circle cx="203" cy="237" r="6" fill="#fdf1e8"/><circle cx="323" cy="237" r="6" fill="#fdf1e8"/>
 <path d="M150,166 L256,214 L362,166 L362,184 L256,232 L150,184 Z" fill="#78613f" />

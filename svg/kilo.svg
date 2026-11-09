@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Kilo (Ϟ) - Koala</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="kilo-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="kilo-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#acceeb"/><stop offset="1" stop-color="#93b9d7"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="kilo-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#kilo-g)"/>
+  <g clip-path="url(#kilo-tile)">
   <g transform="translate(256.0,256.0) scale(0.8609) translate(-256.0,-266.0)">
-<path d="M156,100 L70,106 L26,178 L46,264 L122,286 L180,222 Z" fill="url(#m)" /><path d="M356,100 L442,106 L486,178 L466,264 L390,286 L332,222 Z" fill="url(#m)" />
+<path d="M156,100 L70,106 L26,178 L46,264 L122,286 L180,222 Z" fill="url(#kilo-m)" /><path d="M356,100 L442,106 L486,178 L466,264 L390,286 L332,222 Z" fill="url(#kilo-m)" />
 <path d="M142,130 L84,138 L58,188 L74,244 L120,256 L160,214 Z" fill="#fdf1e8" /><path d="M370,130 L428,138 L454,188 L438,244 L392,256 L352,214 Z" fill="#fdf1e8" />
-<path d="M256,120 L340,140 L392,220 L388,320 L340,400 L256,432 L172,400 L124,320 L120,220 L172,140 Z" fill="url(#m)" />
+<path d="M256,120 L340,140 L392,220 L388,320 L340,400 L256,432 L172,400 L124,320 L120,220 L172,140 Z" fill="url(#kilo-m)" />
 <path d="M256,120 L300,132 L276,190 L256,170 L236,190 L212,132 Z" fill="#5f778b" opacity="0.6"/>
 <path d="M226,246 L286,246 L302,300 L292,362 L256,380 L220,362 L210,300 Z" fill="#1b1b1d" />
 <path d="M236,262 L254,258 L248,290 Z" fill="#d3e5f4" opacity="0.5"/>

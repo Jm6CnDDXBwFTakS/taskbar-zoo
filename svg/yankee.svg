@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Yankee (ψ) - Yak</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="yankee-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="yankee-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#d06d9a"/><stop offset="1" stop-color="#ba4f80"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="yankee-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#yankee-g)"/>
+  <g clip-path="url(#yankee-tile)">
   <g transform="translate(256.0,256.0) scale(0.9167) translate(-256.0,-242.0)">
 <path d="M184,168 L102,170 L40,108 L52,54 L84,118 L164,140 Z" fill="#fdf1e8" /><path d="M328,168 L410,170 L472,108 L460,54 L428,118 L348,140 Z" fill="#fdf1e8" />
-<path d="M168,204 L96,222 L168,238 Z" fill="url(#m)" /><path d="M344,204 L416,222 L344,238 Z" fill="url(#m)" />
-<path d="M256,130 L320,150 L350,220 L346,320 L320,400 L256,430 L192,400 L166,320 L162,220 L192,150 Z" fill="url(#m)" />
+<path d="M168,204 L96,222 L168,238 Z" fill="url(#yankee-m)" /><path d="M344,204 L416,222 L344,238 Z" fill="url(#yankee-m)" />
+<path d="M256,130 L320,150 L350,220 L346,320 L320,400 L256,430 L192,400 L166,320 L162,220 L192,150 Z" fill="url(#yankee-m)" />
 <path d="M162,232 L118,300 L150,302 L120,364 L172,340 Z" fill="#783352" /><path d="M350,232 L394,300 L362,302 L392,364 L340,340 Z" fill="#783352" />
 <path d="M164,156 L348,156 L348,232 L330,212 L314,252 L296,214 L276,258 L256,218 L236,258 L216,214 L198,252 L182,212 L164,232 Z" fill="#783352" />
 <circle cx="212" cy="270" r="11" fill="#1b1b1d"/><circle cx="300" cy="270" r="11" fill="#1b1b1d"/><circle cx="216" cy="266" r="3" fill="#fdf1e8"/><circle cx="304" cy="266" r="3" fill="#fdf1e8"/>

@@ -1,18 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Whiskey (ω) - Walrus</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="whiskey-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="whiskey-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ebb493"/><stop offset="1" stop-color="#d79c78"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="whiskey-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#whiskey-g)"/>
+  <g clip-path="url(#whiskey-tile)">
   <g transform="translate(256.0,256.0) scale(1.0051) translate(-256.0,-297.0)">
-<path d="M256,100 L350,120 L410,190 L420,280 L380,336 L132,336 L92,280 L102,190 L162,120 Z" fill="url(#m)" />
+<path d="M256,100 L350,120 L410,190 L420,280 L380,336 L132,336 L92,280 L102,190 L162,120 Z" fill="url(#whiskey-m)" />
 <path d="M200,360 L226,370 L218,494 L196,474 Z" fill="#fdf1e8" /><path d="M312,360 L286,370 L294,494 L316,474 Z" fill="#fdf1e8" />
 <circle cx="212" cy="320" r="66" fill="#f4d7c6"/><circle cx="300" cy="320" r="66" fill="#f4d7c6"/>
 <circle cx="180" cy="300" r="5" fill="#8b644e"/><circle cx="332" cy="300" r="5" fill="#8b644e"/><circle cx="204" cy="296" r="5" fill="#8b644e"/><circle cx="308" cy="296" r="5" fill="#8b644e"/><circle cx="228" cy="300" r="5" fill="#8b644e"/><circle cx="284" cy="300" r="5" fill="#8b644e"/><circle cx="172" cy="326" r="5" fill="#8b644e"/><circle cx="340" cy="326" r="5" fill="#8b644e"/><circle cx="196" cy="322" r="5" fill="#8b644e"/><circle cx="316" cy="322" r="5" fill="#8b644e"/><circle cx="220" cy="326" r="5" fill="#8b644e"/><circle cx="292" cy="326" r="5" fill="#8b644e"/><circle cx="184" cy="350" r="5" fill="#8b644e"/><circle cx="328" cy="350" r="5" fill="#8b644e"/><circle cx="208" cy="348" r="5" fill="#8b644e"/><circle cx="304" cy="348" r="5" fill="#8b644e"/><circle cx="232" cy="350" r="5" fill="#8b644e"/><circle cx="280" cy="350" r="5" fill="#8b644e"/>

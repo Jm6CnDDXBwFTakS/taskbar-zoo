@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Lima (Λ) - Lion</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="lima-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="lima-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#f3bb42"/><stop offset="1" stop-color="#e1a421"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="lima-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#lima-g)"/>
+  <g clip-path="url(#lima-tile)">
   <g transform="translate(256.0,256.0) scale(0.8722) translate(-256.0,-258.0)">
 <path d="M256,40 L304,92 L372,66 L382,136 L452,148 L424,214 L478,262 L418,302 L436,372 L366,374
              L344,442 L282,410 L256,476 L230,410 L168,442 L146,374 L76,372 L94,302 L34,262 L88,214
              L60,148 L130,136 L140,66 L208,92 Z" fill="#916a15" stroke="#916a15" stroke-width="10" stroke-linejoin="round"/>
-    <path d="M150,112 L196,150 L150,186 Z" fill="url(#m)"/>
-    <path d="M362,112 L316,150 L362,186 Z" fill="url(#m)"/>
-    <path d="M256,118 L340,142 L382,228 L372,318 L318,392 L256,414 L194,392 L140,318 L130,228 L172,142 Z" fill="url(#m)"/>
+    <path d="M150,112 L196,150 L150,186 Z" fill="url(#lima-m)"/>
+    <path d="M362,112 L316,150 L362,186 Z" fill="url(#lima-m)"/>
+    <path d="M256,118 L340,142 L382,228 L372,318 L318,392 L256,414 L194,392 L140,318 L130,228 L172,142 Z" fill="url(#lima-m)"/>
     <path d="M256,284 L316,314 L322,364 L288,398 L256,406 L224,398 L190,364 L196,314 Z" fill="#fdf1e8"/>
     <path d="M226,300 L286,300 L256,334 Z" fill="#1b1b1d" stroke="#1b1b1d" stroke-width="12" stroke-linejoin="round"/>
     <path d="M256,334 L256,356 M256,356 L234,370 M256,356 L278,370" fill="none" stroke="#1b1b1d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>

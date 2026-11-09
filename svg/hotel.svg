@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Hotel (Η) - Hippo</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="hotel-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="hotel-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ff91b5"/><stop offset="1" stop-color="#ed779e"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="hotel-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#hotel-g)"/>
+  <g clip-path="url(#hotel-tile)">
   <g transform="translate(256.0,256.0) scale(0.9754) translate(-256.0,-275.0)">
-<path d="M106,128 L108,72 L156,106 Z" fill="url(#m)" /><path d="M406,128 L404,72 L356,106 Z" fill="url(#m)" />
+<path d="M106,128 L108,72 L156,106 Z" fill="url(#hotel-m)" /><path d="M406,128 L404,72 L356,106 Z" fill="url(#hotel-m)" />
 <path d="M116,114 L118,88 L144,106 Z" fill="#994c66" /><path d="M396,114 L394,88 L368,106 Z" fill="#994c66" />
-<circle cx="164" cy="144" r="46" fill="url(#m)"/><circle cx="348" cy="144" r="46" fill="url(#m)"/>
-<path d="M128,122 L384,122 L420,192 L422,262 L448,306 L456,382 L412,450 L330,478 L182,478 L100,450 L56,382 L64,306 L90,262 L92,192 Z" fill="url(#m)" />
+<circle cx="164" cy="144" r="46" fill="url(#hotel-m)"/><circle cx="348" cy="144" r="46" fill="url(#hotel-m)"/>
+<path d="M128,122 L384,122 L420,192 L422,262 L448,306 L456,382 L412,450 L330,478 L182,478 L100,450 L56,382 L64,306 L90,262 L92,192 Z" fill="url(#hotel-m)" />
 <path d="M84,332 L428,332 L438,390 L402,444 L330,466 L182,466 L110,444 L74,390 Z" fill="#ffc5d8" />
 <path d="M184,346 C204,340 222,352 218,370 C202,378 184,370 184,346 Z" fill="#994c66" /><path d="M328,346 C308,340 290,352 294,370 C310,378 328,370 328,346 Z" fill="#994c66" />
 <path d="M124,420 L256,440 L388,420" fill="none" stroke="#994c66" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />

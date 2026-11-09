@@ -1,30 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Charlie (Ч) - Crab</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="charlie-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="charlie-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ff6767"/><stop offset="1" stop-color="#ed4949"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="charlie-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#charlie-g)"/>
+  <g clip-path="url(#charlie-tile)">
   <g transform="translate(256.0,256.0) scale(0.9340) translate(-256.0,-278.0)">
-<path d="M150,300 L84,322 L52,372" fill="none" stroke="url(#m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M362,300 L428,322 L460,372" fill="none" stroke="url(#m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M158,330 L104,372 L92,424" fill="none" stroke="url(#m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M354,330 L408,372 L420,424" fill="none" stroke="url(#m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M182,360 L146,410 L142,456" fill="none" stroke="url(#m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M330,360 L366,410 L370,456" fill="none" stroke="url(#m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M150,280 L96,210" fill="none" stroke="url(#m)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M362,280 L416,210" fill="none" stroke="url(#m)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M70,236 L44,150 L78,92 L124,98 L138,140 L104,140 L98,168 L132,170 L124,206 L88,240 Z" fill="url(#m)" /><path d="M442,236 L468,150 L434,92 L388,98 L374,140 L408,140 L414,168 L380,170 L388,206 L424,240 Z" fill="url(#m)" />
+<path d="M150,300 L84,322 L52,372" fill="none" stroke="url(#charlie-m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M362,300 L428,322 L460,372" fill="none" stroke="url(#charlie-m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M158,330 L104,372 L92,424" fill="none" stroke="url(#charlie-m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M354,330 L408,372 L420,424" fill="none" stroke="url(#charlie-m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M182,360 L146,410 L142,456" fill="none" stroke="url(#charlie-m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M330,360 L366,410 L370,456" fill="none" stroke="url(#charlie-m)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M150,280 L96,210" fill="none" stroke="url(#charlie-m)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M362,280 L416,210" fill="none" stroke="url(#charlie-m)" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M70,236 L44,150 L78,92 L124,98 L138,140 L104,140 L98,168 L132,170 L124,206 L88,240 Z" fill="url(#charlie-m)" /><path d="M442,236 L468,150 L434,92 L388,98 L374,140 L408,140 L414,168 L380,170 L388,206 L424,240 Z" fill="url(#charlie-m)" />
 <path d="M78,104 L118,108 L126,132 L104,132 Z" fill="#ffafaf" /><path d="M434,104 L394,108 L386,132 L408,132 Z" fill="#ffafaf" />
-<path d="M226,232 L212,170" fill="none" stroke="url(#m)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M286,232 L300,170" fill="none" stroke="url(#m)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M120,286 L176,226 L336,226 L392,286 L370,354 L300,388 L212,388 L142,354 Z" fill="url(#m)" />
+<path d="M226,232 L212,170" fill="none" stroke="url(#charlie-m)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M286,232 L300,170" fill="none" stroke="url(#charlie-m)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M120,286 L176,226 L336,226 L392,286 L370,354 L300,388 L212,388 L142,354 Z" fill="url(#charlie-m)" />
 <path d="M142,354 L370,354 L300,388 L212,388 Z" fill="#992f2f" />
 <path d="M190,250 L226,246 L214,272 Z" fill="#ffafaf" opacity="0.7"/><path d="M322,250 L286,246 L298,272 Z" fill="#ffafaf" opacity="0.7"/>
 <circle cx="212" cy="162" r="22" fill="#fdf1e8"/><circle cx="300" cy="162" r="22" fill="#fdf1e8"/><circle cx="212" cy="162" r="14" fill="#1b1b1d"/><circle cx="300" cy="162" r="14" fill="#1b1b1d"/><circle cx="217" cy="157" r="4" fill="#fdf1e8"/><circle cx="305" cy="157" r="4" fill="#fdf1e8"/>

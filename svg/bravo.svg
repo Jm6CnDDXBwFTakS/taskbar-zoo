@@ -1,22 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Bravo (β) - Bear</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="bravo-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="bravo-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#d09162"/><stop offset="1" stop-color="#ba7743"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="bravo-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#bravo-g)"/>
+  <g clip-path="url(#bravo-tile)">
   <g transform="translate(256.0,256.0) scale(1.0532) translate(-256.0,-264.0)">
-<circle cx="140" cy="140" r="64" fill="url(#m)"/>
-    <circle cx="372" cy="140" r="64" fill="url(#m)"/>
+<circle cx="140" cy="140" r="64" fill="url(#bravo-m)"/>
+    <circle cx="372" cy="140" r="64" fill="url(#bravo-m)"/>
     <circle cx="140" cy="140" r="34" fill="#784c2b"/>
     <circle cx="372" cy="140" r="34" fill="#784c2b"/>
-    <path d="M256,100 L372,128 L432,228 L424,334 L352,420 L256,452 L160,420 L88,334 L80,228 L140,128 Z" fill="url(#m)"/>
+    <path d="M256,100 L372,128 L432,228 L424,334 L352,420 L256,452 L160,420 L88,334 L80,228 L140,128 Z" fill="url(#bravo-m)"/>
     <path d="M256,282 L332,318 L344,378 L302,428 L256,444 L210,428 L168,378 L180,318 Z" fill="#fdf1e8"/>
     <path d="M222,330 L290,330 L256,370 Z" fill="#1b1b1d" stroke="#1b1b1d" stroke-width="14" stroke-linejoin="round"/>
     <path d="M256,370 L256,396 M256,396 L232,410 M256,396 L280,410" fill="none" stroke="#1b1b1d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>

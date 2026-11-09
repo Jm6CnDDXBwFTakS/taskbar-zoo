@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>November (N) - Narwhal</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="november-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="november-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#90f2db"/><stop offset="1" stop-color="#76dfc7"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="november-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#november-g)"/>
+  <g clip-path="url(#november-tile)">
   <g transform="translate(256.0,256.0) scale(0.8959) translate(-256.0,-229.0)">
 <path d="M110,380 L36,436 L140,420 Z" fill="#4c9080" /><path d="M402,380 L476,436 L372,420 Z" fill="#4c9080" />
-<path d="M256,150 L346,170 L410,240 L420,330 L380,410 L300,450 L212,450 L132,410 L92,330 L102,240 L166,170 Z" fill="url(#m)" />
+<path d="M256,150 L346,170 L410,240 L420,330 L380,410 L300,450 L212,450 L132,410 L92,330 L102,240 L166,170 Z" fill="url(#november-m)" />
 <path d="M100,344 L412,344 L380,410 L300,450 L212,450 L132,410 Z" fill="#c5f8ec" />
 <path d="M186,196 L206,190 L200,208 Z M146,236 L164,230 L160,248 Z M220,226 L238,222 L232,238 Z" fill="#4c9080" /><path d="M326,196 L306,190 L312,208 Z M366,236 L348,230 L352,248 Z M292,226 L274,222 L280,238 Z" fill="#4c9080" />
 <path d="M212,192 L240,178 L156,8 Z" fill="#fdf1e8" />

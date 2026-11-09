@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Mike (μ) - Moth</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="mike-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="mike-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffe463"/><stop offset="1" stop-color="#edd044"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="mike-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#mike-g)"/>
+  <g clip-path="url(#mike-tile)">
   <g transform="translate(256.0,256.0) scale(0.8839) translate(-256.0,-224.0)">
 <path d="M246,108 L210,62 L196,24" fill="none" stroke="#99862c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
 <path d="M266,108 L302,62 L316,24" fill="none" stroke="#99862c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
 <path d="M222,78 L198,82 M212,62 L190,58 M206,46 L216,32" fill="none" stroke="#99862c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
 <path d="M290,78 L314,82 M300,62 L322,58 M306,46 L296,32" fill="none" stroke="#99862c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-<path d="M244,168 L118,76 L40,106 L32,200 L88,272 L240,252 Z" fill="url(#m)" /><path d="M268,168 L394,76 L472,106 L480,200 L424,272 L272,252 Z" fill="url(#m)" />
-<path d="M240,262 L104,280 L62,352 L104,428 L182,426 L244,334 Z" fill="url(#m)" /><path d="M272,262 L408,280 L450,352 L408,428 L330,426 L268,334 Z" fill="url(#m)" />
+<path d="M244,168 L118,76 L40,106 L32,200 L88,272 L240,252 Z" fill="url(#mike-m)" /><path d="M268,168 L394,76 L472,106 L480,200 L424,272 L272,252 Z" fill="url(#mike-m)" />
+<path d="M240,262 L104,280 L62,352 L104,428 L182,426 L244,334 Z" fill="url(#mike-m)" /><path d="M272,262 L408,280 L450,352 L408,428 L330,426 L268,334 Z" fill="url(#mike-m)" />
 <path d="M118,76 L40,106 L32,200 L62,180 L70,124 Z" fill="#99862c" /><path d="M394,76 L472,106 L480,200 L450,180 L442,124 Z" fill="#99862c" />
 <path d="M62,352 L104,428 L134,420 L100,360 Z" fill="#99862c" /><path d="M450,352 L408,428 L378,420 L412,360 Z" fill="#99862c" />
 <circle cx="128" cy="172" r="32" fill="#99862c"/><circle cx="384" cy="172" r="32" fill="#99862c"/><circle cx="128" cy="172" r="18" fill="#fdf1e8"/><circle cx="384" cy="172" r="18" fill="#fdf1e8"/><circle cx="128" cy="172" r="8" fill="#1b1b1d"/><circle cx="384" cy="172" r="8" fill="#1b1b1d"/><circle cx="152" cy="352" r="20" fill="#99862c"/><circle cx="360" cy="352" r="20" fill="#99862c"/>

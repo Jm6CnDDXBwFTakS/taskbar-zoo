@@ -1,21 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <title>Quebec (Щ) - Quetzal</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="quebec-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
-    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="quebec-m" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#39cb8f"/><stop offset="1" stop-color="#17b574"/>
     </linearGradient>
-    <clipPath id="tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
+    <clipPath id="quebec-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
-  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#g)"/>
-  <g clip-path="url(#tile)">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#quebec-g)"/>
+  <g clip-path="url(#quebec-tile)">
   <g transform="translate(240.0,244.0) scale(0.9565) translate(-287.0,-305.0)">
-<g transform="translate(512,0) scale(-1,1)"><path d="M168,360 L54,500 L88,500 L200,382 Z" fill="url(#m)" />
+<g transform="translate(512,0) scale(-1,1)"><path d="M168,360 L54,500 L88,500 L200,382 Z" fill="url(#quebec-m)" />
 <path d="M192,382 L112,512 L140,512 L218,394 Z" fill="#0f754b" />
-<path d="M222,184 L226,128 L256,100 L294,98 L324,116 L342,150 L346,192 Z" fill="url(#m)" />
-<path d="M150,402 L140,302 L170,222 L230,172 L300,160 L350,190 L362,240 L340,320 L290,400 L220,432 Z" fill="url(#m)" />
+<path d="M222,184 L226,128 L256,100 L294,98 L324,116 L342,150 L346,192 Z" fill="url(#quebec-m)" />
+<path d="M150,402 L140,302 L170,222 L230,172 L300,160 L350,190 L362,240 L340,320 L290,400 L220,432 Z" fill="url(#quebec-m)" />
 <path d="M300,276 L342,318 L292,402 L232,424 L262,330 Z" fill="#ff4f4f" />
 <path d="M150,302 L232,262 L282,332 L232,412 L162,402 Z" fill="#0f754b" />
 <path d="M180,330 L240,310 M178,360 L248,346 M184,388 L240,384" fill="none" stroke="#97e4c4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
