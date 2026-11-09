@@ -7,9 +7,10 @@ Run from the repository root:
 rsvg-convert and the font are replaced by small stand-ins, so these tests check build.py's own logic:
 the SVG templates, the .icns writer and how the build steps fit together. All output goes to a
 temporary folder, so svg/, dist/ and previews/ are never touched. On a Mac, the .icns test also
-round-trips the file through Apple's iconutil.
+round-trips the file through Apple's iconutil. The letter-outline tests run only where fontTools and
+DejaVu Sans Bold are installed, and are skipped elsewhere.
 """
-import contextlib, importlib.util, io, os, re, shutil, struct, subprocess, tempfile, unittest, zipfile
+import contextlib, importlib.util, io, os, re, shutil, struct, subprocess, sys, tempfile, unittest, zipfile
 import xml.dom.minidom
 from unittest import mock
 
@@ -77,6 +78,25 @@ def same_visible_pixels(a, b, tolerance=0):
     return max(high for _, high in diff.getextrema()) <= tolerance
 
 
+def export_fakes(names):
+    """dist/<name>/png/ files for these icons, drawn by the stand-in renderer (into build.DIST)."""
+    for n in names:
+        os.makedirs(os.path.dirname(build.png_path(n, 16)), exist_ok=True)
+        for s in build.PNG_SIZES:
+            fake_render(f"{n}{'-small' if s <= build.SMALL_MAX else ''}.svg", build.png_path(n, s), s)
+
+def export_everything(names):
+    """Every file step_export writes for these icons: stand-in PNGs, and placeholder bytes for the
+    .ico, .icns and .svg files (the zip only copies them)."""
+    export_fakes(names)
+    for n in names:
+        for f in build.export_files(n):
+            path = os.path.join(build.DIST, f)
+            if not os.path.exists(path):
+                with open(path, "wb") as out:
+                    out.write(f"stand-in {f}".encode())
+
+
 class TempOutput(unittest.TestCase):
     """Points build.py's svg/, dist/ and previews/ at an empty temporary folder for each test."""
 
@@ -89,24 +109,6 @@ class TempOutput(unittest.TestCase):
             patcher = mock.patch.object(build, name, folder)
             patcher.start(); self.addCleanup(patcher.stop)
         self.quiet = contextlib.redirect_stdout(io.StringIO())
-
-    def export_fakes(self, names):
-        """dist/<name>/png/ files for these icons, drawn by the stand-in renderer."""
-        for n in names:
-            os.makedirs(os.path.dirname(build.png_path(n, 16)), exist_ok=True)
-            for s in build.PNG_SIZES:
-                fake_render(f"{n}{'-small' if s <= build.SMALL_MAX else ''}.svg", build.png_path(n, s), s)
-
-    def export_everything(self, names):
-        """Every file step_export writes for these icons: stand-in PNGs, and placeholder bytes for
-        the .ico, .icns and .svg files (the zip only copies them)."""
-        self.export_fakes(names)
-        for n in names:
-            for f in build.export_files(n):
-                path = os.path.join(build.DIST, f)
-                if not os.path.exists(path):
-                    with open(path, "wb") as out:
-                        out.write(f"stand-in {f}".encode())
 
     def run_main(self, *argv):
         """build.main() with these arguments; returns what it printed."""
@@ -210,6 +212,24 @@ class FitTests(unittest.TestCase):
         self.assertIn("reaches past the measured area", str(cm.exception))
 
 
+@unittest.skipUnless(importlib.util.find_spec("fontTools") and build.find_font(build.BOLD_FONT),
+                     "needs fontTools and DejaVu Sans Bold")
+class GlyphTests(unittest.TestCase):
+    def setUp(self):
+        patcher = mock.patch.object(build, "_font", None)     # load the font afresh, and put it back after
+        patcher.start(); self.addCleanup(patcher.stop)
+
+    def test_a_letter_the_font_lacks_stops_with_a_message(self):
+        with self.assertRaises(SystemExit) as cm:
+            build.glyph(chr(0xE000), 256, 256, 330, 400)     # a private-use character: in no font
+        self.assertIn("letter '\\ue000' in icons.json", str(cm.exception))
+
+    def test_more_than_one_character_stops_with_a_message(self):
+        with self.assertRaises(SystemExit) as cm:
+            build.glyph("Ab", 256, 256, 330, 400)
+        self.assertIn("letter 'Ab' in icons.json is not a single character", str(cm.exception))
+
+
 class ExportTests(TempOutput):
     def setUp(self):
         """Export one icon, "test", with the stand-in renderer: red letter-only, blue full."""
@@ -226,6 +246,12 @@ class ExportTests(TempOutput):
         for s in build.PNG_SIZES:
             with Image.open(build.png_path("test", s)) as im:
                 self.src[s] = im.convert("RGBA")
+
+    def test_writes_exactly_the_files_export_files_names(self):
+        # the zip step trusts export_files(); a file added to step_export alone would be left out
+        written = sorted(os.path.relpath(os.path.join(folder, f), build.DIST).replace(os.sep, "/")
+                         for folder, _, files in os.walk(self.out) for f in files)
+        self.assertEqual(written, sorted(build.export_files("test")))
 
     def test_ico_holds_each_size_unchanged(self):
         with Image.open(os.path.join(self.out, "test.ico")) as ico:
@@ -286,10 +312,31 @@ class MainTests(TempOutput):
         self.assertIn("full set", str(cm.exception))
 
     def test_previews_need_every_icon_exported(self):
-        self.export_fakes(["alfa"])
+        export_fakes(["alfa"])
         with self.assertRaises(SystemExit) as cm:
             self.run_main("previews")
-        self.assertIn("not exported yet: bravo,", str(cm.exception))
+        self.assertIn("missing or out of date: bravo,", str(cm.exception))
+
+    def test_all_builds_the_zip_then_the_previews(self):
+        export_everything([ic["name"] for ic in build.load_icons()])
+        font = ImageFont.load_default()        # loaded before patching: it calls truetype() itself
+        with mock.patch.object(build, "step_svg", lambda icons: None), \
+             mock.patch.object(build, "step_export", lambda icons: None), \
+             mock.patch.object(ImageFont, "truetype", lambda *a, **k: font):
+            out = self.run_main("all")
+        self.assertEqual([line.split()[0] for line in out.splitlines()], ["zip", "preview", "preview"])
+        self.assertTrue(os.path.exists(os.path.join(build.DIST, "taskbar-zoo.zip")))
+        self.assertEqual(sorted(os.listdir(build.PREV)), ["full-set-dark.png", "full-set-light.png"])
+
+    def test_missing_preview_font_does_not_stop_the_zip(self):
+        export_everything([ic["name"] for ic in build.load_icons()])
+        with mock.patch.object(build, "step_svg", lambda icons: None), \
+             mock.patch.object(build, "step_export", lambda icons: None), \
+             mock.patch.object(build, "find_font", lambda name: None), \
+             mock.patch.object(ImageFont, "truetype", mock.Mock(side_effect=OSError)):
+            with self.assertRaises(SystemExit):
+                self.run_main("all")
+        self.assertTrue(os.path.exists(os.path.join(build.DIST, "taskbar-zoo.zip")))
 
     def test_all_with_names_builds_those_and_skips_previews_and_zip(self):
         calls = []
@@ -304,7 +351,7 @@ class MainTests(TempOutput):
 
     def test_previews_draw_the_full_set_reading_each_png_once(self):
         icons = build.load_icons()
-        self.export_fakes([ic["name"] for ic in icons])
+        export_fakes([ic["name"] for ic in icons])
         opened = []
         real_open = Image.open
         def counting_open(path, *a, **k):
@@ -339,7 +386,7 @@ class MainTests(TempOutput):
         self.assertEqual(os.listdir(build.SVG), [])
 
     def test_previews_without_pillow_stop_before_writing(self):
-        self.export_fakes([ic["name"] for ic in build.load_icons()])
+        export_fakes([ic["name"] for ic in build.load_icons()])
         with mock.patch.object(importlib.util, "find_spec", lambda name, *a, **k: None):
             with self.assertRaises(SystemExit) as cm:
                 self.run_main("previews")
@@ -347,7 +394,7 @@ class MainTests(TempOutput):
         self.assertEqual(os.listdir(build.PREV), [])
 
     def test_missing_label_font_says_how_to_get_it(self):
-        self.export_fakes([ic["name"] for ic in build.load_icons()])
+        export_fakes([ic["name"] for ic in build.load_icons()])
         with mock.patch.object(build, "find_font", lambda name: None), \
              mock.patch.object(ImageFont, "truetype", mock.Mock(side_effect=OSError)):
             with self.assertRaises(SystemExit) as cm:
@@ -358,11 +405,23 @@ class MainTests(TempOutput):
 class ZipTests(TempOutput):
     """The zip step, on stand-in exports of the full set."""
 
+    @classmethod
+    def setUpClass(cls):
+        # The stand-in exports are drawn once for the class and copied into each test's dist/.
+        cls.exported = tempfile.mkdtemp()
+        cls.addClassCleanup(shutil.rmtree, cls.exported)
+        with mock.patch.object(build, "DIST", cls.exported):
+            export_everything([ic["name"] for ic in build.load_icons()])
+
     def setUp(self):
         super().setUp()
+        shutil.copytree(self.exported, build.DIST, dirs_exist_ok=True)
         self.icons = build.load_icons()
-        self.export_everything([ic["name"] for ic in self.icons])
         self.zip = os.path.join(build.DIST, "taskbar-zoo.zip")
+
+    def read_zip(self):
+        with open(self.zip, "rb") as f:
+            return f.read()
 
     def test_zip_holds_every_file_licence_and_readme(self):
         self.run_main("zip")
@@ -380,22 +439,50 @@ class ZipTests(TempOutput):
         for ic in self.icons:
             self.assertIn(f"{build.title(ic)}", readme)
             self.assertIn(f"{ic['letter']}  {ic['animal']}", readme)
+        # counts and sizes come from the build's constants
+        self.assertIn(f"{len(self.icons)} app icons", readme)
+        self.assertIn(build.size_list(build.PNG_SIZES) + " px", readme)
+        self.assertIn(f"{min(build.ICO_SIZES)} to {max(build.ICO_SIZES)} px", readme)
 
-    def test_same_icons_give_a_byte_identical_zip(self):
+    def test_entries_have_fixed_metadata_and_are_stored(self):
         self.run_main("zip")
-        with open(self.zip, "rb") as f:
-            first = f.read()
+        with zipfile.ZipFile(self.zip) as z:
+            infos = z.infolist()
+        self.assertEqual({(i.date_time, i.create_system, i.external_attr >> 16, i.compress_type) for i in infos},
+                         {(build.ZIP_DATE, 3, 0o644, zipfile.ZIP_STORED)})
+
+    def test_same_files_give_a_byte_identical_zip_on_any_os(self):
+        self.run_main("zip")
+        first = self.read_zip()
         os.utime(build.png_path("alfa", 16), (0, 0))        # a different file date must not matter
-        self.run_main("zip")
-        with open(self.zip, "rb") as f:
-            self.assertEqual(f.read(), first)
+        with mock.patch.object(sys, "platform", "win32"):  # zipfile's defaults differ on Windows
+            self.run_main("zip")
+        self.assertEqual(self.read_zip(), first)
 
     def test_zip_needs_every_exported_file(self):
         os.remove(os.path.join(build.DIST, "kilo", "kilo.icns"))
         with self.assertRaises(SystemExit) as cm:
             self.run_main("zip")
-        self.assertIn("not exported yet: kilo", str(cm.exception))
+        self.assertIn("missing or out of date: kilo", str(cm.exception))
         self.assertFalse(os.path.exists(self.zip))
+
+    def test_zip_refuses_exports_older_than_their_svgs(self):
+        svg = os.path.join(build.SVG, "kilo.svg")           # svg/ changed after the last export
+        with open(svg, "w") as f:
+            f.write("<svg/>")
+        later = os.path.getmtime(build.png_path("kilo", 16)) + 60
+        os.utime(svg, (later, later))
+        with self.assertRaises(SystemExit) as cm:
+            self.run_main("zip")
+        self.assertIn("missing or out of date: kilo\n", str(cm.exception))
+
+    def test_a_failed_zip_leaves_neither_an_old_zip_nor_a_part_file(self):
+        self.run_main("zip")
+        with mock.patch.object(build, "zip_readme", mock.Mock(side_effect=RuntimeError("boom"))):
+            with self.assertRaises(RuntimeError):
+                self.run_main("zip")
+        self.assertFalse(os.path.exists(self.zip))
+        self.assertFalse(os.path.exists(self.zip + ".part"))
 
     def test_zip_refuses_names(self):
         with self.assertRaises(SystemExit) as cm:

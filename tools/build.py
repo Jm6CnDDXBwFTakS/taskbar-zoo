@@ -3,8 +3,8 @@
 
     python3 tools/build.py svg              # art/ + icons.json  ->  svg/
     python3 tools/build.py export           # svg/  ->  dist/ PNG, ICO, ICNS
-    python3 tools/build.py previews         # dist/ ->  previews/ contact sheets (always the full set)
     python3 tools/build.py zip              # dist/ ->  dist/taskbar-zoo.zip       (always the full set)
+    python3 tools/build.py previews         # dist/ ->  previews/ contact sheets (always the full set)
     python3 tools/build.py all              # all of the above
     python3 tools/build.py svg alfa bravo   # limit svg, export or all to some icons
 
@@ -128,8 +128,10 @@ def glyph(ch, cx, cy, height, width_max):
         path = find_font(BOLD_FONT)
         if not path:
             sys.exit("DejaVu Sans Bold not found; set ICON_FONT=/path/to/DejaVuSans-Bold.ttf")
-        f = TTFont(path); _font = (f.getGlyphSet(), f.getBestCmap())
-    gs, cmap = _font
+        f = TTFont(path); _font = (f.getGlyphSet(), f.getBestCmap(), path)
+    gs, cmap, path = _font
+    if len(ch) != 1 or ord(ch) not in cmap:
+        sys.exit(f"letter {ch!r} in icons.json is not a single character that {path} has")
     g = gs[cmap[ord(ch)]]
     bp = BoundsPen(gs); g.draw(bp); x0, y0, x1, y1 = bp.bounds
     s = min(height / (y1 - y0), width_max / (x1 - x0))
@@ -263,14 +265,24 @@ def export_files(name):
     return ([f"{name}/{name}.ico", f"{name}/{name}.icns", f"{name}/{name}.svg", f"{name}/{name}-small.svg"]
             + [f"{name}/png/{name}-{s}.png" for s in PNG_SIZES])
 
-def missing_exports(icons, everything=False):
-    """Names of icons not exported yet: lacking a PNG the previews use or, with everything=True,
-    any file step_export writes."""
+def stale_exports(icons, all_files=False):
+    """Names of icons whose export is missing or out of date: a needed file in dist/ is absent or
+    older than the icon's SVGs in svg/ (so svg/ changed after the last export). The files needed are
+    the PNGs the previews use or, with all_files=True, every file step_export writes."""
     def needed(n):
-        if everything:
+        if all_files:
             return [os.path.join(DIST, f) for f in export_files(n)]
         return [png_path(n, s) for s in PREVIEW_SIZES]
-    return [ic["name"] for ic in icons if not all(os.path.exists(p) for p in needed(ic["name"]))]
+    def mtime(p):
+        return os.path.getmtime(p) if os.path.exists(p) else None
+    stale = []
+    for ic in icons:
+        n = ic["name"]
+        sources = [t for t in (mtime(os.path.join(SVG, f"{n}{s}.svg")) for s in ("", "-small")) if t is not None]
+        newest = max(sources, default=0)
+        if any(t is None or t < newest for t in map(mtime, needed(n))):
+            stale.append(n)
+    return stale
 
 def step_previews(icons, cols=6):
     """Contact sheets of the given icons, light and dark. The caller passes the full set."""
@@ -311,14 +323,14 @@ ZIP_DATE = (1980, 1, 1, 0, 0, 0)        # the earliest date a zip can hold; fixe
 ZIP_README = """Taskbar Zoo
 ===========
 
-26 app icons, one per ICAO name (Alfa, Bravo, Charlie ...), for telling apart several
+{count} app icons, one per ICAO name (Alfa, Bravo, Charlie ...), for telling apart several
 copies of the same app on a taskbar or dock. Each folder holds one icon:
 
-  <name>.ico              Windows: 16 to 256 px
-  <name>.icns             macOS: 16 to 1024 px
+  <name>.ico              Windows: {ico} px
+  <name>.icns             macOS: {icns} px
   <name>.svg              Linux, and anything that scales
-  <name>-small.svg        letter-only version, for 16 and 24 px
-  png/<name>-<size>.png   16, 24, 32, 48, 64, 128, 256, 512 and 1024 px
+  <name>-small.svg        letter-only version, for {small} px
+  png/<name>-<size>.png   {png} px
 
 Using them:
 - Windows: shortcut > Properties > Change Icon, then choose the .ico. If a pinned
@@ -330,35 +342,56 @@ Using them:
 The icons:
 {table}
 
-MIT licence: see LICENSE.
+Licence: see LICENSE.
 """
 
+def size_list(sizes):
+    """(16, 24, 32) -> "16, 24 and 32"."""
+    sizes = [str(s) for s in sizes]
+    return ", ".join(sizes[:-1]) + " and " + sizes[-1] if len(sizes) > 1 else "".join(sizes)
+
 def zip_readme(icons):
-    """README.txt for the zip: what each file is for, and the list of icons."""
+    """README.txt for the zip: what each file is for, and the list of icons. Counts and sizes come
+    from the constants above, so the text can't fall behind the build."""
+    icns = [s for _, s in ICNS_ENTRIES]
     table = "\n".join(f"  {ic['name'] + '/':<10} {title(ic):<9} {ic['letter']}  {ic['animal']}" for ic in icons)
-    return ZIP_README.format(table=table)
+    return ZIP_README.format(count=len(icons), table=table, png=size_list(PNG_SIZES),
+                             ico=f"{min(ICO_SIZES)} to {max(ICO_SIZES)}", icns=f"{min(icns)} to {max(icns)}",
+                             small=size_list(s for s in PNG_SIZES if s <= SMALL_MAX))
 
 def step_zip(icons):
     """dist/taskbar-zoo.zip: every icon's exported files, plus LICENSE and a short README.txt, in one
-    taskbar-zoo/ folder. Entries go in a fixed order with a fixed date, so the same icons always give
-    a byte-identical zip. The caller passes the full set, all of it exported."""
-    path = os.path.join(DIST, f"{ZIP_NAME}.zip")
+    taskbar-zoo/ folder. The caller passes the full set, all of it exported.
+
+    The same files always give a byte-identical zip, on any OS: entries go in a fixed order with a
+    fixed date, permissions and "made on" system, and are stored uncompressed. Compression output
+    can differ between zlib builds, and the PNGs inside are compressed already (storing costs ~3%)."""
+    path, part = os.path.join(DIST, f"{ZIP_NAME}.zip"), os.path.join(DIST, f"{ZIP_NAME}.zip.part")
     def add(z, name, data):
         info = zipfile.ZipInfo(f"{ZIP_NAME}/{name}", date_time=ZIP_DATE)
+        info.create_system = 3                    # "made on Unix" (the default is 0 on Windows)
         info.external_attr = 0o644 << 16          # plain file, readable by everyone (Unix permissions)
-        info.compress_type = zipfile.ZIP_DEFLATED
-        z.writestr(info, data, compresslevel=9)
+        info.compress_type = zipfile.ZIP_STORED
+        z.writestr(info, data)
     def read(p):
         with open(p, "rb") as f:
             return f.read()
-    # write to a temporary name first, so a failed run never leaves a half-written zip behind
-    with zipfile.ZipFile(path + ".part", "w") as z:
-        add(z, "LICENSE", read(os.path.join(ROOT, "LICENSE")))
-        add(z, "README.txt", zip_readme(icons).encode("utf-8"))
-        for ic in icons:
-            for f in export_files(ic["name"]):
-                add(z, f, read(os.path.join(DIST, f)))
-    os.replace(path + ".part", path)
+    # The old zip goes first, so a failed run leaves no zip at all rather than an outdated one, and
+    # the new one is written under a temporary name that is removed if anything goes wrong.
+    if os.path.exists(path):
+        os.remove(path)
+    try:
+        with zipfile.ZipFile(part, "w") as z:
+            add(z, "LICENSE", read(os.path.join(ROOT, "LICENSE")))
+            add(z, "README.txt", zip_readme(icons).encode("utf-8"))
+            for ic in icons:
+                for f in export_files(ic["name"]):
+                    add(z, f, read(os.path.join(DIST, f)))
+    except BaseException:
+        if os.path.exists(part):
+            os.remove(part)
+        raise
+    os.replace(part, path)
     print("zip", path)
 
 def main(argv):
@@ -373,15 +406,17 @@ def main(argv):
     if step in ("export", "all"): step_export(icons)
     if step not in ("previews", "zip", "all"):
         return
-    # previews and the zip always cover the full set, so they need every icon exported first
+    # The zip and the previews always cover the full set, so they need every icon exported, and
+    # exported after its SVGs last changed. The zip goes first: it needs nothing beyond Python, so a
+    # missing preview font can't stop it.
     everything = icons if names is None else load_icons()
-    for later, run, needs_all_files in (("previews", step_previews, False), ("zip", step_zip, True)):
+    for later, run, all_files in (("zip", step_zip, True), ("previews", step_previews, False)):
         if step not in (later, "all"):
             continue
-        missing = missing_exports(everything, everything=needs_all_files)
-        if missing:
-            msg = (f"{later} needs every icon exported to dist/; not exported yet: {', '.join(missing)}\n"
-                   "Run: python3 tools/build.py export")
+        stale = stale_exports(everything, all_files=all_files)
+        if stale:
+            msg = (f"{later} needs every icon exported to dist/ since svg/ last changed; "
+                   f"missing or out of date: {', '.join(stale)}\nRun: python3 tools/build.py export")
             if step == later: sys.exit(msg)
             print(f"{later} skipped:", msg)
         else:

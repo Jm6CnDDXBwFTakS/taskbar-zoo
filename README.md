@@ -138,17 +138,19 @@ Activate the virtual environment in each new shell, so `python3` means the one i
 
 ```sh
 . .venv/bin/activate  # Windows: .venv\Scripts\activate; leave it again with `deactivate`
-./build.sh            # SVGs -> dist/ (PNG 16–1024, ICO, ICNS) + previews + dist/taskbar-zoo.zip
+./build.sh            # SVGs -> dist/ (PNG 16–1024, ICO, ICNS) + dist/taskbar-zoo.zip + previews
 ./build.sh --full     # also regenerate svg/ from art/ + icons.json first
 ```
 
-Or step by step: `python3 tools/build.py svg|export|previews|zip|all [names…]`. Names limit `svg`
-and `export`; `previews` and `zip` always cover the full set from `dist/`, so they need every icon
-exported first.
+Or step by step: `python3 tools/build.py svg|export|zip|previews|all [names…]`. Names limit `svg`
+and `export`; `zip` and `previews` always cover the full set from `dist/`, so they need every icon
+exported, and exported again after its SVGs change. Run on their own, they stop and say which icons
+to export; within `all <names>` they are skipped with that message.
 
 `dist/taskbar-zoo.zip` is the whole set in one file, ready to hand out: a `taskbar-zoo/` folder with
 each icon's `.ico`, `.icns`, SVGs and PNGs, plus `LICENSE` and a `README.txt` saying which file to
-use where. The same icons always give a byte-identical zip.
+use where. The same files in `dist/` give a byte-identical zip on any OS.
+
 On Windows, which has no `sh` or `python3`, run `python tools/build.py all` in place of
 `./build.sh --full`.
 

@@ -1,3 +1,3 @@
-# Python deps for tools/build.py (also needs rsvg-convert and DejaVu Sans Bold; see README)
+# Python deps for tools/build.py (also needs rsvg-convert, DejaVu Sans Bold and DejaVu Sans; see README)
 pillow>=10.0
 fonttools>=4.0

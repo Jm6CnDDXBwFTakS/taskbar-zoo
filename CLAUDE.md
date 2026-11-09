@@ -41,9 +41,11 @@ colour) against the whole set at 16 and 24 px, then check it against its colour 
 - Source of truth: `art/<name>.svgfrag` + `icons.json`. `svg/` is generated **and committed**.
   `dist/` is generated and git-ignored.
 - `./build.sh --full` regenerates svg/, dist/ (with `dist/taskbar-zoo.zip`) and previews/. Steps
-  can be limited: `python3 tools/build.py svg|export|previews|zip|all [names…]`. Names limit svg and
-  export only: previews always draw the full set (they overwrite the committed `full-set-*.png`),
-  and the zip always holds it all, with LICENSE and a generated README.txt.
+  can be limited: `python3 tools/build.py svg|export|zip|previews|all [names…]`. Names limit svg and
+  export only: the zip always holds the full set, with LICENSE and a generated README.txt, and
+  previews always draw it (they overwrite the committed `full-set-*.png`). Both refuse an icon whose
+  files in dist/ are missing or older than its SVGs: after `svg`, run `export` before them. The zip
+  runs first because it needs nothing beyond Python, and is byte-identical for the same dist/ files.
 - Needs `rsvg-convert`, Pillow, fontTools and DejaVu Sans Bold (`ICON_FONT` env var to override);
   previews also need DejaVu Sans (regular), looked for next to `ICON_FONT` first.
   The fit step renders each animal with rsvg-convert to measure it, so it is required for `svg` too.
