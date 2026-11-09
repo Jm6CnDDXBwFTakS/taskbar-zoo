@@ -1,0 +1,18 @@
+# Text files use LF line endings, in the repository and in every checkout (Windows included),
+# whatever each machine's core.autocrlf says. build.py also writes LF, so a rebuild shows no diff.
+* text=auto eol=lf
+
+# Listed explicitly so detection can't get them wrong
+*.svg      text
+*.svgfrag  text
+*.json     text
+*.py       text
+*.sh       text
+*.md       text
+*.txt      text
+
+# Never converted or diffed as text
+*.png      binary
+*.ico      binary
+*.icns     binary
+*.ttf      binary
