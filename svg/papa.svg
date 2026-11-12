@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
-  <title>Papa (π) - Panda</title>
+  <title>Papa (π) - Penguin</title>
   <defs>
     <linearGradient id="papa-g" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
@@ -11,13 +11,13 @@
   </defs>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#papa-g)"/>
   <g clip-path="url(#papa-tile)">
-  <g transform="translate(256.0,256.0) scale(0.9706) translate(-256.0,-282.0)">
-<circle cx="118" cy="146" r="44" fill="url(#papa-m)"/><circle cx="394" cy="146" r="44" fill="url(#papa-m)"/>
-<path d="M256,118 L344,128 L414,168 L456,240 L460,322 L424,394 L352,444 L256,462 L160,444 L88,394 L52,322 L56,240 L98,168 L168,128 Z" fill="#fdf1e8" />
-<path d="M132,268 L188,210 L238,224 L240,290 L190,340 L142,322 Z" fill="url(#papa-m)" /><path d="M380,268 L324,210 L274,224 L272,290 L322,340 L370,322 Z" fill="url(#papa-m)" />
-<circle cx="204" cy="262" r="18" fill="#fdf1e8"/><circle cx="308" cy="262" r="18" fill="#fdf1e8"/><circle cx="204" cy="262" r="12" fill="#1b1b1d"/><circle cx="308" cy="262" r="12" fill="#1b1b1d"/><circle cx="208" cy="258" r="4" fill="#fdf1e8"/><circle cx="312" cy="258" r="4" fill="#fdf1e8"/>
-<path d="M228,330 L284,330 L256,362 Z" fill="#1b1b1d" stroke="#1b1b1d" stroke-width="12" stroke-linejoin="round"/>
-<path d="M256,362 L256,376 M222,382 C236,404 276,404 290,382" fill="none" stroke="#1b1b1d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <g transform="translate(256.0,256.0) scale(0.9167) translate(-256.0,-268.0)">
+<path d="M140,226 L70,318 L58,392 L124,352 Z" fill="#3d9946" /><path d="M372,226 L442,318 L454,392 L388,352 Z" fill="#3d9946" />
+<path d="M168,456 L240,456 L226,484 L160,484 Z" fill="#3d9946" /><path d="M344,456 L272,456 L286,484 L352,484 Z" fill="#3d9946" />
+<path d="M256,52 L322,66 L366,110 L384,176 L386,250 L406,330 L400,402 L362,452 L302,474 L210,474 L150,452 L112,402 L106,330 L126,250 L128,176 L146,110 L190,66 Z" fill="url(#papa-m)" />
+<path d="M256,156 L286,130 L322,142 L336,186 L326,240 L340,320 L336,392 L308,432 L256,446 L204,432 L176,392 L172,320 L186,240 L176,186 L190,142 L226,130 Z" fill="#fdf1e8" />
+<circle cx="220" cy="190" r="15" fill="#1b1b1d"/><circle cx="292" cy="190" r="15" fill="#1b1b1d"/><circle cx="225" cy="185" r="5" fill="#fdf1e8"/><circle cx="297" cy="185" r="5" fill="#fdf1e8"/>
+<path d="M236,222 L276,222 L256,258 Z" fill="#1b1b1d" stroke="#1b1b1d" stroke-width="12" stroke-linejoin="round"/>
 
   </g>
 <path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#66ff75" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>

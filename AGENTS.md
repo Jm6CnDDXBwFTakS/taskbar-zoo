@@ -22,7 +22,8 @@ on a taskbar or dock. The set is deliberately app-neutral: don't brand it for an
 - Letter badge: flat-topped hexagon, bottom-right, filled with the icon colour; the letter is the
   **complementary colour** with a thin dark outline. Don't put the letter on the animal itself.
 - Sizes ≤ 24 px use the letter-only `-small.svg` (letter in icon colour on charcoal).
-- The panda smiles (it's deliberately different from the bear).
+- Papa is a penguin, the set's only upright full body. It was a panda until 0.11.0, but a round
+  head with round ears looked too much like the bear and koala at 32 px and up.
 
 ## Colours
 Each icon has its own colour in `icons.json`. Before changing one, check its neighbours at small sizes.
@@ -30,8 +31,8 @@ Known near-pairs that were deliberately resolved: hippo is the only bright pink;
 violet, not pink, for the same reason. The rhino is warm grey: rose-clay clashed with the hippo, and
 terracotta with the bear's caramel (almost identical with red-green colour blindness). The koala is
 sage-grey: light blue sat too close to X-ray, Echo and Sierra. The vampire bat is cream: green
-crowded Quebec, Papa and India (whose I is close to √ in shape). The panda is lime (#66ff75): its
-mint green (#59e0a0) sat between November and Quebec, the closest colours in the set, and π is
+crowded Quebec, Papa and India (whose I is close to √ in shape). Papa is lime (#66ff75): its
+earlier mint green (#59e0a0) sat between November and Quebec, the closest colours in the set, and π is
 close in shape to both Щ (a bar on legs, upside down) and N (two uprights). The lion's gold, bear's
 caramel and turtle's orange sit close together, so keep new warm colours away from them. Measure colour
 closeness as the eye sees it (CIEDE2000), also as seen with deuteranopia, and render a comparison

@@ -9,6 +9,14 @@ icons or formats, and the patch number for fixes that keep every icon looking th
 The newest entry's version must match the `VERSION` file (the tests check), and its text becomes
 the GitHub release notes (README, Releasing).
 
+## 0.11.0 (2026-11-12)
+
+- Papa is now a penguin instead of a panda, in the same lime and with the same π. The panda's
+  round head and round ears looked too much like Bravo's bear and Kilo's koala at 32 px and up;
+  the penguin is the only upright full body in the set. At 16 and 24 px nothing changes, since
+  those sizes show only the letter.
+- No other icon, letter, colour or file name changed.
+
 ## 0.10.0 (2026-11-09)
 
 - Papa's panda is now lime (`#66ff75`) instead of mint green (`#59e0a0`). The mint sat between

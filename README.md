@@ -60,7 +60,7 @@ all differ clearly in colour.
 | Mike | μ | Moth | `#ffe04a` |
 | November | N | Narwhal | `#7ff0d6` |
 | Oscar | Θ | Owl | `#c9a26a` |
-| Papa | π | Panda | `#66ff75` |
+| Papa | π | Penguin | `#66ff75` |
 | Quebec | Щ | Quetzal | `#19c37d` |
 | Romeo | R | Rhino | `#958b7f` |
 | Sierra | ς | Shark | `#4fc0ff` |
@@ -257,7 +257,7 @@ once published, the zip can't be replaced, so a fix goes out as a new version. A
 ## Editing
 
 - **Change a colour or letter:** first measure the candidates against the rest of the set, then
-  edit `icons.json` and run `./build.sh --full`. For example, to try two colours for the panda or
+  edit `icons.json` and run `./build.sh --full`. For example, to try two colours for the penguin or
   two letters for Victor:
 
   ```sh
