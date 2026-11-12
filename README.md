@@ -45,10 +45,10 @@ all differ clearly in colour.
 
 | Name | Letter | Animal | Colour |
 |---|---|---|---|
-| Alfa | α | Axolotl | `#4a9af0` |
+| Alfa | α | Axolotl | `#3577d8` |
 | Bravo | β | Bear | `#c98049` |
-| Charlie | Ч | Crab | `#ff4f4f` |
-| Delta | Δ | Deer | `#22bcc6` |
+| Charlie | Ч | Crab | `#e83a5a` |
+| Delta | Δ | Deer | `#1690a8` |
 | Echo | Э | Elephant | `#aab6c8` |
 | Foxtrot | Ф | Flamingo | `#8a7cff` |
 | Golf | Γ | Gecko | `#9d8fc0` |

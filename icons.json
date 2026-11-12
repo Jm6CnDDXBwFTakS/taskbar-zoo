@@ -2,7 +2,7 @@
   "alfa": {
     "letter": "α",
     "animal": "Axolotl",
-    "color": "#4a9af0"
+    "color": "#3577d8"
   },
   "bravo": {
     "letter": "β",
@@ -12,12 +12,12 @@
   "charlie": {
     "letter": "Ч",
     "animal": "Crab",
-    "color": "#ff4f4f"
+    "color": "#e83a5a"
   },
   "delta": {
     "letter": "Δ",
     "animal": "Deer",
-    "color": "#22bcc6"
+    "color": "#1690a8"
   },
   "echo": {
     "letter": "Э",

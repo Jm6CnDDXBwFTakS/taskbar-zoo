@@ -15,6 +15,11 @@ the GitHub release notes (README, Releasing).
   round head and round ears looked too much like Bravo's bear and Kilo's koala at 32 px and up;
   the penguin is the only upright full body in the set. At 16 and 24 px nothing changes, since
   those sizes show only the letter.
+- Three colours are darker, so that pairs which looked alike to people with red-green colour
+  blindness (deuteranopia) now differ in lightness:
+  - Delta's deer is deep teal (`#1690a8`, was `#22bcc6`), apart from Uniform's pink unicorn.
+  - Alfa's axolotl is deep blue (`#3577d8`, was `#4a9af0`), apart from Foxtrot's violet flamingo.
+  - Charlie's crab is crimson (`#e83a5a`, was `#ff4f4f`), apart from Bravo's caramel bear.
 - No other icon, letter, colour or file name changed.
 
 ## 0.10.0 (2026-11-09)
