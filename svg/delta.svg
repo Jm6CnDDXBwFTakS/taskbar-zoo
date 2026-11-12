@@ -5,27 +5,27 @@
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
     <linearGradient id="delta-m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#369fb4"/><stop offset="1" stop-color="#14859c"/>
+      <stop offset="0" stop-color="#39a9bb"/><stop offset="1" stop-color="#1790a3"/>
     </linearGradient>
     <clipPath id="delta-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="url(#delta-g)"/>
   <g clip-path="url(#delta-tile)">
   <g transform="translate(256.0,256.0) scale(0.8703) translate(-256.0,-238.5)">
-<path d="M226,170 L170,120 L124,40 M170,120 L96,104 M150,86 L176,22 M138,66 L80,48" fill="none" stroke="#96cdd7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M286,170 L342,120 L388,40 M342,120 L416,104 M362,86 L336,22 M374,66 L432,48" fill="none" stroke="#96cdd7" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M226,170 L170,120 L124,40 M170,120 L96,104 M150,86 L176,22 M138,66 L80,48" fill="none" stroke="#97d2db" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M286,170 L342,120 L388,40 M342,120 L416,104 M362,86 L336,22 M374,66 L432,48" fill="none" stroke="#97d2db" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
     <path d="M200,206 L72,176 L96,232 L190,240 Z" fill="url(#delta-m)"/><path d="M312,206 L440,176 L416,232 L322,240 Z" fill="url(#delta-m)"/>
-    <path d="M186,214 L102,196 L114,226 L180,232 Z" fill="#0d5664"/><path d="M326,214 L410,196 L398,226 L332,232 Z" fill="#0d5664"/>
+    <path d="M186,214 L102,196 L114,226 L180,232 Z" fill="#0f5d69"/><path d="M326,214 L410,196 L398,226 L332,232 Z" fill="#0f5d69"/>
     <path d="M256,150 L334,176 L364,256 L340,356 L300,440 L256,466 L212,440 L172,356 L148,256 L178,176 Z" fill="url(#delta-m)"/>
-    <path d="M256,150 L290,168 L272,260 L256,276 L240,260 L222,168 Z" fill="#0d5664"/>
+    <path d="M256,150 L290,168 L272,260 L256,276 L240,260 L222,168 Z" fill="#0f5d69"/>
     <path d="M256,346 L306,370 L304,430 L256,464 L208,430 L206,370 Z" fill="#fdf1e8"/>
     <path d="M226,382 L286,382 L256,418 Z" fill="#1b1b1d" stroke="#1b1b1d" stroke-width="14" stroke-linejoin="round"/>
     <path d="M190,262 C200,246 222,246 230,262 C220,276 200,276 190,262 Z" fill="#1b1b1d"/>
     <path d="M322,262 C312,246 290,246 282,262 C292,276 312,276 322,262 Z" fill="#1b1b1d"/>
 
   </g>
-<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#1690a8" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
-  <path d="M1575 0H10L563 1493H1022ZM499 291H1083L793 1143Z" transform="translate(360.07,441.50) scale(0.0529,-0.0529)" fill="#ed8b77" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#199bb0" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M1575 0H10L563 1493H1022ZM499 291H1083L793 1143Z" transform="translate(360.07,441.50) scale(0.0529,-0.0529)" fill="#eb8979" stroke="#1b1b1d" stroke-width="170.1" stroke-linejoin="round" paint-order="stroke"/>
   </g>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
 </svg>

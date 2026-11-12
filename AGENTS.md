@@ -33,12 +33,15 @@ terracotta with the bear's caramel (almost identical with red-green colour blind
 sage-grey: light blue sat too close to X-ray, Echo and Sierra. The vampire bat is cream: green
 crowded Quebec, Papa and India (whose I is close to √ in shape). Papa is lime (#66ff75): its
 earlier mint green (#59e0a0) sat between November and Quebec, the closest colours in the set, and π is
-close in shape to both Щ (a bar on legs, upside down) and N (two uprights). Three colours were
-darkened in 0.11.0 because pairs merged with deuteranopia, which keeps lightness but not the
-red-green difference: the deer is deep teal (#1690a8; #22bcc6 matched the unicorn's pink), the
-axolotl deep blue (#3577d8; #4a9af0 matched the flamingo's violet) and the crab crimson (#e83a5a;
-#ff4f4f matched the bear's caramel). Keep colours at L* 50 or lighter on the charcoal tile (the
-axolotl, at 51, is the darkest): contrast at small sizes comes first. The lion's gold, bear's
+close in shape to both Щ (a bar on legs, upside down) and N (two uprights). Five colours
+changed in 0.11.0 because pairs merged with deuteranopia, which keeps lightness but not the
+red-green difference, so each pair now differs in lightness. Darker: the deer (#199bb0; #22bcc6
+matched the unicorn's pink), the axolotl (#3a80de; #4a9af0 matched the flamingo's violet) and
+the crab (#f5506e; #ff4f4f matched the bear's caramel). Lighter: the walrus (#f2c49a; #e8a882
+matched the owl's tan) and the iguana (#b5e04a; #a6d63a matched the lion's gold). The three
+darker ones sit at the edge: any lighter and their old clashes, or new ones with the gecko,
+return. Keep colours at L* 50 or lighter on the charcoal tile (the yak, at 53, is the darkest):
+contrast at small sizes comes first. The lion's gold, bear's
 caramel and turtle's orange sit close together, so keep new warm colours away from them. Measure colour
 closeness as the eye sees it (CIEDE2000), also as seen with deuteranopia, and render a comparison
 sheet next to the nearest-coloured icons before committing a change:

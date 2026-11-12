@@ -45,15 +45,15 @@ all differ clearly in colour.
 
 | Name | Letter | Animal | Colour |
 |---|---|---|---|
-| Alfa | α | Axolotl | `#3577d8` |
+| Alfa | α | Axolotl | `#3a80de` |
 | Bravo | β | Bear | `#c98049` |
-| Charlie | Ч | Crab | `#e83a5a` |
-| Delta | Δ | Deer | `#1690a8` |
+| Charlie | Ч | Crab | `#f5506e` |
+| Delta | Δ | Deer | `#199bb0` |
 | Echo | Э | Elephant | `#aab6c8` |
 | Foxtrot | Ф | Flamingo | `#8a7cff` |
 | Golf | Γ | Gecko | `#9d8fc0` |
 | Hotel | Һ | Hippo | `#ff80aa` |
-| India | I | Iguana | `#a6d63a` |
+| India | I | Iguana | `#b5e04a` |
 | Juliett | Ж | Jellyfish | `#cf6bff` |
 | Kilo | Ϟ | Koala | `#8da7a3` |
 | Lima | Л | Lion | `#f2b124` |
@@ -67,7 +67,7 @@ all differ clearly in colour.
 | Tango | τ | Turtle | `#ff7b29` |
 | Uniform | Ю | Unicorn | `#ff5fd0` |
 | Victor | √ | Vampire bat | `#fddea9` |
-| Whiskey | ω | Walrus | `#e8a882` |
+| Whiskey | ω | Walrus | `#f2c49a` |
 | X-ray | X | X-ray fish | `#bfe8ff` |
 | Yankee | ψ | Yak | `#c9568a` |
 | Zulu | Z | Zebra | `#f4f4f4` |

@@ -2,7 +2,7 @@
   "alfa": {
     "letter": "α",
     "animal": "Axolotl",
-    "color": "#3577d8"
+    "color": "#3a80de"
   },
   "bravo": {
     "letter": "β",
@@ -12,12 +12,12 @@
   "charlie": {
     "letter": "Ч",
     "animal": "Crab",
-    "color": "#e83a5a"
+    "color": "#f5506e"
   },
   "delta": {
     "letter": "Δ",
     "animal": "Deer",
-    "color": "#1690a8"
+    "color": "#199bb0"
   },
   "echo": {
     "letter": "Э",
@@ -46,7 +46,7 @@
   "india": {
     "letter": "I",
     "animal": "Iguana",
-    "color": "#a6d63a"
+    "color": "#b5e04a"
   },
   "juliett": {
     "letter": "Ж",
@@ -124,7 +124,7 @@
   "whiskey": {
     "letter": "ω",
     "animal": "Walrus",
-    "color": "#e8a882"
+    "color": "#f2c49a"
   },
   "xray": {
     "title": "X-ray",

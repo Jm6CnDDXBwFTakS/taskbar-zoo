@@ -5,7 +5,7 @@
       <stop offset="0" stop-color="#2e2e33"/><stop offset="1" stop-color="#1a1a1d"/>
     </linearGradient>
     <linearGradient id="whiskey-m" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ebb493"/><stop offset="1" stop-color="#d79c78"/>
+      <stop offset="0" stop-color="#f3cca8"/><stop offset="1" stop-color="#e1b68f"/>
     </linearGradient>
     <clipPath id="whiskey-tile"><rect x="8" y="8" width="496" height="496" rx="112"/></clipPath>
   </defs>
@@ -14,15 +14,15 @@
   <g transform="translate(256.0,256.0) scale(1.0051) translate(-256.0,-297.0)">
 <path d="M256,100 L350,120 L410,190 L420,280 L380,336 L132,336 L92,280 L102,190 L162,120 Z" fill="url(#whiskey-m)" />
 <path d="M200,360 L226,370 L218,494 L196,474 Z" fill="#fdf1e8" /><path d="M312,360 L286,370 L294,494 L316,474 Z" fill="#fdf1e8" />
-<circle cx="212" cy="320" r="66" fill="#f4d7c6"/><circle cx="300" cy="320" r="66" fill="#f4d7c6"/>
-<circle cx="180" cy="300" r="5" fill="#8b644e"/><circle cx="332" cy="300" r="5" fill="#8b644e"/><circle cx="204" cy="296" r="5" fill="#8b644e"/><circle cx="308" cy="296" r="5" fill="#8b644e"/><circle cx="228" cy="300" r="5" fill="#8b644e"/><circle cx="284" cy="300" r="5" fill="#8b644e"/><circle cx="172" cy="326" r="5" fill="#8b644e"/><circle cx="340" cy="326" r="5" fill="#8b644e"/><circle cx="196" cy="322" r="5" fill="#8b644e"/><circle cx="316" cy="322" r="5" fill="#8b644e"/><circle cx="220" cy="326" r="5" fill="#8b644e"/><circle cx="292" cy="326" r="5" fill="#8b644e"/><circle cx="184" cy="350" r="5" fill="#8b644e"/><circle cx="328" cy="350" r="5" fill="#8b644e"/><circle cx="208" cy="348" r="5" fill="#8b644e"/><circle cx="304" cy="348" r="5" fill="#8b644e"/><circle cx="232" cy="350" r="5" fill="#8b644e"/><circle cx="280" cy="350" r="5" fill="#8b644e"/>
+<circle cx="212" cy="320" r="66" fill="#f9e4d1"/><circle cx="300" cy="320" r="66" fill="#f9e4d1"/>
+<circle cx="180" cy="300" r="5" fill="#91755c"/><circle cx="332" cy="300" r="5" fill="#91755c"/><circle cx="204" cy="296" r="5" fill="#91755c"/><circle cx="308" cy="296" r="5" fill="#91755c"/><circle cx="228" cy="300" r="5" fill="#91755c"/><circle cx="284" cy="300" r="5" fill="#91755c"/><circle cx="172" cy="326" r="5" fill="#91755c"/><circle cx="340" cy="326" r="5" fill="#91755c"/><circle cx="196" cy="322" r="5" fill="#91755c"/><circle cx="316" cy="322" r="5" fill="#91755c"/><circle cx="220" cy="326" r="5" fill="#91755c"/><circle cx="292" cy="326" r="5" fill="#91755c"/><circle cx="184" cy="350" r="5" fill="#91755c"/><circle cx="328" cy="350" r="5" fill="#91755c"/><circle cx="208" cy="348" r="5" fill="#91755c"/><circle cx="304" cy="348" r="5" fill="#91755c"/><circle cx="232" cy="350" r="5" fill="#91755c"/><circle cx="280" cy="350" r="5" fill="#91755c"/>
 <path d="M232,256 L280,256 L256,282 Z" fill="#1b1b1d" />
-<path d="M206,150 L256,160 L306,150 M216,174 L256,182 L296,174" fill="none" stroke="#8b644e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M206,150 L256,160 L306,150 M216,174 L256,182 L296,174" fill="none" stroke="#91755c" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
 <circle cx="176" cy="210" r="10" fill="#1b1b1d"/><circle cx="336" cy="210" r="10" fill="#1b1b1d"/><circle cx="180" cy="206" r="3" fill="#fdf1e8"/><circle cx="340" cy="206" r="3" fill="#fdf1e8"/>
 
   </g>
-<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#e8a882" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
-  <path d="M890 261Q856 -26 530 -27Q88 -28 88 568Q88 824 284 1120H591Q461 884 461 572Q461 259 601 257Q716 255 711 712H1069Q1064 255 1179 257Q1319 259 1319 572Q1319 884 1189 1120H1496Q1692 824 1692 568Q1692 -28 1250 -27Q924 -26 890 261Z" transform="translate(344.29,437.43) scale(0.0648,-0.0648)" fill="#79c1eb" stroke="#1b1b1d" stroke-width="138.8" stroke-linejoin="round" paint-order="stroke"/>
+<path d="M482.0,402.0 L442.0,471.3 L362.0,471.3 L322.0,402.0 L362.0,332.7 L442.0,332.7 Z" fill="#f2c49a" stroke="#1a1a1d" stroke-width="14" stroke-linejoin="miter"/>
+  <path d="M890 261Q856 -26 530 -27Q88 -28 88 568Q88 824 284 1120H591Q461 884 461 572Q461 259 601 257Q716 255 711 712H1069Q1064 255 1179 257Q1319 259 1319 572Q1319 884 1189 1120H1496Q1692 824 1692 568Q1692 -28 1250 -27Q924 -26 890 261Z" transform="translate(344.29,437.43) scale(0.0648,-0.0648)" fill="#77b5ed" stroke="#1b1b1d" stroke-width="138.8" stroke-linejoin="round" paint-order="stroke"/>
   </g>
   <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#3c3c42" stroke-width="6"/>
 </svg>
