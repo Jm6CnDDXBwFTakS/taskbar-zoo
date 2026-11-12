@@ -22,7 +22,7 @@ on a taskbar or dock. The set is deliberately app-neutral: don't brand it for an
 - Letter badge: flat-topped hexagon, bottom-right, filled with the icon colour; the letter is the
   **complementary colour** with a thin dark outline. Don't put the letter on the animal itself.
 - Sizes ≤ 24 px use the letter-only `-small.svg` (letter in icon colour on charcoal).
-- Papa is a penguin, the set's only upright full body. It was a panda until 0.11.0, but a round
+- Papa is a penguin: a tall, narrow body with flippers. It was a panda until 0.11.0, but a round
   head with round ears looked too much like the bear and koala at 32 px and up.
 
 ## Colours
@@ -32,19 +32,19 @@ violet, not pink, for the same reason. The rhino is warm grey: rose-clay clashed
 terracotta with the bear's caramel (almost identical with red-green colour blindness). The koala is
 sage-grey: light blue sat too close to X-ray, Echo and Sierra. The vampire bat is cream: green
 crowded Quebec, Papa and India (whose I is close to √ in shape). Papa is lime (#66ff75): its
-earlier mint green (#59e0a0) sat between November and Quebec, the closest colours in the set, and π is
-close in shape to both Щ (a bar on legs, upside down) and N (two uprights). Five colours
+earlier mint green (#59e0a0) sat between November and Quebec, the closest colours in the set,
+and π is close in shape to both Щ (a bar on legs, upside down) and N (two uprights). Five colours
 changed in 0.11.0 because pairs merged with deuteranopia, which keeps lightness but not the
 red-green difference, so each pair now differs in lightness. Darker: the deer (#199bb0; #22bcc6
 matched the unicorn's pink), the axolotl (#3a80de; #4a9af0 matched the flamingo's violet) and
 the crab (#f5506e; #ff4f4f matched the bear's caramel). Lighter: the walrus (#f2c49a; #e8a882
 matched the owl's tan) and the iguana (#b5e04a; #a6d63a matched the lion's gold). The three
-darker ones sit at the edge: any lighter and their old clashes, or new ones with the gecko,
-return. Keep colours at L* 50 or lighter on the charcoal tile (the yak, at 53, is the darkest):
-contrast at small sizes comes first. The lion's gold, bear's
-caramel and turtle's orange sit close together, so keep new warm colours away from them. Measure colour
-closeness as the eye sees it (CIEDE2000), also as seen with deuteranopia, and render a comparison
-sheet next to the nearest-coloured icons before committing a change:
+darker ones sit at the edge: any lighter and a clash returns (deer with the gecko, axolotl with
+the flamingo, crab with the bear or the owl). Keep colours at L* 50 or lighter on the charcoal
+tile (the yak, at 53, is the darkest): contrast at small sizes comes first. The lion's gold,
+bear's caramel and turtle's orange sit close together, so keep new warm colours away from them.
+Measure colour closeness as the eye sees it (CIEDE2000), also as seen with deuteranopia, and
+render a comparison sheet next to the nearest-coloured icons before committing a change:
 `python3 tools/closeness.py color <name> '#hex' ... --sheet <png>` does both (README, Editing).
 Its "risk" (shape overlap x 20 / ΔE, the worse of normal and deuteranopia) only ranks; read the
 ΔE and shape columns and look at the sheet. It weighs full deuteranopia, a worst case, as much

@@ -13,8 +13,8 @@ the GitHub release notes (README, Releasing).
 
 - Papa is now a penguin instead of a panda, in the same lime and with the same π. The panda's
   round head and round ears looked too much like Bravo's bear and Kilo's koala at 32 px and up;
-  the penguin is the only upright full body in the set. At 16 and 24 px nothing changes, since
-  those sizes show only the letter.
+  the penguin's tall, narrow body with flippers looks like neither. At 16 and 24 px nothing
+  changes, since those sizes show only the letter.
 - Five colours changed, so that pairs which looked alike to people with red-green colour
   blindness (deuteranopia) now differ in lightness. Three are a little darker:
   - Delta's deer is a deeper teal (`#199bb0`, was `#22bcc6`), apart from Uniform's pink unicorn.
